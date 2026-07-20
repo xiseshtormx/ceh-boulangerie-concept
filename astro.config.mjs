@@ -8,7 +8,7 @@ export default defineConfig({
   site,
   integrations: site ? [sitemap()] : [],
   build: {
-    inlineStylesheets: 'auto',
+    inlineStylesheets: 'always',
   },
   image: {
     responsiveStyles: true,

@@ -1,36 +1,29 @@
 ---
 import { Image } from 'astro:assets';
-import bakeryGrid from '../assets/bakery-grid.webp';
+import lineup from '../assets/pastry-lineup-v2.png';
 import { products } from '../data/products';
 import { links } from '../data/links';
-import { imageMeta } from '../data/images';
 ---
 
-<section class="section oven" id="oven" aria-labelledby="oven-title">
-  <div class="section-head" data-reveal>
-    <p class="eyebrow">СЕГОДНЯ ИЗ ПЕЧИ · 01</p>
-    <h2 id="oven-title">То, что лучше<br /><em>не откладывать на вечер.</em></h2>
-    <p>Названия сверены с публичным меню. Фото, описания и компоновка — часть концепта.</p>
+<section class="batch section" id="batch" aria-labelledby="batch-title">
+  <div class="batch-intro" data-reveal>
+    <div>
+      <p class="section-code micro">01 / ВИТРИНА</p>
+      <h2 id="batch-title">Не «примерно выпечка».<br /><span>Вот что выбирать.</span></h2>
+    </div>
+    <p>В прежнем макете ассортимент выглядел заглушкой. Теперь это конкретные позиции и цены из публичного меню 2ГИС, обновлённого 20 февраля 2026 года.</p>
   </div>
 
-  <div class="product-grid">
+  <div class="product-run" data-product-run>
     {products.map((product, index) => (
-      <article class="product-card" data-reveal style={`--delay: ${index * 55}ms`}>
-        <a href={product.source} target="_blank" rel="noreferrer" aria-label={`${product.name} — открыть источник`}>
+      <article class="product-card" data-reveal style={`--delay: ${Math.min(index * 45, 180)}ms`}>
+        <a href={product.source} target="_blank" rel="noreferrer" aria-label={`${product.name}: проверить в актуальном меню`}>
           <div class="product-image">
-            <Image
-              src={bakeryGrid}
-              alt={`${imageMeta.products.altPrefix} «${product.type}»`}
-              widths={[480, 720]}
-              sizes="(max-width: 767px) 88vw, (max-width: 1199px) 45vw, 30vw"
-              loading="lazy"
-              quality={82}
-              style={`object-position: ${product.crop}`}
-            />
-            <span>{product.demoVisual ? 'concept visual' : 'menu visual'}</span>
+            <Image src={lineup} alt={`Демонстрационная визуализация: ${product.name}`} widths={[720, 1200]} sizes="(min-width: 1000px) 72rem, 180vw" quality={76} style={`--crop: ${product.crop}`} />
+            <span class="product-index micro">{String(index + 1).padStart(2, '0')}</span>
           </div>
           <div class="product-meta">
-            <p>{String(index + 1).padStart(2, '0')} · {product.type}</p>
+            <p class="micro">{product.type}</p>
             <h3>{product.name}</h3>
             <p>{product.description}</p>
             <div><strong>{product.price}</strong><span>В меню ↗</span></div>
@@ -39,9 +32,9 @@ import { imageMeta } from '../data/images';
       </article>
     ))}
   </div>
-
-  <div class="oven-note">
-    <p>Состав, наличие и цены могут меняться.</p>
-    <a class="button button--outline" href={links.menu} target="_blank" rel="noreferrer">Актуальное меню <span>↗</span></a>
+  <div class="batch-footer micro">
+    <span>← ЛИСТАЙТЕ ВИТРИНУ →</span>
+    <span>ЦЕНЫ НЕ ЯВЛЯЮТСЯ ПУБЛИЧНОЙ ОФЕРТОЙ</span>
+    <a href={links.menu} target="_blank" rel="noreferrer">ВСЕ МЕНЮ ↗</a>
   </div>
 </section>

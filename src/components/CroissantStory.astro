@@ -1,75 +1,75 @@
 ---
 import { Image } from 'astro:assets';
-import heroCroissant from '../assets/hero-croissant.webp';
+import processImage from '../assets/lamination-v2.png';
 
 const stages = [
-  { number: '01', name: 'Тесто', verb: 'Замешиваем.' },
-  { number: '02', name: 'Масло', verb: 'Складываем.' },
-  { number: '03', name: 'Слои', verb: 'Снова складываем.' },
-  { number: '04', name: 'Расстойка', verb: 'Даём время.' },
-  { number: '05', name: 'Печь', verb: 'Выпекаем.' },
-  { number: '06', name: 'Хруст', verb: 'Слушаем хруст.' },
+  { time: '00:00', title: 'Замес', copy: 'Тесто набирает структуру. Никаких декоративных обещаний — только начало работы.' },
+  { time: '06:00', title: 'Холод', copy: 'Температура удерживает масло и тесто раздельными — будущие слои остаются читаемыми.' },
+  { time: '12:00', title: 'Ламинация', copy: 'Тесто складывают и раскатывают. Именно этот момент теперь показан целиком, без странных нарезок.' },
+  { time: '18:00', title: 'Формовка', copy: 'Ровные треугольники сворачиваются в узнаваемую форму.' },
+  { time: '24:00', title: 'Расстойка', copy: 'Время создаёт воздушную структуру и объём перед печью.' },
+  { time: '27:00', title: 'Жар', copy: 'Слои раскрываются, масло делает своё дело, поверхность становится золотой и хрустящей.' },
 ];
 ---
 
-<section class="process" id="process" data-process aria-labelledby="process-title">
-  <div class="process-pin">
-    <div class="process-copy">
-      <p class="eyebrow">КАК ПОЯВЛЯЕТСЯ КРУАССАН · 02</p>
-      <h2 id="process-title">Шесть тихих шагов.<br /><em>Один громкий хруст.</em></h2>
-      <ol class="process-stages">
-        {stages.map((stage, index) => (
-          <li class:list={{ active: index === 0 }} data-stage={index}>
-            <span>{stage.number}</span>
-            <div><strong>{stage.name}</strong><p>{stage.verb}</p></div>
-          </li>
-        ))}
-      </ol>
-      <p class="process-disclaimer">Художественная демонстрация процесса, а не описание технологии компании.</p>
-    </div>
-
-    <div class="process-visual" aria-label="Анимация раскрытия слоёв круассана">
-      <div class="process-ring" aria-hidden="true"></div>
-      <Image
-        src={heroCroissant}
-        alt="Круассан, визуально раскрывающийся по слоям при прокрутке"
-        widths={[640, 960, 1280]}
-        sizes="(max-width: 767px) 92vw, 52vw"
-        loading="lazy"
-        quality={84}
-        class="process-base"
-      />
-      <div class="croissant-layers" aria-hidden="true">
-        {stages.map((_, index) => (
-          <div class={`croissant-layer croissant-layer--${index + 1}`} style={`--layer: ${index}; --shift: ${(index - 2.5) * 13}px`}>
-            <Image src={heroCroissant} alt="" widths={[640, 960, 1280]} sizes="(max-width: 767px) 92vw, 52vw" loading="lazy" quality={84} />
-          </div>
-        ))}
+<section class="process" id="process" aria-labelledby="process-title" data-process>
+  <div class="process-head section" data-reveal>
+    <p class="section-code micro">02 / КОНТРОЛЬ ПАРТИИ</p>
+    <h2 id="process-title">Карусель больше<br /><span>не режет продукт.</span></h2>
+    <p>Один цельный производственный кадр. Шесть понятных этапов. Управление кнопками, стрелками клавиатуры и свайпом.</p>
+  </div>
+  <div class="process-console">
+    <figure class="process-frame">
+      <Image src={processImage} alt="Руки пекаря складывают слоёное тесто на стальном столе" widths={[760, 1320, 1900]} sizes="(min-width: 900px) 62vw, 100vw" quality={88} />
+      <div class="process-scan" aria-hidden="true"></div>
+      <figcaption class="micro"><span>КАМЕРА / СТОЛ 03</span><span>ЛАМИНАЦИЯ</span><span>REC ●</span></figcaption>
+    </figure>
+    <div class="process-readout">
+      <div class="readout-top micro"><span>ЭТАП <b data-stage-number>01</b> / 06</span><span data-stage-time>00:00</span></div>
+      <p class="readout-title" data-stage-title aria-live="polite">Замес</p>
+      <p class="readout-copy" data-stage-copy>{stages[0].copy}</p>
+      <div class="process-controls">
+        <button type="button" data-process-prev aria-label="Предыдущий этап">←</button>
+        <div class="process-dots" role="tablist" aria-label="Этапы производства">
+          {stages.map((stage, index) => <button type="button" role="tab" aria-selected={index === 0 ? 'true' : 'false'} data-stage={index} aria-label={`${index + 1}. ${stage.title}`}></button>)}
+        </div>
+        <button type="button" data-process-next aria-label="Следующий этап">→</button>
       </div>
-      <p class="process-current"><span data-current-number>01</span> / 06</p>
     </div>
+  </div>
+  <div class="process-strip" tabindex="0" aria-label="Этапы процесса; используйте стрелки влево и вправо">
+    {stages.map((stage, index) => (
+      <button type="button" class:list={['process-stage', { active: index === 0 }]} data-stage-card={index}>
+        <span class="micro">{String(index + 1).padStart(2, '0')} / {stage.time}</span>
+        <strong>{stage.title}</strong>
+      </button>
+    ))}
   </div>
 </section>
 
-<script>
-  const section = document.querySelector<HTMLElement>('[data-process]');
-  const stageNodes = [...document.querySelectorAll<HTMLElement>('[data-stage]')];
-  const currentNumber = document.querySelector<HTMLElement>('[data-current-number]');
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-  const updateProcess = () => {
-    if (!section || reduceMotion.matches || window.innerWidth < 768) return;
-    const rect = section.getBoundingClientRect();
-    const travel = section.offsetHeight - window.innerHeight;
-    const progress = Math.max(0, Math.min(1, -rect.top / Math.max(travel, 1)));
-    const active = Math.min(5, Math.floor(progress * 6));
-    section.style.setProperty('--process-progress', progress.toFixed(3));
-    section.style.setProperty('--active-stage', String(active));
-    stageNodes.forEach((node, index) => node.classList.toggle('active', index === active));
-    if (currentNumber) currentNumber.textContent = String(active + 1).padStart(2, '0');
-  };
-
-  updateProcess();
-  window.addEventListener('scroll', updateProcess, { passive: true });
-  window.addEventListener('resize', updateProcess);
+<script is:inline define:vars={{ stages }}>
+  const root = document.querySelector('[data-process]');
+  if (root) {
+    let active = 0;
+    const stageCards = [...root.querySelectorAll('[data-stage-card]')];
+    const dots = [...root.querySelectorAll('[data-stage]')];
+    const setStage = (next) => {
+      active = (next + stages.length) % stages.length;
+      root.style.setProperty('--stage', String(active));
+      root.querySelector('[data-stage-number]').textContent = String(active + 1).padStart(2, '0');
+      root.querySelector('[data-stage-time]').textContent = stages[active].time;
+      root.querySelector('[data-stage-title]').textContent = stages[active].title;
+      root.querySelector('[data-stage-copy]').textContent = stages[active].copy;
+      stageCards.forEach((item, index) => item.classList.toggle('active', index === active));
+      dots.forEach((item, index) => item.setAttribute('aria-selected', String(index === active)));
+      stageCards[active]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    };
+    root.querySelector('[data-process-prev]')?.addEventListener('click', () => setStage(active - 1));
+    root.querySelector('[data-process-next]')?.addEventListener('click', () => setStage(active + 1));
+    [...root.querySelectorAll('[data-stage], [data-stage-card]')].forEach((item) => item.addEventListener('click', () => setStage(Number(item.dataset.stage ?? item.dataset.stageCard))));
+    root.querySelector('.process-strip')?.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowRight') { event.preventDefault(); setStage(active + 1); }
+      if (event.key === 'ArrowLeft') { event.preventDefault(); setStage(active - 1); }
+    });
+  }
 </script>

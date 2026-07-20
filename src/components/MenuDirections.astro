@@ -3,75 +3,27 @@ import { categories } from '../data/categories';
 import { links } from '../data/links';
 ---
 
-<section class="section menu-directions" id="menu" aria-labelledby="menu-title" data-menu-tabs data-categories={JSON.stringify(categories)}>
-  <div class="section-head section-head--row" data-reveal>
-    <div>
-      <p class="eyebrow">НАПРАВЛЕНИЯ МЕНЮ · 04</p>
-      <h2 id="menu-title">Не всё сразу.<br /><em>Но всё по делу.</em></h2>
-    </div>
-    <p>Выберите направление. За полным составом, ценами и наличием — в актуальное меню.</p>
+<section class="menu-manifest section" id="menu" aria-labelledby="menu-title">
+  <div class="menu-head" data-reveal>
+    <p class="section-code micro">04 / МЕНЮ-МАНИФЕСТ</p>
+    <h2 id="menu-title">Круассан — герой.<br /><span>Но не всё меню.</span></h2>
+    <p>Сайт работает как реклама только тогда, когда не прячет ширину предложения. Пять направлений — от выпечки до полноценного обеда.</p>
   </div>
-
-  <div class="menu-tabs" role="tablist" aria-label="Категории меню">
+  <div class="menu-grid">
     {categories.map((category, index) => (
-      <button
-        type="button"
-        role="tab"
-        aria-selected={index === 0 ? 'true' : 'false'}
-        aria-controls="menu-category-panel"
-        class:list={{ active: index === 0 }}
-        data-menu-tab
-        data-index={index}
-      >
-        <span>{category.number}</span>
-        <strong>{category.title}</strong>
-        <i aria-hidden="true">↗</i>
-      </button>
+      <article class="menu-category" data-reveal style={`--delay: ${index * 55}ms`}>
+        <div class="menu-category-title"><span class="micro">{category.number}</span><h3>{category.title}</h3></div>
+        <p>{category.note}</p>
+        <ul>{category.tags.map((tag) => <li><span>→</span>{tag}</li>)}</ul>
+      </article>
     ))}
   </div>
-
-  <div class="category-panel" id="menu-category-panel" role="tabpanel" aria-live="polite">
-    <div class="category-number" data-category-number>{categories[0].number}</div>
-    <div>
-      <p class="eyebrow">ВЫБРАНО</p>
-      <h3 data-category-title>{categories[0].title}</h3>
-      <p data-category-note>{categories[0].note}</p>
-      <div class="category-tags" data-category-tags>
-        {categories[0].tags.map((tag) => <span>{tag}</span>)}
-      </div>
-    </div>
-    <a class="button button--light" href={links.menu} target="_blank" rel="noreferrer">Открыть меню <span>↗</span></a>
+  <div class="menu-total" data-reveal>
+    <p><strong>96</strong><span>позиций в публичном меню</span></p>
+    <p><strong>7</strong><span>видов выпечки</span></p>
+    <p><strong>10</strong><span>завтраков</span></p>
+    <p><strong>12</strong><span>десертов</span></p>
+    <a class="button button--ink" href={links.menu} target="_blank" rel="noreferrer">Смотреть всё меню <span>↗</span></a>
   </div>
+  <p class="source-note micro">ИСТОЧНИК: ПУБЛИЧНОЕ МЕНЮ 2ГИС / ОБНОВЛЕНО 20.02.2026 / ЦЕНЫ МОГУТ МЕНЯТЬСЯ</p>
 </section>
-
-<script>
-  type MenuCategory = { number: string; title: string; note: string; tags: string[] };
-  const root = document.querySelector<HTMLElement>('[data-menu-tabs]');
-  const categories: MenuCategory[] = JSON.parse(root?.dataset.categories ?? '[]');
-  const tabs = [...(root?.querySelectorAll('[data-menu-tab]') ?? [])];
-  const title = root?.querySelector('[data-category-title]');
-  const number = root?.querySelector('[data-category-number]');
-  const note = root?.querySelector('[data-category-note]');
-  const tags = root?.querySelector('[data-category-tags]');
-
-  tabs.forEach((tab) => {
-    tab.addEventListener('click', () => {
-      const index = Number(tab.getAttribute('data-index'));
-      const category = categories[index];
-      if (!category || !title || !number || !note || !tags) return;
-      tabs.forEach((item) => {
-        const active = item === tab;
-        item.classList.toggle('active', active);
-        item.setAttribute('aria-selected', String(active));
-      });
-      number.textContent = category.number;
-      title.textContent = category.title;
-      note.textContent = category.note;
-      tags.replaceChildren(...category.tags.map((tag) => {
-        const element = document.createElement('span');
-        element.textContent = tag;
-        return element;
-      }));
-    });
-  });
-</script>

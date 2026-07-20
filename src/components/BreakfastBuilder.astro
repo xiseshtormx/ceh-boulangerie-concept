@@ -1,86 +1,48 @@
 ---
 import { Image } from 'astro:assets';
-import bakeryGrid from '../assets/bakery-grid.webp';
+import breakfastImage from '../assets/breakfast-tray-v2.png';
 import { links } from '../data/links';
 
-const steps = [
-  { id: 'base', number: '01', title: 'Основа', options: ['Круассан', 'Каша', 'Яйца', 'Выпечка'] },
-  { id: 'extra', number: '02', title: 'Добавка', options: ['Овощи', 'Сыр', 'Десерт', 'Другое'] },
-  { id: 'drink', number: '03', title: 'Напиток', options: ['Кофе', 'Чай', 'Авторский'] },
+const breakfasts = [
+  { name: 'С лососем', price: '730 ₽', detail: 'Скрэмбл, лосось, зерновые тосты, зелень, томаты, творожный сыр и песто.' },
+  { name: 'С тунцом', price: '510 ₽', detail: 'Скрэмбл, паста из тунца, зерновые тосты, творожный сыр и песто.' },
+  { name: 'С окороком', price: '590 ₽', detail: 'Скрэмбл, окорок, зерновые тосты, творожный сыр, песто и томаты.' },
 ];
 ---
 
-<section class="section builder" id="builder" aria-labelledby="builder-title" data-builder>
-  <div class="builder-intro" data-reveal>
-    <p class="eyebrow">КОНСТРУКТОР ЗАВТРАКА · 03</p>
-    <h2 id="builder-title">Соберите утро<br /><em>под себя.</em></h2>
-    <p>Три решения — и утро уже выглядит убедительнее. Это демонстрационный интерфейс: без расчёта цены и отправки заказа.</p>
-  </div>
-
-  <div class="builder-workspace">
-    <div class="builder-controls">
-      {steps.map((step, stepIndex) => (
-        <fieldset class="builder-step" data-reveal style={`--delay: ${stepIndex * 90}ms`}>
-          <legend><span>{step.number}</span>{step.title}</legend>
-          <div>
-            {step.options.map((option, optionIndex) => (
-              <button
-                type="button"
-                class:list={{ selected: optionIndex === 0 }}
-                aria-pressed={optionIndex === 0 ? 'true' : 'false'}
-                data-builder-option={step.id}
-                data-label={option}
-              >
-                {option}<span aria-hidden="true">+</span>
-              </button>
-            ))}
-          </div>
-        </fieldset>
+<section class="breakfast section" id="breakfast" aria-labelledby="breakfast-title" data-breakfast>
+  <div class="breakfast-copy" data-reveal>
+    <p class="section-code micro">03 / ЗАВТРАКИ</p>
+    <h2 id="breakfast-title">Не конструктор.<br /><span>Нормальный завтрак.</span></h2>
+    <p>Прежняя игровая механика отвлекала от еды. Здесь выбор занимает один клик и сразу объясняет, что окажется на тарелке.</p>
+    <div class="breakfast-options" role="tablist" aria-label="Выберите завтрак">
+      {breakfasts.map((item, index) => (
+        <button type="button" role="tab" aria-selected={index === 0 ? 'true' : 'false'} class:list={{ active: index === 0 }} data-breakfast-option={index}>
+          <span class="micro">0{index + 1}</span><strong>{item.name}</strong><b>{item.price}</b>
+        </button>
       ))}
     </div>
-
-    <div class="breakfast-result" data-reveal>
-      <div class="result-art" aria-hidden="true">
-        <div class="result-backdrop">
-          <Image src={bakeryGrid} alt="" widths={[640, 960]} sizes="(max-width: 767px) 90vw, 45vw" loading="lazy" quality={80} />
-        </div>
-        <div class="result-plate">
-          <span class="plate-label plate-label--base" data-result-base>Круассан</span>
-          <span class="plate-label plate-label--extra" data-result-extra>Овощи</span>
-          <span class="plate-label plate-label--drink" data-result-drink>Кофе</span>
-          <div class="plate-center"><span>Ц</span><small>утро №01</small></div>
-        </div>
-      </div>
-      <div class="result-copy" aria-live="polite">
-        <p class="eyebrow">ВАШ ВАРИАНТ</p>
-        <h3>Похоже,<br /><em>утро спасено.</em></h3>
-        <p data-result-summary>Круассан · Овощи · Кофе</p>
-        <a class="button" href={links.menu} target="_blank" rel="noreferrer">Посмотреть полное меню <span>↗</span></a>
-      </div>
+    <div class="breakfast-ticket">
+      <p class="micro">СОСТАВ / ПУБЛИЧНОЕ МЕНЮ</p>
+      <p data-breakfast-detail>{breakfasts[0].detail}</p>
+      <div><strong data-breakfast-price>{breakfasts[0].price}</strong><a href={links.menu} target="_blank" rel="noreferrer">Заказать ↗</a></div>
     </div>
   </div>
+  <figure class="breakfast-image" data-reveal style="--delay: 100ms">
+    <Image src={breakfastImage} alt="Большой завтрак с лососем, скрэмблом, тостами и кофе на красном подносе" widths={[720, 1200, 1700]} sizes="(min-width: 900px) 55vw, 100vw" quality={86} />
+    <figcaption class="micro"><span>ПОДАЧА 08:14</span><span>ЗАВТРАК / ПУБЛИЧНОЕ МЕНЮ</span></figcaption>
+  </figure>
 </section>
 
-<script>
-  const builder = document.querySelector<HTMLElement>('[data-builder]');
-  const values: Record<string, string> = { base: 'Круассан', extra: 'Овощи', drink: 'Кофе' };
-
-  builder?.querySelectorAll<HTMLButtonElement>('[data-builder-option]').forEach((button) => {
-    button.addEventListener('click', () => {
-      const group = button.dataset.builderOption;
-      const label = button.dataset.label;
-      if (!group || !label) return;
-      values[group] = label;
-      builder.querySelectorAll<HTMLButtonElement>(`[data-builder-option="${group}"]`).forEach((item) => {
-        const selected = item === button;
-        item.classList.toggle('selected', selected);
-        item.setAttribute('aria-pressed', String(selected));
-      });
-
-      const output = builder.querySelector<HTMLElement>(`[data-result-${group}]`);
-      if (output) output.textContent = label;
-      const summary = builder.querySelector<HTMLElement>('[data-result-summary]');
-      if (summary) summary.textContent = `${values.base} · ${values.extra} · ${values.drink}`;
+<script is:inline define:vars={{ breakfasts }}>
+  const breakfastRoot = document.querySelector('[data-breakfast]');
+  breakfastRoot?.querySelectorAll('[data-breakfast-option]').forEach((button) => button.addEventListener('click', () => {
+    const index = Number(button.dataset.breakfastOption);
+    breakfastRoot.querySelectorAll('[data-breakfast-option]').forEach((item, itemIndex) => {
+      item.classList.toggle('active', itemIndex === index);
+      item.setAttribute('aria-selected', String(itemIndex === index));
     });
-  });
+    breakfastRoot.querySelector('[data-breakfast-detail]').textContent = breakfasts[index].detail;
+    breakfastRoot.querySelector('[data-breakfast-price]').textContent = breakfasts[index].price;
+  }));
 </script>

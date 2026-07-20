@@ -2,33 +2,22 @@
 import { links } from '../data/links';
 ---
 
-<section class="section app-promo" id="app" aria-labelledby="app-title">
-  <div class="phone-stage" data-reveal>
-    <div class="phone" aria-label="Самостоятельный концепт интерфейса приложения Цех">
-      <div class="phone-speaker"></div>
-      <div class="phone-screen">
-        <div class="app-top"><strong>ЦЕХ</strong><span>Пермь⌄</span></div>
-        <p>Доброе утро.</p>
-        <h3>Что возьмём<br />сегодня?</h3>
-        <div class="app-feature"><span>01</span><div><strong>Из печи</strong><small>смотреть актуальное меню</small></div></div>
-        <div class="app-feature"><span>02</span><div><strong>Быстрый заказ</strong><small>выбрать и оформить</small></div></div>
-        <div class="app-feature"><span>03</span><div><strong>Рядом</strong><small>найти адрес</small></div></div>
-        <nav aria-label="Навигация концепта приложения"><span>⌂</span><span>◫</span><span>◎</span></nav>
-      </div>
-    </div>
-    <span class="phone-badge">concept UI</span>
-  </div>
-
+<section class="app-promo section" id="app" aria-labelledby="app-title">
   <div class="app-copy" data-reveal>
-    <p class="eyebrow">ПРИЛОЖЕНИЕ · 07</p>
-    <h2 id="app-title">Цех всегда<br /><em>под рукой.</em></h2>
-    <p>Google Play подтверждает: в приложении доступны актуальное меню, быстрый заказ и адреса.</p>
-    <ul>
-      <li><span>01</span> Посмотреть актуальное меню</li>
-      <li><span>02</span> Быстро оформить заказ</li>
-      <li><span>03</span> Найти ближайший адрес</li>
-    </ul>
-    <a class="button" href={links.android} target="_blank" rel="noreferrer">Открыть в Google Play <span>↗</span></a>
-    <small>Экран смартфона — самостоятельный концепт, не копия приложения.</small>
+    <p class="section-code micro">07 / БЕЗ ОЧЕРЕДИ</p>
+    <h2 id="app-title">Выбрали.<br /><span>Заказали. Забрали.</span></h2>
+    <p>Официальное приложение подтверждает актуальное меню, быстрый заказ и выбор кофейни. Не рисуем ещё один декоративный телефон — показываем сценарий.</p>
+    <a class="button button--paper" href={links.android} target="_blank" rel="noreferrer">Приложение в Google Play <span>↗</span></a>
+    <small class="micro">ДОСТУПНОСТЬ ФУНКЦИЙ ЗАВИСИТ ОТ ОФИЦИАЛЬНОГО ПРИЛОЖЕНИЯ</small>
+  </div>
+  <div class="order-receipt" data-reveal style="--delay: 100ms">
+    <div class="receipt-head micro"><span>CEH / QUICK ORDER</span><span>№ 0042</span></div>
+    <ol>
+      <li><span>01</span><div><strong>Выберите адрес</strong><p>Ближайшая кофейня и её актуальные часы.</p></div><b>✓</b></li>
+      <li><span>02</span><div><strong>Соберите заказ</strong><p>Меню и наличие — в приложении.</p></div><b>✓</b></li>
+      <li><span>03</span><div><strong>Заберите</strong><p>Меньше ожидания, больше хруста.</p></div><b>→</b></li>
+    </ol>
+    <div class="receipt-total"><span class="micro">СТАТУС</span><strong>ГОТОВО К ЗАКАЗУ</strong><span class="status-dot"></span></div>
+    <div class="receipt-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   </div>
 </section>

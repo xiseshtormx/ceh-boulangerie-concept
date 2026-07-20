@@ -3,77 +3,46 @@ import { links } from '../data/links';
 ---
 
 <header class="site-header" data-header>
-  <a class="wordmark" href="#top" aria-label="Цех boulangerie — в начало страницы">
-    <span>ЦЕХ</span>
-    <em>boulangerie</em>
+  <a class="wordmark" href="#top">
+    <span>ЦЕХ</span><em>BLNGR.</em>
   </a>
-
   <nav class="desktop-nav" aria-label="Основная навигация">
-    <a href="#menu">Меню</a>
-    <a href="#oven">Выпечка</a>
-    <a href="#builder">Завтраки</a>
-    <a href="#locations">Адреса</a>
-    <a href="#app">Приложение</a>
+    <a href="#batch"><span>01</span> Партия</a>
+    <a href="#process"><span>02</span> Процесс</a>
+    <a href="#menu"><span>03</span> Меню</a>
+    <a href="#locations"><span>04</span> Адреса</a>
   </nav>
-
-  <a class="button button--small header-find" href="#locations">Найти Цех</a>
-
-  <button
-    class="menu-toggle"
-    type="button"
-    aria-label="Открыть меню"
-    aria-expanded="false"
-    aria-controls="mobile-menu"
-    data-menu-toggle
-  >
+  <a class="header-order" href={links.menu} target="_blank" rel="noreferrer">Открыть меню <span>↗</span></a>
+  <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" data-menu-toggle>
     <span></span><span></span>
   </button>
-
-  <div class="mobile-menu" id="mobile-menu" data-mobile-menu aria-hidden="true">
-    <nav aria-label="Мобильная навигация">
-      <a href="#menu"><span>01</span> Меню</a>
-      <a href="#oven"><span>02</span> Выпечка</a>
-      <a href="#builder"><span>03</span> Завтраки</a>
-      <a href="#locations"><span>04</span> Адреса</a>
-      <a href="#app"><span>05</span> Приложение</a>
-    </nav>
-    <p>Кофейня-пекарня · Пермь</p>
-    <a class="button" href={links.vk} target="_blank" rel="noreferrer">Официальная группа</a>
-  </div>
 </header>
 
-<a class="mobile-find" href="#locations">
-  <span>Найти ближайший Цех</span>
-  <span aria-hidden="true">↗</span>
-</a>
+<div class="mobile-menu" aria-hidden="true" data-mobile-menu>
+  <p class="micro">ЦЕХ / НАВИГАЦИЯ / ПЕРМЬ</p>
+  <nav aria-label="Мобильная навигация">
+    <a href="#batch"><span>01</span> Партия</a>
+    <a href="#process"><span>02</span> Процесс</a>
+    <a href="#menu"><span>03</span> Меню</a>
+    <a href="#locations"><span>04</span> Адреса</a>
+  </nav>
+  <a class="button button--paper" href={links.menu} target="_blank" rel="noreferrer">Открыть актуальное меню <span>↗</span></a>
+</div>
+
+<a class="mobile-order" href={links.menu} target="_blank" rel="noreferrer"><span>Меню и заказ</span><b>↗</b></a>
 
 <script>
   const header = document.querySelector<HTMLElement>('[data-header]');
   const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
   const menu = document.querySelector<HTMLElement>('[data-mobile-menu]');
-
-  const closeMenu = () => {
-    if (!toggle || !menu) return;
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', 'Открыть меню');
-    menu.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('menu-open');
+  const setMenu = (open: boolean) => {
+    document.body.classList.toggle('menu-open', open);
+    toggle?.setAttribute('aria-expanded', String(open));
+    toggle?.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+    menu?.setAttribute('aria-hidden', String(!open));
   };
-
-  toggle?.addEventListener('click', () => {
-    if (!menu) return;
-    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', String(!isOpen));
-    toggle.setAttribute('aria-label', isOpen ? 'Открыть меню' : 'Закрыть меню');
-    menu.setAttribute('aria-hidden', String(isOpen));
-    document.body.classList.toggle('menu-open', !isOpen);
-  });
-
-  menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') closeMenu();
-  });
-
+  toggle?.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
+  menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMenu(false)));
   const syncHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 24);
   syncHeader();
   window.addEventListener('scroll', syncHeader, { passive: true });
