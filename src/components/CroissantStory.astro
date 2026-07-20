@@ -1,6 +1,20 @@
 ---
 import { Image } from 'astro:assets';
-import processImage from '../assets/lamination-v2.png';
+import processMixingImage from '../assets/process-mixing-v1.png';
+import processRestingImage from '../assets/process-resting-v1.png';
+import processLaminationImage from '../assets/process-lamination-v1.png';
+import processShapingImage from '../assets/process-shaping-v1.png';
+import processProofingImage from '../assets/process-proofing-v1.png';
+import processBakingImage from '../assets/process-baking-v1.png';
+
+const processImages = [
+  { src: processMixingImage, alt: 'Пекарь завершает замес круассанного теста в металлической чаше' },
+  { src: processRestingImage, alt: 'Пекарь ставит охлаждённое тесто отдыхать в холодильный шкаф' },
+  { src: processLaminationImage, alt: 'Пекарь раскатывает тесто с пластом масла на стальном столе' },
+  { src: processShapingImage, alt: 'Пекарь скручивает треугольник слоёного теста в круассан' },
+  { src: processProofingImage, alt: 'Поднявшиеся круассаны отправляются в расстоечный шкаф' },
+  { src: processBakingImage, alt: 'Пекарь достаёт из печи противень золотистых круассанов' },
+];
 
 const stages = [
   { mark: 'ТЕСТО', title: 'Замес', copy: 'Мука, вода и закваска собираются в упругое тесто — основу будущего хруста.' },
@@ -20,9 +34,23 @@ const stages = [
   </div>
   <div class="process-console">
     <figure class="process-frame">
-      <Image src={processImage} alt="Руки пекаря складывают слоёное тесто на стальном столе" widths={[760, 1320, 1900]} sizes="(min-width: 900px) 62vw, 100vw" quality={74} />
+      <div class="process-media-stack">
+        {processImages.map((image, index) => (
+          <Image
+            class:list={['process-photo', { active: index === 0 }]}
+            src={image.src}
+            alt={image.alt}
+            widths={[760, 1320]}
+            sizes="(min-width: 900px) 62vw, 100vw"
+            quality={74}
+            loading={index === 0 ? 'eager' : 'lazy'}
+            aria-hidden={index === 0 ? 'false' : 'true'}
+            data-process-image={index}
+          />
+        ))}
+      </div>
       <div class="process-scan" aria-hidden="true"></div>
-      <figcaption class="micro"><span>КАМЕРА / СТОЛ 03</span><span>ЛАМИНАЦИЯ</span><span>REC ●</span></figcaption>
+      <figcaption class="micro"><span>КАМЕРА / ЦЕХ 03</span><span data-process-caption>ЗАМЕС</span><span>REC ●</span></figcaption>
     </figure>
     <div class="process-readout">
       <div class="readout-top micro"><span>ЭТАП <b data-stage-number>01</b> / 06</span><span data-stage-time>{stages[0].mark}</span></div>
@@ -60,6 +88,12 @@ const stages = [
       root.querySelector('[data-stage-time]').textContent = stages[active].mark;
       root.querySelector('[data-stage-title]').textContent = stages[active].title;
       root.querySelector('[data-stage-copy]').textContent = stages[active].copy;
+      root.querySelector('[data-process-caption]').textContent = stages[active].title.toLocaleUpperCase('ru-RU');
+      root.querySelectorAll('[data-process-image]').forEach((image, index) => {
+        const isActive = index === active;
+        image.classList.toggle('active', isActive);
+        image.setAttribute('aria-hidden', String(!isActive));
+      });
       stageCards.forEach((item, index) => item.classList.toggle('active', index === active));
       dots.forEach((item, index) => item.setAttribute('aria-selected', String(index === active)));
       stageCards[active]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });

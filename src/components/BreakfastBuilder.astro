@@ -1,12 +1,20 @@
 ---
 import { Image } from 'astro:assets';
-import breakfastImage from '../assets/breakfast-tuna-real.png';
+import breakfastTunaImage from '../assets/breakfast-tuna-real.png';
+import breakfastSalmonImage from '../assets/breakfast-salmon-v1.png';
+import breakfastHamImage from '../assets/breakfast-ham-v1.png';
 import { links } from '../data/links';
 
 const breakfasts = [
-  { name: 'С тунцом', price: '510 ₽', detail: 'Скрэмбл, паста из тунца, зерновые тосты, творожный сыр и песто.' },
-  { name: 'С лососем', price: '730 ₽', detail: 'Скрэмбл, лосось, зерновые тосты, зелень, томаты, творожный сыр и песто.' },
-  { name: 'С окороком', price: '590 ₽', detail: 'Скрэмбл, окорок, зерновые тосты, творожный сыр, песто и томаты.' },
+  { name: 'С тунцом', price: '510 ₽', detail: 'Скрэмбл, паста из тунца, зерновые тосты, творожный сыр и песто.', caption: 'ЗАВТРАК С ТУНЦОМ', source: 'ФОТО БРЕНДА' },
+  { name: 'С лососем', price: '730 ₽', detail: 'Скрэмбл, лосось, зерновые тосты, зелень, томаты, творожный сыр и песто.', caption: 'ЗАВТРАК С ЛОСОСЕМ', source: 'КОНЦЕПТ ПОДАЧИ' },
+  { name: 'С окороком', price: '590 ₽', detail: 'Скрэмбл, окорок, зерновые тосты, творожный сыр, песто и томаты.', caption: 'ЗАВТРАК С ОКОРОКОМ', source: 'КОНЦЕПТ ПОДАЧИ' },
+];
+
+const breakfastImages = [
+  { src: breakfastTunaImage, alt: 'Сборный завтрак со скрэмблом, тунцом, зерновыми тостами, зеленью, творожным сыром и песто' },
+  { src: breakfastSalmonImage, alt: 'Сборный завтрак со скрэмблом, лососем, зерновыми тостами, зеленью, томатами, творожным сыром и песто' },
+  { src: breakfastHamImage, alt: 'Сборный завтрак со скрэмблом, окороком, зерновыми тостами, зеленью, томатами, творожным сыром и песто' },
 ];
 ---
 
@@ -29,8 +37,22 @@ const breakfasts = [
     </div>
   </div>
   <figure class="breakfast-image" data-reveal style="--delay: 100ms">
-    <Image src={breakfastImage} alt="Сборный завтрак со скрэмблом, тунцом, зерновыми тостами, зеленью, творожным сыром и песто" widths={[720, 1200, 1700]} sizes="(min-width: 900px) 55vw, 100vw" quality={86} />
-    <figcaption class="micro"><span>ЗАВТРАК С ТУНЦОМ</span><span>ФОТО ИЗ МАТЕРИАЛОВ БРЕНДА</span></figcaption>
+    <div class="breakfast-media-stack">
+      {breakfastImages.map((image, index) => (
+        <Image
+          class:list={['breakfast-photo', { active: index === 0 }]}
+          src={image.src}
+          alt={image.alt}
+          widths={[720, 1200, 1536]}
+          sizes="(min-width: 900px) 55vw, 100vw"
+          quality={82}
+          loading={index === 0 ? 'eager' : 'lazy'}
+          aria-hidden={index === 0 ? 'false' : 'true'}
+          data-breakfast-image={index}
+        />
+      ))}
+    </div>
+    <figcaption class="micro"><span data-breakfast-caption>{breakfasts[0].caption}</span><span data-breakfast-source>{breakfasts[0].source}</span></figcaption>
   </figure>
 </section>
 
@@ -44,5 +66,12 @@ const breakfasts = [
     });
     breakfastRoot.querySelector('[data-breakfast-detail]').textContent = breakfasts[index].detail;
     breakfastRoot.querySelector('[data-breakfast-price]').textContent = breakfasts[index].price;
+    breakfastRoot.querySelector('[data-breakfast-caption]').textContent = breakfasts[index].caption;
+    breakfastRoot.querySelector('[data-breakfast-source]').textContent = breakfasts[index].source;
+    breakfastRoot.querySelectorAll('[data-breakfast-image]').forEach((image, imageIndex) => {
+      const isActive = imageIndex === index;
+      image.classList.toggle('active', isActive);
+      image.setAttribute('aria-hidden', String(!isActive));
+    });
   }));
 </script>
