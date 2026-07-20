@@ -1,11 +1,11 @@
 ---
 import { Image } from 'astro:assets';
-import breakfastImage from '../assets/breakfast-tray-v2.png';
+import breakfastImage from '../assets/breakfast-tuna-real.png';
 import { links } from '../data/links';
 
 const breakfasts = [
-  { name: 'С лососем', price: '730 ₽', detail: 'Скрэмбл, лосось, зерновые тосты, зелень, томаты, творожный сыр и песто.' },
   { name: 'С тунцом', price: '510 ₽', detail: 'Скрэмбл, паста из тунца, зерновые тосты, творожный сыр и песто.' },
+  { name: 'С лососем', price: '730 ₽', detail: 'Скрэмбл, лосось, зерновые тосты, зелень, томаты, творожный сыр и песто.' },
   { name: 'С окороком', price: '590 ₽', detail: 'Скрэмбл, окорок, зерновые тосты, творожный сыр, песто и томаты.' },
 ];
 ---
@@ -13,8 +13,8 @@ const breakfasts = [
 <section class="breakfast section" id="breakfast" aria-labelledby="breakfast-title" data-breakfast>
   <div class="breakfast-copy" data-reveal>
     <p class="section-code micro">03 / ЗАВТРАКИ</p>
-    <h2 id="breakfast-title">Не конструктор.<br /><span>Нормальный завтрак.</span></h2>
-    <p>Прежняя игровая механика отвлекала от еды. Здесь выбор занимает один клик и сразу объясняет, что окажется на тарелке.</p>
+    <h2 id="breakfast-title">Соберите утро<br /><span>под себя.</span></h2>
+    <p>С лососем, тунцом или окороком — выберите вариант, а мы сразу покажем состав и актуальную цену.</p>
     <div class="breakfast-options" role="tablist" aria-label="Выберите завтрак">
       {breakfasts.map((item, index) => (
         <button type="button" role="tab" aria-selected={index === 0 ? 'true' : 'false'} class:list={{ active: index === 0 }} data-breakfast-option={index}>
@@ -29,8 +29,8 @@ const breakfasts = [
     </div>
   </div>
   <figure class="breakfast-image" data-reveal style="--delay: 100ms">
-    <Image src={breakfastImage} alt="Большой завтрак с лососем, скрэмблом, тостами и кофе на красном подносе" widths={[720, 1200, 1700]} sizes="(min-width: 900px) 55vw, 100vw" quality={86} />
-    <figcaption class="micro"><span>ПОДАЧА 08:14</span><span>ЗАВТРАК / ПУБЛИЧНОЕ МЕНЮ</span></figcaption>
+    <Image src={breakfastImage} alt="Сборный завтрак со скрэмблом, тунцом, зерновыми тостами, зеленью, творожным сыром и песто" widths={[720, 1200, 1700]} sizes="(min-width: 900px) 55vw, 100vw" quality={86} />
+    <figcaption class="micro"><span>ЗАВТРАК С ТУНЦОМ</span><span>ФОТО ИЗ МАТЕРИАЛОВ БРЕНДА</span></figcaption>
   </figure>
 </section>
 

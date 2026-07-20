@@ -1,13 +1,31 @@
 ---
 import { categories } from '../data/categories';
 import { links } from '../data/links';
+import { Image } from 'astro:assets';
+import tunaCroissant from '../assets/hot-croissant-tuna-real.png';
+import hamCroissant from '../assets/hot-croissant-ham-real.png';
+import salmonCroissant from '../assets/hot-croissant-salmon-real.png';
+
+const hotCroissants = [
+  { name: 'С тунцом', price: '490 ₽', image: tunaCroissant, alt: 'Горячий круассан с тунцом, огурцом и зеленью' },
+  { name: 'С окороком и сыром', price: '430 ₽', image: hamCroissant, alt: 'Горячий круассан с окороком, сыром и зеленью' },
+  { name: 'С лососем', price: '690 ₽', image: salmonCroissant, alt: 'Горячий круассан со слабосолёным лососем' },
+];
 ---
 
 <section class="menu-manifest section" id="menu" aria-labelledby="menu-title">
   <div class="menu-head" data-reveal>
-    <p class="section-code micro">04 / МЕНЮ-МАНИФЕСТ</p>
-    <h2 id="menu-title">Круассан — герой.<br /><span>Но не всё меню.</span></h2>
-    <p>Сайт работает как реклама только тогда, когда не прячет ширину предложения. Пять направлений — от выпечки до полноценного обеда.</p>
+    <p class="section-code micro">04 / МЕНЮ</p>
+    <h2 id="menu-title">Всё, что делает<br /><span>день вкуснее.</span></h2>
+    <p>Круассаны и десерты здесь соседствуют с завтраками, пастой, салатами и кофе — для быстрого визита или длинного утра.</p>
+  </div>
+  <div class="hot-croissants" aria-label="Горячие круассаны">
+    {hotCroissants.map((item, index) => (
+      <article data-reveal style={`--delay: ${index * 70}ms`}>
+        <Image src={item.image} alt={item.alt} widths={[520, 840]} sizes="(min-width: 900px) 30vw, 78vw" quality={82} />
+        <div><span class="micro">0{index + 1}</span><h3>{item.name}</h3><strong>{item.price}</strong></div>
+      </article>
+    ))}
   </div>
   <div class="menu-grid">
     {categories.map((category, index) => (
@@ -25,5 +43,5 @@ import { links } from '../data/links';
     <p><strong>12</strong><span>десертов</span></p>
     <a class="button button--ink" href={links.menu} target="_blank" rel="noreferrer">Смотреть всё меню <span>↗</span></a>
   </div>
-  <p class="source-note micro">ИСТОЧНИК: ПУБЛИЧНОЕ МЕНЮ 2ГИС / ОБНОВЛЕНО 20.02.2026 / ЦЕНЫ МОГУТ МЕНЯТЬСЯ</p>
+  <p class="source-note micro">НАЗВАНИЯ И ЦЕНЫ — ИЗ ПРИСЛАННОГО МЕНЮ / АКТУАЛЬНОСТЬ ЛУЧШЕ ПРОВЕРИТЬ ПЕРЕД ЗАКАЗОМ</p>
 </section>

@@ -3,29 +3,29 @@ import { Image } from 'astro:assets';
 import processImage from '../assets/lamination-v2.png';
 
 const stages = [
-  { time: '00:00', title: 'Замес', copy: 'Тесто набирает структуру. Никаких декоративных обещаний — только начало работы.' },
-  { time: '06:00', title: 'Холод', copy: 'Температура удерживает масло и тесто раздельными — будущие слои остаются читаемыми.' },
-  { time: '12:00', title: 'Ламинация', copy: 'Тесто складывают и раскатывают. Именно этот момент теперь показан целиком, без странных нарезок.' },
-  { time: '18:00', title: 'Формовка', copy: 'Ровные треугольники сворачиваются в узнаваемую форму.' },
-  { time: '24:00', title: 'Расстойка', copy: 'Время создаёт воздушную структуру и объём перед печью.' },
-  { time: '27:00', title: 'Жар', copy: 'Слои раскрываются, масло делает своё дело, поверхность становится золотой и хрустящей.' },
+  { mark: 'ТЕСТО', title: 'Замес', copy: 'Мука, вода и закваска собираются в упругое тесто — основу будущего хруста.' },
+  { mark: 'ХОЛОД', title: 'Отдых', copy: 'Холод даёт тесту время и помогает сохранить чёткую границу между ним и маслом.' },
+  { mark: 'МАСЛО', title: 'Ламинация', copy: 'Тесто складывают и раскатывают снова и снова, чтобы внутри появились тонкие воздушные слои.' },
+  { mark: 'ФОРМА', title: 'Скрутка', copy: 'Треугольники теста превращаются в круассаны — ровные, плотные и готовые расти.' },
+  { mark: 'ВРЕМЯ', title: 'Расстойка', copy: 'Пока тесто отдыхает, круассан набирает объём и становится почти невесомым внутри.' },
+  { mark: 'ЖАР', title: 'Печь', copy: 'В печи слои раскрываются, корочка золотится — и начинается тот самый аромат.' },
 ];
 ---
 
 <section class="process" id="process" aria-labelledby="process-title" data-process>
   <div class="process-head section" data-reveal>
-    <p class="section-code micro">02 / КОНТРОЛЬ ПАРТИИ</p>
-    <h2 id="process-title">Карусель больше<br /><span>не режет продукт.</span></h2>
-    <p>Один цельный производственный кадр. Шесть понятных этапов. Управление кнопками, стрелками клавиатуры и свайпом.</p>
+    <p class="section-code micro">02 / КАК МЫ ПЕЧЁМ</p>
+    <h2 id="process-title">Сначала масло.<br /><span>Потом магия.</span></h2>
+    <p>Тесто, масло, время и жар — несколько спокойных этапов ради воздушной середины и звонкого хруста.</p>
   </div>
   <div class="process-console">
     <figure class="process-frame">
-      <Image src={processImage} alt="Руки пекаря складывают слоёное тесто на стальном столе" widths={[760, 1320, 1900]} sizes="(min-width: 900px) 62vw, 100vw" quality={88} />
+      <Image src={processImage} alt="Руки пекаря складывают слоёное тесто на стальном столе" widths={[760, 1320, 1900]} sizes="(min-width: 900px) 62vw, 100vw" quality={74} />
       <div class="process-scan" aria-hidden="true"></div>
       <figcaption class="micro"><span>КАМЕРА / СТОЛ 03</span><span>ЛАМИНАЦИЯ</span><span>REC ●</span></figcaption>
     </figure>
     <div class="process-readout">
-      <div class="readout-top micro"><span>ЭТАП <b data-stage-number>01</b> / 06</span><span data-stage-time>00:00</span></div>
+      <div class="readout-top micro"><span>ЭТАП <b data-stage-number>01</b> / 06</span><span data-stage-time>{stages[0].mark}</span></div>
       <p class="readout-title" data-stage-title aria-live="polite">Замес</p>
       <p class="readout-copy" data-stage-copy>{stages[0].copy}</p>
       <div class="process-controls">
@@ -40,7 +40,7 @@ const stages = [
   <div class="process-strip" tabindex="0" aria-label="Этапы процесса; используйте стрелки влево и вправо">
     {stages.map((stage, index) => (
       <button type="button" class:list={['process-stage', { active: index === 0 }]} data-stage-card={index}>
-        <span class="micro">{String(index + 1).padStart(2, '0')} / {stage.time}</span>
+        <span class="micro">{String(index + 1).padStart(2, '0')} / {stage.mark}</span>
         <strong>{stage.title}</strong>
       </button>
     ))}
@@ -57,7 +57,7 @@ const stages = [
       active = (next + stages.length) % stages.length;
       root.style.setProperty('--stage', String(active));
       root.querySelector('[data-stage-number]').textContent = String(active + 1).padStart(2, '0');
-      root.querySelector('[data-stage-time]').textContent = stages[active].time;
+      root.querySelector('[data-stage-time]').textContent = stages[active].mark;
       root.querySelector('[data-stage-title]').textContent = stages[active].title;
       root.querySelector('[data-stage-copy]').textContent = stages[active].copy;
       stageCards.forEach((item, index) => item.classList.toggle('active', index === active));

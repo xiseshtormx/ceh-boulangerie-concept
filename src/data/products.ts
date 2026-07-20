@@ -33,7 +33,7 @@ export const products: Product[] = [
     demoVisual: true,
   },
   {
-    id: 'pistachio-snail',
+    id: 'pain-au-chocolat',
     name: 'Пан шоколя',
     type: 'Слойка',
     description: 'Слоёный прямоугольник с шоколадом — короткий и убедительный ответ к кофе.',

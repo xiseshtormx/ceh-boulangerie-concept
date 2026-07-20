@@ -9,11 +9,18 @@ import { links } from '../data/links';
   <div class="batch-intro" data-reveal>
     <div>
       <p class="section-code micro">01 / ВИТРИНА</p>
-      <h2 id="batch-title">Не «примерно выпечка».<br /><span>Вот что выбирать.</span></h2>
+      <h2 id="batch-title">То, что лучше<br /><span>не откладывать на вечер.</span></h2>
     </div>
-    <p>В прежнем макете ассортимент выглядел заглушкой. Теперь это конкретные позиции и цены из публичного меню 2ГИС, обновлённого 20 февраля 2026 года.</p>
+    <p>Классика, миндаль, шоколад, фисташка и ягоды — выбирайте то, что зовёт с витрины громче остальных.</p>
   </div>
 
+  <div class="product-rail-head" data-reveal>
+    <p class="product-counter" aria-live="polite"><strong data-product-current>01</strong><span>/ {String(products.length).padStart(2, '0')}</span></p>
+    <div class="product-arrows">
+      <button type="button" data-products-prev aria-label="Предыдущая позиция">←</button>
+      <button type="button" data-products-next aria-label="Следующая позиция">→</button>
+    </div>
+  </div>
   <div class="product-run" data-product-run>
     {products.map((product, index) => (
       <article class="product-card" data-reveal style={`--delay: ${Math.min(index * 45, 180)}ms`}>
@@ -32,9 +39,36 @@ import { links } from '../data/links';
       </article>
     ))}
   </div>
+  <div class="product-progress" aria-hidden="true"><span data-product-progress></span></div>
   <div class="batch-footer micro">
-    <span>← ЛИСТАЙТЕ ВИТРИНУ →</span>
+    <span>ЛИСТАЙТЕ, ТЯНИТЕ ИЛИ ИСПОЛЬЗУЙТЕ СТРЕЛКИ</span>
     <span>ЦЕНЫ НЕ ЯВЛЯЮТСЯ ПУБЛИЧНОЙ ОФЕРТОЙ</span>
     <a href={links.menu} target="_blank" rel="noreferrer">ВСЕ МЕНЮ ↗</a>
   </div>
 </section>
+
+<script>
+  const productRun = document.querySelector<HTMLElement>('[data-product-run]');
+  const productCards = productRun ? [...productRun.querySelectorAll<HTMLElement>('.product-card')] : [];
+  const productCurrent = document.querySelector<HTMLElement>('[data-product-current]');
+  const productProgress = document.querySelector<HTMLElement>('[data-product-progress]');
+  let productFrame = 0;
+  const syncProductRail = () => {
+    if (!productRun || !productCards.length) return;
+    const closest = productCards.reduce((best, card, index) => Math.abs(card.offsetLeft - productRun.scrollLeft) < Math.abs(productCards[best].offsetLeft - productRun.scrollLeft) ? index : best, 0);
+    if (productCurrent) productCurrent.textContent = String(closest + 1).padStart(2, '0');
+    if (productProgress) productProgress.style.scale = `${(closest + 1) / productCards.length} 1`;
+  };
+  const moveProductRail = (direction: number) => {
+    if (!productRun || !productCards.length) return;
+    const gap = Number.parseFloat(getComputedStyle(productRun).columnGap || '0');
+    productRun.scrollBy({ left: direction * (productCards[0].offsetWidth + gap), behavior: 'smooth' });
+  };
+  document.querySelector('[data-products-prev]')?.addEventListener('click', () => moveProductRail(-1));
+  document.querySelector('[data-products-next]')?.addEventListener('click', () => moveProductRail(1));
+  productRun?.addEventListener('scroll', () => {
+    cancelAnimationFrame(productFrame);
+    productFrame = requestAnimationFrame(syncProductRail);
+  }, { passive: true });
+  syncProductRail();
+</script>
