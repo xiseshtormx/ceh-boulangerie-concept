@@ -1,0 +1,19 @@
+---
+import { faq } from '../data/faq';
+---
+
+<section class="section faq" id="faq" aria-labelledby="faq-title">
+  <div class="faq-intro" data-reveal>
+    <p class="eyebrow">ВОПРОСЫ · 08</p>
+    <h2 id="faq-title">Коротко о<br /><em>важном.</em></h2>
+    <p>Меняющиеся детали лучше перепроверить в официальных источниках.</p>
+  </div>
+  <div class="faq-list">
+    {faq.map((item, index) => (
+      <details data-reveal style={`--delay: ${index * 45}ms`}>
+        <summary><span>{String(index + 1).padStart(2, '0')}</span>{item.question}<i aria-hidden="true">+</i></summary>
+        <div><p>{item.answer}</p><a href={item.href} target="_blank" rel="noreferrer">{item.linkLabel} ↗</a></div>
+      </details>
+    ))}
+  </div>
+</section>

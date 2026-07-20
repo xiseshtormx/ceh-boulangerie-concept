@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets';
+import interior from '../assets/interior.webp';
+import { imageMeta } from '../data/images';
+
+const moments = [
+  { label: 'забежать за кофе', crop: '76% 30%', className: 'atmosphere-card--wide' },
+  { label: 'позавтракать', crop: '74% 82%', className: 'atmosphere-card--tall' },
+  { label: 'поработать', crop: '77% 47%', className: '' },
+  { label: 'встретиться', crop: '50% 55%', className: '' },
+  { label: 'забрать с собой', crop: '15% 42%', className: 'atmosphere-card--wide' },
+];
+---
+
+<section class="section atmosphere" id="atmosphere" aria-labelledby="atmosphere-title">
+  <div class="section-head section-head--row" data-reveal>
+    <div>
+      <p class="eyebrow">АТМОСФЕРА · 05</p>
+      <h2 id="atmosphere-title">Можно быстро.<br /><em>Можно остаться.</em></h2>
+    </div>
+    <p>Визуалы сгенерированы для концепта и не показывают реальные интерьеры компании.</p>
+  </div>
+
+  <div class="atmosphere-grid">
+    {moments.map((moment, index) => (
+      <figure class={`atmosphere-card ${moment.className}`} data-reveal style={`--delay: ${index * 70}ms`}>
+        <Image
+          src={interior}
+          alt={`${imageMeta.atmosphere.altPrefix}: ${moment.label}`}
+          widths={[480, 720, 960]}
+          sizes="(max-width: 767px) 90vw, (max-width: 1199px) 48vw, 34vw"
+          loading="lazy"
+          quality={82}
+          style={`object-position: ${moment.crop}`}
+        />
+        <figcaption><span>0{index + 1}</span>{moment.label}</figcaption>
+      </figure>
+    ))}
+  </div>
+</section>

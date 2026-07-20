@@ -1,0 +1,19 @@
+---
+import { Image } from 'astro:assets';
+import heroCroissant from '../assets/hero-croissant.webp';
+import { links } from '../data/links';
+---
+
+<section class="final-cta" aria-labelledby="final-title">
+  <div class="final-image" aria-hidden="true">
+    <Image src={heroCroissant} alt="" widths={[960, 1440, 1920]} sizes="100vw" loading="lazy" quality={84} />
+  </div>
+  <div class="final-copy" data-reveal>
+    <p class="eyebrow">ЛАДНО, УГОВОРИЛИ</p>
+    <h2 id="final-title">Что-то подсказывает,<br /><em>что пора за круассаном.</em></h2>
+    <div>
+      <a class="button button--light" href="#locations">Найти ближайший Цех <span>↓</span></a>
+      <a class="text-link text-link--light" href={links.menu} target="_blank" rel="noreferrer">Открыть меню <span>↗</span></a>
+    </div>
+  </div>
+</section>

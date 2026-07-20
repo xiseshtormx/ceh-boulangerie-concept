@@ -1,0 +1,51 @@
+---
+import '@fontsource-variable/cormorant-garamond';
+import '@fontsource-variable/manrope';
+import '../styles/global.css';
+
+type Props = {
+  title: string;
+  description: string;
+};
+
+const { title, description } = Astro.props;
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site) : undefined;
+const ogImage = Astro.site ? new URL('/og-cover.jpg', Astro.site) : '/og-cover.jpg';
+const conceptSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: title,
+  description,
+  inLanguage: 'ru',
+  about: 'Неофициальный концепт редизайна сайта кофейни-пекарни',
+};
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#F3EBDD" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content="Круассан на сливочном фоне — визуал концепта Цех boulangerie" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>{title}</title>
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(conceptSchema)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">К основному содержимому</a>
+    <slot />
+  </body>
+</html>

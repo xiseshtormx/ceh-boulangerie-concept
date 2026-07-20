@@ -1,0 +1,77 @@
+---
+import { categories } from '../data/categories';
+import { links } from '../data/links';
+---
+
+<section class="section menu-directions" id="menu" aria-labelledby="menu-title" data-menu-tabs data-categories={JSON.stringify(categories)}>
+  <div class="section-head section-head--row" data-reveal>
+    <div>
+      <p class="eyebrow">НАПРАВЛЕНИЯ МЕНЮ · 04</p>
+      <h2 id="menu-title">Не всё сразу.<br /><em>Но всё по делу.</em></h2>
+    </div>
+    <p>Выберите направление. За полным составом, ценами и наличием — в актуальное меню.</p>
+  </div>
+
+  <div class="menu-tabs" role="tablist" aria-label="Категории меню">
+    {categories.map((category, index) => (
+      <button
+        type="button"
+        role="tab"
+        aria-selected={index === 0 ? 'true' : 'false'}
+        aria-controls="menu-category-panel"
+        class:list={{ active: index === 0 }}
+        data-menu-tab
+        data-index={index}
+      >
+        <span>{category.number}</span>
+        <strong>{category.title}</strong>
+        <i aria-hidden="true">↗</i>
+      </button>
+    ))}
+  </div>
+
+  <div class="category-panel" id="menu-category-panel" role="tabpanel" aria-live="polite">
+    <div class="category-number" data-category-number>{categories[0].number}</div>
+    <div>
+      <p class="eyebrow">ВЫБРАНО</p>
+      <h3 data-category-title>{categories[0].title}</h3>
+      <p data-category-note>{categories[0].note}</p>
+      <div class="category-tags" data-category-tags>
+        {categories[0].tags.map((tag) => <span>{tag}</span>)}
+      </div>
+    </div>
+    <a class="button button--light" href={links.menu} target="_blank" rel="noreferrer">Открыть меню <span>↗</span></a>
+  </div>
+</section>
+
+<script>
+  type MenuCategory = { number: string; title: string; note: string; tags: string[] };
+  const root = document.querySelector<HTMLElement>('[data-menu-tabs]');
+  const categories: MenuCategory[] = JSON.parse(root?.dataset.categories ?? '[]');
+  const tabs = [...(root?.querySelectorAll('[data-menu-tab]') ?? [])];
+  const title = root?.querySelector('[data-category-title]');
+  const number = root?.querySelector('[data-category-number]');
+  const note = root?.querySelector('[data-category-note]');
+  const tags = root?.querySelector('[data-category-tags]');
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const index = Number(tab.getAttribute('data-index'));
+      const category = categories[index];
+      if (!category || !title || !number || !note || !tags) return;
+      tabs.forEach((item) => {
+        const active = item === tab;
+        item.classList.toggle('active', active);
+        item.setAttribute('aria-selected', String(active));
+      });
+      number.textContent = category.number;
+      title.textContent = category.title;
+      note.textContent = category.note;
+      tags.replaceChildren(...category.tags.map((tag) => {
+        const element = document.createElement('span');
+        element.textContent = tag;
+        return element;
+      }));
+    });
+  });
+</script>

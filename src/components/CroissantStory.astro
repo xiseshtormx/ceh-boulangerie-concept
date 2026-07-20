@@ -1,0 +1,75 @@
+---
+import { Image } from 'astro:assets';
+import heroCroissant from '../assets/hero-croissant.webp';
+
+const stages = [
+  { number: '01', name: 'Тесто', verb: 'Замешиваем.' },
+  { number: '02', name: 'Масло', verb: 'Складываем.' },
+  { number: '03', name: 'Слои', verb: 'Снова складываем.' },
+  { number: '04', name: 'Расстойка', verb: 'Даём время.' },
+  { number: '05', name: 'Печь', verb: 'Выпекаем.' },
+  { number: '06', name: 'Хруст', verb: 'Слушаем хруст.' },
+];
+---
+
+<section class="process" id="process" data-process aria-labelledby="process-title">
+  <div class="process-pin">
+    <div class="process-copy">
+      <p class="eyebrow">КАК ПОЯВЛЯЕТСЯ КРУАССАН · 02</p>
+      <h2 id="process-title">Шесть тихих шагов.<br /><em>Один громкий хруст.</em></h2>
+      <ol class="process-stages">
+        {stages.map((stage, index) => (
+          <li class:list={{ active: index === 0 }} data-stage={index}>
+            <span>{stage.number}</span>
+            <div><strong>{stage.name}</strong><p>{stage.verb}</p></div>
+          </li>
+        ))}
+      </ol>
+      <p class="process-disclaimer">Художественная демонстрация процесса, а не описание технологии компании.</p>
+    </div>
+
+    <div class="process-visual" aria-label="Анимация раскрытия слоёв круассана">
+      <div class="process-ring" aria-hidden="true"></div>
+      <Image
+        src={heroCroissant}
+        alt="Круассан, визуально раскрывающийся по слоям при прокрутке"
+        widths={[640, 960, 1280]}
+        sizes="(max-width: 767px) 92vw, 52vw"
+        loading="lazy"
+        quality={84}
+        class="process-base"
+      />
+      <div class="croissant-layers" aria-hidden="true">
+        {stages.map((_, index) => (
+          <div class={`croissant-layer croissant-layer--${index + 1}`} style={`--layer: ${index}; --shift: ${(index - 2.5) * 13}px`}>
+            <Image src={heroCroissant} alt="" widths={[640, 960, 1280]} sizes="(max-width: 767px) 92vw, 52vw" loading="lazy" quality={84} />
+          </div>
+        ))}
+      </div>
+      <p class="process-current"><span data-current-number>01</span> / 06</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const section = document.querySelector<HTMLElement>('[data-process]');
+  const stageNodes = [...document.querySelectorAll<HTMLElement>('[data-stage]')];
+  const currentNumber = document.querySelector<HTMLElement>('[data-current-number]');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  const updateProcess = () => {
+    if (!section || reduceMotion.matches || window.innerWidth < 768) return;
+    const rect = section.getBoundingClientRect();
+    const travel = section.offsetHeight - window.innerHeight;
+    const progress = Math.max(0, Math.min(1, -rect.top / Math.max(travel, 1)));
+    const active = Math.min(5, Math.floor(progress * 6));
+    section.style.setProperty('--process-progress', progress.toFixed(3));
+    section.style.setProperty('--active-stage', String(active));
+    stageNodes.forEach((node, index) => node.classList.toggle('active', index === active));
+    if (currentNumber) currentNumber.textContent = String(active + 1).padStart(2, '0');
+  };
+
+  updateProcess();
+  window.addEventListener('scroll', updateProcess, { passive: true });
+  window.addEventListener('resize', updateProcess);
+</script>

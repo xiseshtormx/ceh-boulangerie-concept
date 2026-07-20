@@ -1,0 +1,66 @@
+---
+import { branches } from '../data/branches';
+import { links } from '../data/links';
+---
+
+<section class="section locations" id="locations" aria-labelledby="locations-title" data-locations>
+  <div class="section-head section-head--row" data-reveal>
+    <div>
+      <p class="eyebrow">АДРЕСА · 06</p>
+      <h2 id="locations-title">Ваш ближайший<br /><em>Цех.</em></h2>
+    </div>
+    <p>Адреса и доступные часы сверены по 2ГИС 20 июля 2026 года. Перед поездкой проверьте карточку филиала.</p>
+  </div>
+
+  <div class="locations-layout">
+    <div class="branch-list" role="list" aria-label="Филиалы Цех boulangerie">
+      {branches.map((branch, index) => (
+        <article class:list={{ 'branch-card': true, active: index === 0 }} role="listitem" data-branch={index}>
+          <button type="button" aria-pressed={index === 0 ? 'true' : 'false'}>
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <div>
+              <h3>{branch.address}</h3>
+              <p>{branch.area} · {branch.feature}</p>
+            </div>
+            <strong>{branch.hours}</strong>
+          </button>
+          <a href={branch.route} target="_blank" rel="noreferrer">Построить маршрут <span>↗</span></a>
+        </article>
+      ))}
+    </div>
+
+    <div class="perm-map" aria-label="Стилизованная схема расположения филиалов в Перми">
+      <svg viewBox="0 0 620 680" role="img" aria-labelledby="map-title map-desc">
+        <title id="map-title">Схема центра Перми</title>
+        <desc id="map-desc">Четыре точки филиалов, выбор карточки выделяет соответствующую точку.</desc>
+        <path class="map-river" d="M-20 130C107 104 102 240 214 246c91 5 112-102 221-78 94 20 95 112 210 101" />
+        <path class="map-road" d="M82 631 546 66M58 370l524 92M143 100l360 518M110 530 536 183M42 237l529 15" />
+        <text x="70" y="105">КАМА</text>
+        <text x="382" y="640">ПЕРМЬ</text>
+        {branches.map((branch, index) => (
+          <g class:list={{ 'map-point': true, active: index === 0 }} data-map-point={index} transform={`translate(${branch.position.x * 6.2} ${branch.position.y * 6.8})`}>
+            <circle r="27" /><circle r="9" />
+            <text x="36" y="7">0{index + 1}</text>
+          </g>
+        ))}
+      </svg>
+      <div class="map-caption"><span>Схема не навигационная</span><a href={links.branches} target="_blank" rel="noreferrer">Все адреса в 2ГИС ↗</a></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const locations = document.querySelector<HTMLElement>('[data-locations]');
+  const cards = [...(locations?.querySelectorAll<HTMLElement>('[data-branch]') ?? [])];
+  const points = [...(locations?.querySelectorAll<SVGGElement>('[data-map-point]') ?? [])];
+  cards.forEach((card, index) => {
+    card.querySelector('button')?.addEventListener('click', () => {
+      cards.forEach((item, itemIndex) => {
+        const active = itemIndex === index;
+        item.classList.toggle('active', active);
+        item.querySelector('button')?.setAttribute('aria-pressed', String(active));
+        points[itemIndex]?.classList.toggle('active', active);
+      });
+    });
+  });
+</script>

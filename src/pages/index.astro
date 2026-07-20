@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import OvenToday from '../components/OvenToday.astro';
+import CroissantStory from '../components/CroissantStory.astro';
+import BreakfastBuilder from '../components/BreakfastBuilder.astro';
+import MenuDirections from '../components/MenuDirections.astro';
+import Atmosphere from '../components/Atmosphere.astro';
+import Locations from '../components/Locations.astro';
+import AppPromo from '../components/AppPromo.astro';
+import Faq from '../components/Faq.astro';
+import FinalCta from '../components/FinalCta.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="Цех boulangerie — неофициальный концепт редизайна"
+  description="Неофициальный рекламный концепт для пермской кофейни-пекарни «Цех boulangerie»: выпечка, завтраки, адреса и приложение."
+>
+  <Header />
+  <main id="main">
+    <Hero />
+    <OvenToday />
+    <CroissantStory />
+    <BreakfastBuilder />
+    <MenuDirections />
+    <Atmosphere />
+    <Locations />
+    <AppPromo />
+    <Faq />
+    <FinalCta />
+  </main>
+  <Footer />
+</BaseLayout>
+
+<script>
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const reveals = [...document.querySelectorAll<HTMLElement>('[data-reveal]')];
+  if (reduceMotion.matches || !('IntersectionObserver' in window)) {
+    reveals.forEach((element) => element.classList.add('is-visible'));
+  } else {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -6% 0px' },
+    );
+    reveals.forEach((element) => observer.observe(element));
+  }
+</script>

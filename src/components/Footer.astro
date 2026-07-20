@@ -1,0 +1,25 @@
+---
+import { brand } from '../data/brand';
+import { links } from '../data/links';
+import { contacts } from '../data/contacts';
+---
+
+<footer class="site-footer">
+  <div class="footer-main">
+    <a class="wordmark wordmark--footer" href="#top"><span>ЦЕХ</span><em>boulangerie</em></a>
+    <nav aria-label="Навигация в подвале">
+      <a href="#menu">Меню</a><a href="#locations">Адреса</a><a href="#app">Приложение</a><a href="#faq">FAQ</a>
+    </nav>
+    <div class="footer-links">
+      <a href={`mailto:${contacts.email}`}>{contacts.email} ↗</a>
+      <a href={links.vk} target="_blank" rel="noreferrer">ВКонтакте ↗</a>
+      <a href={links.android} target="_blank" rel="noreferrer">Google Play ↗</a>
+      <a href={links.branches} target="_blank" rel="noreferrer">2ГИС ↗</a>
+    </div>
+    <a class="back-top" href="#top" aria-label="Вернуться в начало">↑</a>
+  </div>
+  <div class="footer-legal">
+    <p>{brand.legal}</p>
+    <p>© 2026 · Portfolio concept</p>
+  </div>
+</footer>

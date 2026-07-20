@@ -1,0 +1,62 @@
+---
+import { Image } from 'astro:assets';
+import heroCroissant from '../assets/hero-croissant.webp';
+import { brand } from '../data/brand';
+import { links } from '../data/links';
+import { imageMeta } from '../data/images';
+---
+
+<section class="hero" id="top" aria-labelledby="hero-title">
+  <div class="hero-copy" data-reveal>
+    <p class="eyebrow">{brand.eyebrow}</p>
+    <h1 id="hero-title">Круассаны, ради которых<br /><em>стоит встать пораньше.</em></h1>
+    <p class="hero-lead">{brand.heroLead}</p>
+    <div class="hero-actions">
+      <a class="button" href={links.menu} target="_blank" rel="noreferrer">Посмотреть меню <span>↗</span></a>
+      <a class="text-link" href="#locations">Найти ближайший Цех <span>↓</span></a>
+    </div>
+  </div>
+
+  <div class="hero-visual" data-hero-visual>
+    <div class="hero-orbit" aria-hidden="true"></div>
+    <Image
+      src={heroCroissant}
+      alt={imageMeta.hero.alt}
+      width={1536}
+      widths={[640, 960, 1280, 1536]}
+      sizes="(max-width: 767px) 96vw, 58vw"
+      loading="eager"
+      fetchpriority="high"
+      quality={86}
+      class="hero-croissant"
+    />
+    <span class="float-note float-note--one">слоёный</span>
+    <span class="float-note float-note--two">свежий</span>
+    <span class="float-note float-note--three">из печи</span>
+  </div>
+
+  <div class="hero-foot">
+    <p>{brand.heroNote}</p>
+    <p><strong>4 адреса</strong> в Перми · данные 2ГИС</p>
+    <a href="#oven" class="scroll-cue"><span></span> листайте</a>
+  </div>
+
+  <a class="source-chip" href={links.sources.twoGis} target="_blank" rel="noreferrer">
+    Данные проверены 20.07.2026 <span>↗</span>
+  </a>
+</section>
+
+<script>
+  const visual = document.querySelector<HTMLElement>('[data-hero-visual]');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  if (visual && !reduceMotion.matches) {
+    window.addEventListener(
+      'scroll',
+      () => {
+        const shift = Math.min(window.scrollY * 0.09, 70);
+        visual.style.setProperty('--hero-shift', `${shift}px`);
+      },
+      { passive: true },
+    );
+  }
+</script>
