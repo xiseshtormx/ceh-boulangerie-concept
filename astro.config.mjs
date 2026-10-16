@@ -2,11 +2,12 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-const site = process.env.SITE_URL || process.env.URL;
+const site = process.env.SITE_URL || 'https://xiseshtormx.github.io';
 
 export default defineConfig({
   site,
-  integrations: site ? [sitemap()] : [],
+  base: '/ceh-boulangerie-concept/',
+  integrations: [sitemap()],
   build: {
     inlineStylesheets: 'always',
   },
