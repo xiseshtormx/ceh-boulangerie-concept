@@ -10,8 +10,8 @@ export const imageMeta = {
     origin: 'Сгенерировано для портфолио-концепта; не является фотографией реального меню.',
   },
   coffeeMoment: {
-    file: 'src/assets/coffee-moment-v1.png',
-    altPrefix: 'Кофейный натюрморт — визуал концепта',
-    origin: 'OpenAI ImageGen, 17.10.2026; предметная сцена, не фотография филиала или реальной продукции бренда.',
+    file: 'src/assets/real/coffee-amar-preciado.jpg',
+    altPrefix: 'Кофе и круассан — иллюстративная фотография',
+    origin: 'Amar Preciado / Pexels, фото 13119734; реальная фотография, не съёмка кофейни «Цех». Лицензия и источники: src/assets/real/SOURCES.md.',
   },
 } as const;

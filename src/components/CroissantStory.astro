@@ -1,28 +1,34 @@
 ---
 import { Image } from 'astro:assets';
-import laminationImage from '../assets/process-lamination-v1.png';
-import shapingImage from '../assets/process-shaping-v1.png';
-import bakingImage from '../assets/process-baking-v1.png';
+import rollingImage from '../assets/real/process-rolling-felicity-tai.jpg';
+import shapingImage from '../assets/real/process-shaping-felicity-tai.jpg';
+import bakingImage from '../assets/real/croissants-anna-shvets.jpg';
 import '../styles/story.css';
 
 const stages = [
   {
-    title: 'Слои',
-    image: laminationImage,
-    alt: 'Концептуальная иллюстрация: пекарь раскатывает тесто с маслом',
-    copy: 'Тесто раскатывают с маслом и складывают, чтобы получить тонкие слои.',
+    title: 'Раскатка',
+    image: rollingImage,
+    alt: 'Раскатка теста деревянной скалкой на присыпанном мукой столе',
+    copy: 'Тесто раскатывают на рабочей поверхности, чтобы подготовить его к формовке.',
+    credit: 'Felicity Tai / Pexels',
+    source: 'https://www.pexels.com/photo/woman-rolling-dough-with-a-rolling-pin-7966476/',
   },
   {
     title: 'Форма',
     image: shapingImage,
-    alt: 'Концептуальная иллюстрация: пекарь сворачивает круассан из треугольника теста',
+    alt: 'Руки сворачивают треугольник теста в круассан',
     copy: 'Треугольник теста сворачивают от основания к кончику.',
+    credit: 'Felicity Tai / Pexels',
+    source: 'https://www.pexels.com/photo/female-baker-rolling-croissant-7965941/',
   },
   {
     title: 'Корочка',
     image: bakingImage,
-    alt: 'Концептуальная иллюстрация: противень золотистых круассанов у открытой печи',
+    alt: 'Готовые круассаны с хрустящей корочкой на противне',
     copy: 'Во время выпечки слои раскрываются, а поверхность становится золотистой.',
+    credit: 'Anna Shvets / Pexels',
+    source: 'https://www.pexels.com/photo/5964496/',
   },
 ];
 ---
@@ -54,7 +60,10 @@ const stages = [
             />
           ))}
         </div>
-        <figcaption>Иллюстрации процесса созданы для концепта</figcaption>
+        <figcaption>
+          Фото: <a href={stages[0].source} target="_blank" rel="noreferrer" data-story-credit>{stages[0].credit}</a>.
+          Иллюстративная съёмка, не производство «Цеха».
+        </figcaption>
       </figure>
 
       <div class="ceh-story__details">
@@ -66,6 +75,8 @@ const stages = [
               aria-controls={`story-image-${index} story-description`}
               data-story-stage={index}
               data-story-description={stage.copy}
+              data-story-credit={stage.credit}
+              data-story-source={stage.source}
             >{stage.title}</button>
           ))}
         </div>
@@ -83,6 +94,7 @@ const stages = [
     const buttons = [...story.querySelectorAll<HTMLButtonElement>('[data-story-stage]')];
     const images = [...story.querySelectorAll<HTMLImageElement>('[data-story-image]')];
     const copy = story.querySelector<HTMLElement>('[data-story-copy]');
+    const credit = story.querySelector<HTMLAnchorElement>('a[data-story-credit]');
 
     if (controls && copy && buttons.length === images.length && buttons.length > 0) {
       const selectStage = (index: number) => {
@@ -96,6 +108,10 @@ const stages = [
           image.setAttribute('aria-hidden', String(!active));
         });
         copy.textContent = buttons[index].dataset.storyDescription ?? '';
+        if (credit) {
+          credit.textContent = buttons[index].dataset.storyCredit ?? '';
+          credit.href = buttons[index].dataset.storySource ?? '';
+        }
       };
 
       buttons.forEach((button, index) => {

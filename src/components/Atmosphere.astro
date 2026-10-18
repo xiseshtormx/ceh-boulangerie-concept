@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import coffeeImage from '../assets/coffee-moment-v1.png';
+import coffeeImage from '../assets/real/coffee-amar-preciado.jpg';
 import '../styles/moments.css';
 ---
 
@@ -12,9 +12,9 @@ import '../styles/moments.css';
     </header>
     <figure class="ceh-moments__figure" data-reveal>
       <div class="ceh-moments__photo">
-        <Image src={coffeeImage} alt="Визуал концепта: капучино и круассан на светлом столе в солнечном свете" widths={[480, 800, 1200, 1536]} sizes="(min-width: 1600px) 1230px, (min-width: 720px) 76vw, 100vw" quality={82} loading="lazy" decoding="async" />
+        <Image src={coffeeImage} alt="Кофе в бумажном стакане и круассан на керамической тарелке у деревянной стойки" widths={[480, 800, 1200, 1600]} sizes="(min-width: 1600px) 1230px, (min-width: 720px) 76vw, 100vw" quality={84} loading="lazy" decoding="async" />
       </div>
-      <figcaption>Кофейный натюрморт — визуал концепта</figcaption>
+      <figcaption>Фото: <a href="https://www.pexels.com/photo/a-croissant-and-a-cup-of-coffee-on-a-table-13119734/" target="_blank" rel="noreferrer">Amar Preciado / Pexels</a>. Иллюстративная съёмка.</figcaption>
     </figure>
     <div class="ceh-moments__foot" data-reveal>
       <a href="#locations">Выбрать кофейню</a>
