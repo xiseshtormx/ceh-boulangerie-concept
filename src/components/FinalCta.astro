@@ -1,13 +1,17 @@
 ---
 import { links } from '../data/links';
+import '../styles/visit.css';
 ---
 
-<section class="final-cta" aria-labelledby="final-title">
-  <div class="final-marquee" aria-hidden="true"><span>СВЕЖАЯ ПАРТИЯ / КОФЕ / ЗАВТРАК / СВЕЖАЯ ПАРТИЯ / КОФЕ / ЗАВТРАК /</span></div>
-  <div class="final-copy" data-reveal>
-    <p class="micro">КАЖЕТСЯ, ВСЁ РЕШЕНО</p>
-    <h2 id="final-title">Пора за<br /><span>круассаном.</span></h2>
-    <div><a class="button button--paper" href={links.menu} target="_blank" rel="noreferrer">Открыть меню <span>↗</span></a><a class="text-link text-link--paper" href="#locations">Выбрать адрес <span>↑</span></a></div>
+<section class="ceh-finale ceh-visit" aria-labelledby="final-title">
+  <div class="ceh-finale__inner ceh-visit__inner" data-reveal>
+    <h2 id="final-title">Загляните<br /><span>в Цех.</span></h2>
+    <div class="ceh-finale__aside">
+      <p>На кофе, выпечку<br />и немного времени для себя.</p>
+      <div class="ceh-finale__links">
+        <a class="ceh-visit__button" href="#locations">Выбрать кофейню</a>
+        <a class="ceh-visit__text-link" href={links.menu} target="_blank" rel="noreferrer">Посмотреть меню</a>
+      </div>
+    </div>
   </div>
-  <div class="final-stamp micro">ПЕРМЬ<br /><strong>4 / 4</strong><br />ТОЧКИ</div>
 </section>

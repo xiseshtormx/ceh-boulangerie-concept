@@ -1,9 +1,7 @@
 ---
-import '@fontsource-variable/unbounded';
-import '@fontsource-variable/onest';
-import '@fontsource-variable/lora/wght-italic.css';
-import '@fontsource/ibm-plex-mono/400.css';
-import '@fontsource/ibm-plex-mono/500.css';
+import '@fontsource/prata/cyrillic-400.css';
+import '@fontsource/prata/latin-400.css';
+import '@fontsource-variable/golos-text';
 import '../styles/global.css';
 
 type Props = {
@@ -30,7 +28,7 @@ const conceptSchema = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#9BB532" />
+    <meta name="theme-color" content="#F3EAE4" />
     <meta name="description" content={description} />
     <meta name="robots" content="index, follow" />
     <meta property="og:type" content="website" />
@@ -44,7 +42,7 @@ const conceptSchema = {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
     {canonical && <link rel="canonical" href={canonical} />}
-    <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
+    <link rel="icon" href={`${base}brand/ceh-logo.png`} type="image/png" />
     <title>{title}</title>
     <script is:inline type="application/ld+json" set:html={JSON.stringify(conceptSchema)} />
   </head>

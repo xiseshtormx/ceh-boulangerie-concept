@@ -1,0 +1,115 @@
+.ceh-breakfast,
+.ceh-menu {
+  --food-ink: #4a2934;
+  --food-muted: #715b62;
+  --food-rule: #c9b3b7;
+  padding: clamp(4.5rem, 7.5vw, 7rem) clamp(1.25rem, 4.445vw, 4rem);
+  color: var(--food-ink);
+  font-family: 'Golos Text Variable', Arial, sans-serif;
+}
+
+.ceh-food__inner { max-width: 94rem; margin-inline: auto; }
+.ceh-food__sr-only { position: absolute; width: 1px; height: 1px; margin: 0; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.ceh-food__link { display: inline-flex; align-items: center; min-height: 2.75rem; padding-block: .4rem; border-bottom: 1px solid currentColor; font-size: 1.125rem; line-height: 1.4; letter-spacing: -.02em; }
+.ceh-food__link:hover { color: #68545b; }
+:is(.ceh-breakfast, .ceh-menu) a:focus-visible { outline: 2px solid var(--food-ink); outline-offset: 6px; }
+:is(.ceh-breakfast, .ceh-menu) h2 { font-family: 'Prata', Georgia, serif; font-size: clamp(3.25rem, 6vw, 5.75rem); font-weight: 400; font-synthesis: none; line-height: 1.12; letter-spacing: -.045em; text-wrap: initial; }
+
+.ceh-breakfast { background: #ebdad6; }
+.ceh-breakfast__heading { display: grid; grid-template-columns: 5fr 7fr; gap: 3rem; align-items: end; margin-bottom: clamp(2.5rem, 4.5vw, 4rem); }
+.ceh-breakfast__heading > p { padding-bottom: .4rem; color: var(--food-muted); font-size: clamp(1.25rem, 1.65vw, 1.5rem); line-height: 1.5; letter-spacing: -.02em; }
+.ceh-breakfast__body { position: relative; }
+.ceh-breakfast__choices { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; min-inline-size: 0; margin: 0; padding: 0; border: 0; }
+.ceh-breakfast__choices[hidden], .ceh-breakfast__panel[hidden] { display: none; }
+.ceh-breakfast.is-interactive .ceh-breakfast__choices { position: absolute; z-index: 1; top: 1rem; left: 0; width: calc((100% - 3rem) * 5 / 12); }
+.ceh-breakfast__choice { display: inline-flex; gap: .55rem; min-height: 2.75rem; align-items: center; cursor: pointer; }
+.ceh-breakfast__choice { position: relative; }
+.ceh-breakfast__choice input { position: absolute; width: 1px; height: 1px; margin: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.ceh-breakfast__choice > span { color: var(--food-muted); font-size: 1.125rem; line-height: 1.4; }
+.ceh-breakfast__choice input:checked + span { color: var(--food-ink); }
+.ceh-breakfast__choice:has(input:checked) > span { text-decoration: underline; text-underline-offset: .35em; text-decoration-thickness: 1px; }
+.ceh-breakfast__choice:has(input:focus-visible) { outline: 2px solid var(--food-ink); outline-offset: 5px; }
+.ceh-breakfast__choice input:focus-visible { outline: none; }
+.ceh-breakfast__gallery { display: grid; gap: 3rem; }
+.ceh-breakfast__panel { display: grid; grid-template-columns: 5fr 7fr; gap: 3rem; align-items: center; }
+.ceh-breakfast__figure { grid-column: 2; grid-row: 1; min-width: 0; }
+.ceh-breakfast__image { aspect-ratio: 5 / 4; overflow: hidden; background: #ebdad6; }
+.ceh-breakfast__image img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; }
+.ceh-breakfast__figure figcaption { margin-top: .875rem; color: var(--food-muted); font-size: 1rem; line-height: 1.5; }
+.ceh-breakfast__description { grid-column: 1; grid-row: 1; padding-block: 1rem; }
+.ceh-breakfast.is-interactive .ceh-breakfast__description { padding-top: 7.5rem; }
+.ceh-breakfast h3 { max-width: 20rem; font-family: 'Prata', Georgia, serif; font-size: clamp(2rem, 3.35vw, 3.25rem); font-weight: 400; line-height: 1.2; letter-spacing: -.035em; text-wrap: initial; }
+.ceh-breakfast__description > p { max-width: 28rem; margin-top: 1.5rem; font-size: clamp(1.125rem, 1.4vw, 1.25rem); line-height: 1.6; letter-spacing: -.015em; }
+.ceh-breakfast__footer { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem 3rem; margin-top: 2.5rem; }
+.ceh-breakfast__footer > p { max-width: 31rem; color: var(--food-muted); font-size: 1rem; line-height: 1.6; }
+
+.ceh-menu { background: #faf6f0; }
+.ceh-menu__heading { display: grid; grid-template-columns: 7fr 5fr; gap: 3rem; align-items: end; margin-bottom: clamp(2.5rem, 4.5vw, 4rem); }
+.ceh-menu__heading > div { padding-bottom: .35rem; }
+.ceh-menu__heading p { margin-bottom: 1.25rem; color: var(--food-muted); font-size: clamp(1.25rem, 1.65vw, 1.5rem); line-height: 1.5; letter-spacing: -.02em; }
+.ceh-menu__croissants { display: grid; grid-template-columns: 7fr 4fr; grid-template-rows: repeat(2, auto); gap: 2rem 5%; align-items: start; }
+.ceh-menu__dish { min-width: 0; }
+.ceh-menu__dish--large { grid-row: 1 / 3; }
+.ceh-menu__dish-image { aspect-ratio: 1.8; overflow: hidden; background: #faf6f0; }
+.ceh-menu__dish-image img { width: 100%; height: 100%; object-fit: cover; mix-blend-mode: multiply; }
+.ceh-menu__dish--large .ceh-menu__dish-image { aspect-ratio: 1.07; }
+.ceh-menu__dish--large .ceh-menu__dish-image img { object-fit: contain; }
+.ceh-menu__dish figcaption { padding-top: 1rem; font-size: clamp(1.125rem, 1.7vw, 1.5rem); line-height: 1.4; letter-spacing: -.025em; }
+.ceh-menu__photo-note { margin-top: 1.5rem; color: var(--food-muted); font-size: 1rem; line-height: 1.5; }
+.ceh-menu__categories { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.25rem 5%; margin-top: clamp(3rem, 5vw, 5rem); }
+.ceh-menu__categories article { padding-top: 1.5rem; border-top: 1px solid var(--food-rule); }
+.ceh-menu h3 { font-family: 'Golos Text Variable', Arial, sans-serif; font-size: clamp(1.5rem, 2vw, 2rem); font-weight: 400; line-height: 1.3; letter-spacing: -.035em; }
+.ceh-menu__categories p { max-width: 28rem; margin-top: .75rem; color: var(--food-muted); font-size: 1.125rem; line-height: 1.6; letter-spacing: -.015em; }
+.ceh-menu__footer { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 1rem 3rem; margin-top: 3rem; }
+.ceh-menu__footer > p { max-width: 30rem; color: var(--food-muted); font-size: 1rem; line-height: 1.6; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .ceh-breakfast.is-interactive .ceh-breakfast__panel:not([hidden]) .ceh-breakfast__image { animation: breakfast-appear 380ms ease both; }
+  @keyframes breakfast-appear { from { opacity: .25; } to { opacity: 1; } }
+}
+
+@media (max-width: 74.99rem) and (min-width: 60rem) {
+  .ceh-breakfast__choices { gap: .5rem 1rem; }
+  .ceh-breakfast.is-interactive .ceh-breakfast__description { padding-top: 8rem; }
+}
+
+@media (max-width: 59.99rem) {
+  .ceh-breakfast__heading { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .ceh-breakfast.is-interactive .ceh-breakfast__choices { position: static; width: auto; margin-bottom: 1.75rem; gap: .75rem 2rem; }
+  .ceh-breakfast__panel { grid-template-columns: 1fr; gap: 1.75rem; }
+  .ceh-breakfast__figure { grid-column: 1; grid-row: 1; }
+  .ceh-breakfast__description { grid-column: 1; grid-row: 2; }
+  .ceh-breakfast.is-interactive .ceh-breakfast__description { padding-top: 0; }
+  .ceh-breakfast h3 { max-width: none; font-size: 2.25rem; }
+  .ceh-breakfast h3 br { display: none; }
+  .ceh-breakfast__description > p { max-width: 36rem; margin-top: 1rem; }
+  .ceh-breakfast__image { max-height: 36rem; }
+  .ceh-menu__heading { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .ceh-menu__croissants { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 1rem; }
+  .ceh-menu__dish--large { grid-column: 1 / -1; grid-row: auto; }
+  .ceh-menu__dish--large .ceh-menu__dish-image { aspect-ratio: 1.5; }
+  .ceh-menu__dish-image { aspect-ratio: 1.2; }
+  .ceh-menu__dish-image img { object-fit: contain; }
+}
+
+@media (max-width: 44.99rem) {
+  :is(.ceh-breakfast, .ceh-menu) h2 { font-size: clamp(2.75rem, 11.5vw, 4.5rem); }
+  .ceh-breakfast__heading, .ceh-menu__heading { display: block; }
+  .ceh-breakfast__heading > p, .ceh-menu__heading > div { margin-top: 1.75rem; padding-bottom: 0; }
+  .ceh-breakfast__heading > p br { display: none; }
+  .ceh-breakfast__heading > p { max-width: 19rem; }
+  .ceh-breakfast.is-interactive .ceh-breakfast__choices { gap: .5rem 1.1rem; }
+  .ceh-breakfast__choice > span { font-size: 1.125rem; }
+  .ceh-breakfast__figure figcaption { min-height: 3em; }
+  .ceh-breakfast h3 { font-size: 1.75rem; }
+  .ceh-breakfast__description > p { font-size: 1.125rem; }
+  .ceh-breakfast__footer { margin-top: 1.75rem; }
+  .ceh-food__link { font-size: 1.0625rem; }
+  .ceh-menu__heading p { font-size: 1.25rem; }
+  .ceh-menu__croissants { gap: 1.75rem .875rem; }
+  .ceh-menu__dish--large .ceh-menu__dish-image { aspect-ratio: 1.15; }
+  .ceh-menu__dish figcaption { padding-top: .75rem; font-size: 1.0625rem; }
+  .ceh-menu__categories { grid-template-columns: 1fr; gap: 1.5rem; }
+  .ceh-menu h3 { font-size: 1.5rem; }
+  .ceh-menu__footer { margin-top: 2rem; }
+}

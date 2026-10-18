@@ -1,53 +1,25 @@
 ---
 import { branches } from '../data/branches';
-import { links } from '../data/links';
+import '../styles/visit.css';
 ---
 
-<section class="locations section" id="locations" aria-labelledby="locations-title" data-locations>
-  <div class="locations-head" data-reveal>
-    <p class="section-code micro">06 / 4 АДРЕСА</p>
-    <h2 id="locations-title">Ваш ближайший<br /><span>Цех.</span></h2>
-  </div>
-  <div class="locations-layout">
-    <div class="branch-list">
-      {branches.map((branch, index) => (
-        <article class:list={['branch-card', { active: index === 0 }]} data-branch={index}>
-          <button type="button" aria-expanded={index === 0 ? 'true' : 'false'}>
-            <span class="micro">0{index + 1}</span>
-            <div><h3>{branch.address}</h3><p>{branch.area} / {branch.feature}</p></div>
-            <strong>{branch.hours}</strong>
-          </button>
-          <a href={branch.route} target="_blank" rel="noreferrer">Построить маршрут <span>↗</span></a>
+<section class="ceh-locations ceh-visit" id="locations" aria-labelledby="locations-title">
+  <div class="ceh-visit__inner">
+    <div class="ceh-locations__intro" data-reveal>
+      <h2 id="locations-title">Здесь,<br />в Перми.</h2>
+      <p>Четыре пекарни в городе.<br />Выберите, куда заглянуть сегодня.</p>
+    </div>
+    <div class="ceh-locations__grid">
+      {branches.map((branch) => (
+        <article class="ceh-locations__address" data-reveal>
+          <p>{branch.area}</p>
+          <h3>{branch.address.replace(/ (\S+)$/, '\u00a0$1')}</h3>
+          <a class="ceh-visit__text-link" href={branch.route} target="_blank" rel="noreferrer" aria-label={`Маршрут в 2ГИС: ${branch.address}`}>
+            Маршрут в 2ГИС
+          </a>
         </article>
       ))}
-      <a class="all-branches micro" href={links.branches} target="_blank" rel="noreferrer">АКТУАЛЬНЫЕ ЧАСЫ И ВСЕ КАРТОЧКИ В 2ГИС ↗</a>
     </div>
-    <div class="factory-map" aria-label="Схематичная карта адресов в Перми">
-      <div class="map-grid" aria-hidden="true"></div>
-      <svg viewBox="0 0 720 580" role="img" aria-label="Схематичная карта центра Перми с четырьмя адресами">
-        <path class="river" d="M-40 28C143 94 131 211 310 230s218 37 452 187" />
-        <path class="road" d="M82 537 643 62M86 393 602 493M226 80 515 561M32 255 652 159" />
-        <text x="48" y="73">КАМА</text>
-        {branches.map((branch, index) => (
-          <g class:list={['map-point', { active: index === 0 }]} data-map-point={index} transform={`translate(${branch.position.x * 7.2} ${branch.position.y * 5.8})`}>
-            <circle r="29"></circle><circle r="5"></circle><text x="0" y="5" text-anchor="middle">0{index + 1}</text>
-          </g>
-        ))}
-      </svg>
-      <div class="map-status micro"><span>ПЕРМЬ / ЦЕНТР</span><span>4 ТОЧКИ ONLINE ●</span></div>
-    </div>
+    <p class="ceh-locations__note">Часы работы и изменения в расписании — в карточке выбранной пекарни в 2ГИС.</p>
   </div>
 </section>
-
-<script>
-  const locationRoot = document.querySelector('[data-locations]');
-  locationRoot?.querySelectorAll<HTMLElement>('[data-branch]').forEach((card) => card.querySelector('button')?.addEventListener('click', () => {
-    const index = card.dataset.branch;
-    locationRoot.querySelectorAll<HTMLElement>('[data-branch]').forEach((item) => {
-      const active = item.dataset.branch === index;
-      item.classList.toggle('active', active);
-      item.querySelector('button')?.setAttribute('aria-expanded', String(active));
-    });
-    locationRoot.querySelectorAll<SVGGElement>('[data-map-point]').forEach((point) => point.classList.toggle('active', point.dataset.mapPoint === index));
-  }));
-</script>

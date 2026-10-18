@@ -1,109 +1,107 @@
 ---
 import { Image } from 'astro:assets';
-import processMixingImage from '../assets/process-mixing-v1.png';
-import processRestingImage from '../assets/process-resting-v1.png';
-import processLaminationImage from '../assets/process-lamination-v1.png';
-import processShapingImage from '../assets/process-shaping-v1.png';
-import processProofingImage from '../assets/process-proofing-v1.png';
-import processBakingImage from '../assets/process-baking-v1.png';
-
-const processImages = [
-  { src: processMixingImage, alt: 'Пекарь завершает замес круассанного теста в металлической чаше' },
-  { src: processRestingImage, alt: 'Пекарь ставит охлаждённое тесто отдыхать в холодильный шкаф' },
-  { src: processLaminationImage, alt: 'Пекарь раскатывает тесто с пластом масла на стальном столе' },
-  { src: processShapingImage, alt: 'Пекарь скручивает треугольник слоёного теста в круассан' },
-  { src: processProofingImage, alt: 'Поднявшиеся круассаны отправляются в расстоечный шкаф' },
-  { src: processBakingImage, alt: 'Пекарь достаёт из печи противень золотистых круассанов' },
-];
+import laminationImage from '../assets/process-lamination-v1.png';
+import shapingImage from '../assets/process-shaping-v1.png';
+import bakingImage from '../assets/process-baking-v1.png';
+import '../styles/story.css';
 
 const stages = [
-  { mark: 'ТЕСТО', title: 'Замес', copy: 'Мука, вода и закваска собираются в упругое тесто — основу будущего хруста.' },
-  { mark: 'ХОЛОД', title: 'Отдых', copy: 'Холод даёт тесту время и помогает сохранить чёткую границу между ним и маслом.' },
-  { mark: 'МАСЛО', title: 'Ламинация', copy: 'Тесто складывают и раскатывают снова и снова, чтобы внутри появились тонкие воздушные слои.' },
-  { mark: 'ФОРМА', title: 'Скрутка', copy: 'Треугольники теста превращаются в круассаны — ровные, плотные и готовые расти.' },
-  { mark: 'ВРЕМЯ', title: 'Расстойка', copy: 'Пока тесто отдыхает, круассан набирает объём и становится почти невесомым внутри.' },
-  { mark: 'ЖАР', title: 'Печь', copy: 'В печи слои раскрываются, корочка золотится — и начинается тот самый аромат.' },
+  {
+    title: 'Слои',
+    image: laminationImage,
+    alt: 'Концептуальная иллюстрация: пекарь раскатывает тесто с маслом',
+    copy: 'Тесто раскатывают с маслом и складывают, чтобы получить тонкие слои.',
+  },
+  {
+    title: 'Форма',
+    image: shapingImage,
+    alt: 'Концептуальная иллюстрация: пекарь сворачивает круассан из треугольника теста',
+    copy: 'Треугольник теста сворачивают от основания к кончику.',
+  },
+  {
+    title: 'Корочка',
+    image: bakingImage,
+    alt: 'Концептуальная иллюстрация: противень золотистых круассанов у открытой печи',
+    copy: 'Во время выпечки слои раскрываются, а поверхность становится золотистой.',
+  },
 ];
 ---
 
-<section class="process" id="process" aria-labelledby="process-title" data-process>
-  <div class="process-head section" data-reveal>
-    <p class="section-code micro">02 / КАК МЫ ПЕЧЁМ</p>
-    <h2 id="process-title">Сначала масло.<br /><span>Потом магия.</span></h2>
-    <p>Тесто, масло, время и жар — несколько спокойных этапов ради воздушной середины и звонкого хруста.</p>
-  </div>
-  <div class="process-console">
-    <figure class="process-frame">
-      <div class="process-media-stack">
-        {processImages.map((image, index) => (
-          <Image
-            class:list={['process-photo', { active: index === 0 }]}
-            src={image.src}
-            alt={image.alt}
-            widths={[760, 1320]}
-            sizes="(min-width: 900px) 62vw, 100vw"
-            quality={74}
-            loading={index === 0 ? 'eager' : 'lazy'}
-            aria-hidden={index === 0 ? 'false' : 'true'}
-            data-process-image={index}
-          />
-        ))}
-      </div>
-      <div class="process-scan" aria-hidden="true"></div>
-      <figcaption class="micro"><span>КАМЕРА / ЦЕХ 03</span><span data-process-caption>ЗАМЕС</span><span>REC ●</span></figcaption>
-    </figure>
-    <div class="process-readout">
-      <div class="readout-top micro"><span>ЭТАП <b data-stage-number>01</b> / 06</span><span data-stage-time>{stages[0].mark}</span></div>
-      <p class="readout-title" data-stage-title aria-live="polite">Замес</p>
-      <p class="readout-copy" data-stage-copy>{stages[0].copy}</p>
-      <div class="process-controls">
-        <button type="button" data-process-prev aria-label="Предыдущий этап">←</button>
-        <div class="process-dots" role="tablist" aria-label="Этапы производства">
-          {stages.map((stage, index) => <button type="button" role="tab" aria-selected={index === 0 ? 'true' : 'false'} data-stage={index} aria-label={`${index + 1}. ${stage.title}`}></button>)}
+<section class="ceh-story" id="process" aria-labelledby="story-title" data-story>
+  <div class="ceh-story__inner">
+    <div class="ceh-story__intro">
+      <h2 id="story-title">Началось<br />с десертов.</h2>
+      <!-- Brand history source: https://mfk59.ru/news/sobyitya-i-meropriyatiya/gospodderzhka-pomogla-permskoy-pekarne-tsekh-vyrasti-v-set-iz-chetyryekh-tochek/ -->
+      <p class="ceh-story__history">Елизавета Ельцова и Вячеслав Федосимов начинали с десертов для ресторанов. Затем появилась собственная пекарня.</p>
+    </div>
+
+    <div class="ceh-story__craft">
+      <figure class="ceh-story__figure">
+        <div class="ceh-story__images">
+          {stages.map((stage, index) => (
+            <Image
+              id={`story-image-${index}`}
+              class:list={['ceh-story__image', { 'is-active': index === 0 }]}
+              src={stage.image}
+              alt={stage.alt}
+              widths={[480, 760, 1080, 1440]}
+              sizes="(min-width: 1600px) 950px, (min-width: 900px) 62vw, 91vw"
+              quality={78}
+              loading="lazy"
+              decoding="async"
+              aria-hidden={index === 0 ? 'false' : 'true'}
+              data-story-image={index}
+            />
+          ))}
         </div>
-        <button type="button" data-process-next aria-label="Следующий этап">→</button>
+        <figcaption>Иллюстрации процесса созданы для концепта</figcaption>
+      </figure>
+
+      <div class="ceh-story__details">
+        <div class="ceh-story__choices" role="group" aria-label="Рассмотреть процесс" hidden data-story-controls>
+          {stages.map((stage, index) => (
+            <button
+              type="button"
+              aria-pressed={index === 0 ? 'true' : 'false'}
+              aria-controls={`story-image-${index} story-description`}
+              data-story-stage={index}
+              data-story-description={stage.copy}
+            >{stage.title}</button>
+          ))}
+        </div>
+        <p id="story-description" class="ceh-story__description" aria-live="polite" aria-atomic="true" data-story-copy>{stages[0].copy}</p>
       </div>
     </div>
   </div>
-  <div class="process-strip" tabindex="0" aria-label="Этапы процесса; используйте стрелки влево и вправо">
-    {stages.map((stage, index) => (
-      <button type="button" class:list={['process-stage', { active: index === 0 }]} data-stage-card={index}>
-        <span class="micro">{String(index + 1).padStart(2, '0')} / {stage.mark}</span>
-        <strong>{stage.title}</strong>
-      </button>
-    ))}
-  </div>
 </section>
 
-<script is:inline define:vars={{ stages }}>
-  const root = document.querySelector('[data-process]');
-  if (root) {
-    let active = 0;
-    const stageCards = [...root.querySelectorAll('[data-stage-card]')];
-    const dots = [...root.querySelectorAll('[data-stage]')];
-    const setStage = (next) => {
-      active = (next + stages.length) % stages.length;
-      root.style.setProperty('--stage', String(active));
-      root.querySelector('[data-stage-number]').textContent = String(active + 1).padStart(2, '0');
-      root.querySelector('[data-stage-time]').textContent = stages[active].mark;
-      root.querySelector('[data-stage-title]').textContent = stages[active].title;
-      root.querySelector('[data-stage-copy]').textContent = stages[active].copy;
-      root.querySelector('[data-process-caption]').textContent = stages[active].title.toLocaleUpperCase('ru-RU');
-      root.querySelectorAll('[data-process-image]').forEach((image, index) => {
-        const isActive = index === active;
-        image.classList.toggle('active', isActive);
-        image.setAttribute('aria-hidden', String(!isActive));
+<script>
+  const story = document.querySelector<HTMLElement>('[data-story]');
+
+  if (story) {
+    const controls = story.querySelector<HTMLElement>('[data-story-controls]');
+    const buttons = [...story.querySelectorAll<HTMLButtonElement>('[data-story-stage]')];
+    const images = [...story.querySelectorAll<HTMLImageElement>('[data-story-image]')];
+    const copy = story.querySelector<HTMLElement>('[data-story-copy]');
+
+    if (controls && copy && buttons.length === images.length && buttons.length > 0) {
+      const selectStage = (index: number) => {
+        if (!buttons[index]) return;
+        buttons.forEach((button, stageIndex) => {
+          button.setAttribute('aria-pressed', String(stageIndex === index));
+        });
+        images.forEach((image, stageIndex) => {
+          const active = stageIndex === index;
+          image.classList.toggle('is-active', active);
+          image.setAttribute('aria-hidden', String(!active));
+        });
+        copy.textContent = buttons[index].dataset.storyDescription ?? '';
+      };
+
+      buttons.forEach((button, index) => {
+        button.addEventListener('click', () => selectStage(index));
       });
-      stageCards.forEach((item, index) => item.classList.toggle('active', index === active));
-      dots.forEach((item, index) => item.setAttribute('aria-selected', String(index === active)));
-      stageCards[active]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-    };
-    root.querySelector('[data-process-prev]')?.addEventListener('click', () => setStage(active - 1));
-    root.querySelector('[data-process-next]')?.addEventListener('click', () => setStage(active + 1));
-    [...root.querySelectorAll('[data-stage], [data-stage-card]')].forEach((item) => item.addEventListener('click', () => setStage(Number(item.dataset.stage ?? item.dataset.stageCard))));
-    root.querySelector('.process-strip')?.addEventListener('keydown', (event) => {
-      if (event.key === 'ArrowRight') { event.preventDefault(); setStage(active + 1); }
-      if (event.key === 'ArrowLeft') { event.preventDefault(); setStage(active - 1); }
-    });
+      controls.hidden = false;
+    }
   }
 </script>

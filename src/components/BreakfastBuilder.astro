@@ -4,74 +4,92 @@ import breakfastTunaImage from '../assets/breakfast-tuna-real.png';
 import breakfastSalmonImage from '../assets/breakfast-salmon-v1.png';
 import breakfastHamImage from '../assets/breakfast-ham-v1.png';
 import { links } from '../data/links';
+import '../styles/menu.css';
 
 const breakfasts = [
-  { name: 'С тунцом', price: '510 ₽', detail: 'Скрэмбл, паста из тунца, зерновые тосты, творожный сыр и песто.', caption: 'ЗАВТРАК С ТУНЦОМ', source: 'ФОТО БРЕНДА' },
-  { name: 'С лососем', price: '730 ₽', detail: 'Скрэмбл, лосось, зерновые тосты, зелень, томаты, творожный сыр и песто.', caption: 'ЗАВТРАК С ЛОСОСЕМ', source: 'КОНЦЕПТ ПОДАЧИ' },
-  { name: 'С окороком', price: '590 ₽', detail: 'Скрэмбл, окорок, зерновые тосты, творожный сыр, песто и томаты.', caption: 'ЗАВТРАК С ОКОРОКОМ', source: 'КОНЦЕПТ ПОДАЧИ' },
-];
-
-const breakfastImages = [
-  { src: breakfastTunaImage, alt: 'Сборный завтрак со скрэмблом, тунцом, зерновыми тостами, зеленью, творожным сыром и песто' },
-  { src: breakfastSalmonImage, alt: 'Сборный завтрак со скрэмблом, лососем, зерновыми тостами, зеленью, томатами, творожным сыром и песто' },
-  { src: breakfastHamImage, alt: 'Сборный завтрак со скрэмблом, окороком, зерновыми тостами, зеленью, томатами, творожным сыром и песто' },
+  {
+    name: 'С тунцом',
+    detail: 'Скрэмбл, паста из тунца, зерновые тосты, творожный сыр и песто.',
+    image: breakfastTunaImage,
+    alt: 'Завтрак с тунцом: скрэмбл, зерновые тосты, зелень и соусы на белой тарелке',
+    source: 'Фотография из меню пекарни',
+  },
+  {
+    name: 'С лососем',
+    detail: 'Скрэмбл, лосось, зерновые тосты, зелень, томаты, творожный сыр и песто.',
+    image: breakfastSalmonImage,
+    alt: 'Визуал завтрака с лососем, скрэмблом, тостами, зеленью и томатами',
+    source: 'Подача показана на иллюстрации концепта',
+  },
+  {
+    name: 'С окороком',
+    detail: 'Скрэмбл, окорок, зерновые тосты, творожный сыр, песто и томаты.',
+    image: breakfastHamImage,
+    alt: 'Визуал завтрака с окороком, скрэмблом, тостами и томатами',
+    source: 'Подача показана на иллюстрации концепта',
+  },
 ];
 ---
 
-<section class="breakfast section" id="breakfast" aria-labelledby="breakfast-title" data-breakfast>
-  <div class="breakfast-copy" data-reveal>
-    <p class="section-code micro">03 / ЗАВТРАКИ</p>
-    <h2 id="breakfast-title">Соберите утро<br /><span>под себя.</span></h2>
-    <p>С лососем, тунцом или окороком — выберите вариант, а мы сразу покажем состав и актуальную цену.</p>
-    <div class="breakfast-options" role="tablist" aria-label="Выберите завтрак">
-      {breakfasts.map((item, index) => (
-        <button type="button" role="tab" aria-selected={index === 0 ? 'true' : 'false'} class:list={{ active: index === 0 }} data-breakfast-option={index}>
-          <span class="micro">0{index + 1}</span><strong>{item.name}</strong><b>{item.price}</b>
-        </button>
-      ))}
+<section class="ceh-breakfast" id="breakfast" aria-labelledby="breakfast-title" data-ceh-breakfast>
+  <div class="ceh-food__inner">
+    <div class="ceh-breakfast__heading" data-reveal>
+      <h2 id="breakfast-title">Завтрак<br />без спешки.</h2>
+      <p>Три готовых завтрака. <br />Выберите свой.</p>
     </div>
-    <div class="breakfast-ticket">
-      <p class="micro">СОСТАВ / ПУБЛИЧНОЕ МЕНЮ</p>
-      <p data-breakfast-detail>{breakfasts[0].detail}</p>
-      <div><strong data-breakfast-price>{breakfasts[0].price}</strong><a href={links.menu} target="_blank" rel="noreferrer">Заказать ↗</a></div>
+
+    <div class="ceh-breakfast__body" data-reveal>
+      <fieldset class="ceh-breakfast__choices" data-breakfast-choices hidden>
+        <legend class="ceh-food__sr-only">Выберите готовый завтрак</legend>
+        {breakfasts.map((breakfast, index) => (
+          <label class="ceh-breakfast__choice">
+            <input type="radio" name="ceh-breakfast" value={index} checked={index === 0} aria-controls={`breakfast-panel-${index}`} />
+            <span>{breakfast.name}</span>
+          </label>
+        ))}
+      </fieldset>
+
+      <div class="ceh-breakfast__gallery" aria-live="polite" aria-atomic="true">
+        {breakfasts.map((breakfast, index) => (
+          <article class="ceh-breakfast__panel" id={`breakfast-panel-${index}`} data-breakfast-panel={index} aria-labelledby={`breakfast-name-${index}`}>
+            <figure class="ceh-breakfast__figure">
+              <div class="ceh-breakfast__image">
+                <Image src={breakfast.image} alt={breakfast.alt} widths={[480, 800, 1200]} sizes="(min-width: 960px) 55vw, 92vw" quality={82} loading="lazy" />
+              </div>
+              <figcaption>{breakfast.source}</figcaption>
+            </figure>
+            <div class="ceh-breakfast__description">
+              <h3 id={`breakfast-name-${index}`}>Завтрак <br />{breakfast.name.toLocaleLowerCase('ru')}</h3>
+              <p>{breakfast.detail}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <div class="ceh-breakfast__footer" data-reveal>
+      <p>Состав, наличие и цены уточняйте в меню выбранной кофейни.</p>
+      <a class="ceh-food__link" href={links.menu} target="_blank" rel="noreferrer">Посмотреть завтраки в меню</a>
     </div>
   </div>
-  <figure class="breakfast-image" data-reveal style="--delay: 100ms">
-    <div class="breakfast-media-stack">
-      {breakfastImages.map((image, index) => (
-        <Image
-          class:list={['breakfast-photo', { active: index === 0 }]}
-          src={image.src}
-          alt={image.alt}
-          widths={[720, 1200, 1536]}
-          sizes="(min-width: 900px) 55vw, 100vw"
-          quality={82}
-          loading={index === 0 ? 'eager' : 'lazy'}
-          aria-hidden={index === 0 ? 'false' : 'true'}
-          data-breakfast-image={index}
-        />
-      ))}
-    </div>
-    <figcaption class="micro"><span data-breakfast-caption>{breakfasts[0].caption}</span><span data-breakfast-source>{breakfasts[0].source}</span></figcaption>
-  </figure>
 </section>
 
-<script is:inline define:vars={{ breakfasts }}>
-  const breakfastRoot = document.querySelector('[data-breakfast]');
-  breakfastRoot?.querySelectorAll('[data-breakfast-option]').forEach((button) => button.addEventListener('click', () => {
-    const index = Number(button.dataset.breakfastOption);
-    breakfastRoot.querySelectorAll('[data-breakfast-option]').forEach((item, itemIndex) => {
-      item.classList.toggle('active', itemIndex === index);
-      item.setAttribute('aria-selected', String(itemIndex === index));
-    });
-    breakfastRoot.querySelector('[data-breakfast-detail]').textContent = breakfasts[index].detail;
-    breakfastRoot.querySelector('[data-breakfast-price]').textContent = breakfasts[index].price;
-    breakfastRoot.querySelector('[data-breakfast-caption]').textContent = breakfasts[index].caption;
-    breakfastRoot.querySelector('[data-breakfast-source]').textContent = breakfasts[index].source;
-    breakfastRoot.querySelectorAll('[data-breakfast-image]').forEach((image, imageIndex) => {
-      const isActive = imageIndex === index;
-      image.classList.toggle('active', isActive);
-      image.setAttribute('aria-hidden', String(!isActive));
-    });
-  }));
+<script>
+  const breakfast = document.querySelector<HTMLElement>('[data-ceh-breakfast]');
+  if (breakfast) {
+    const choices = breakfast.querySelector<HTMLFieldSetElement>('[data-breakfast-choices]');
+    const inputs = [...breakfast.querySelectorAll<HTMLInputElement>('input[name="ceh-breakfast"]')];
+    const panels = [...breakfast.querySelectorAll<HTMLElement>('[data-breakfast-panel]')];
+    if (choices && inputs.length === panels.length) {
+      const selectBreakfast = (index: number) => {
+        panels.forEach((panel, panelIndex) => { panel.hidden = panelIndex !== index; });
+      };
+      inputs.forEach((input, index) => input.addEventListener('change', () => {
+        if (input.checked) selectBreakfast(index);
+      }));
+      selectBreakfast(0);
+      breakfast.classList.add('is-interactive');
+      choices.hidden = false;
+    }
+  }
 </script>

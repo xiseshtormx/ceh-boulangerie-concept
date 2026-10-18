@@ -1,47 +1,52 @@
 ---
+import { Image } from 'astro:assets';
 import { categories } from '../data/categories';
 import { links } from '../data/links';
-import { Image } from 'astro:assets';
 import tunaCroissant from '../assets/hot-croissant-tuna-real.png';
 import hamCroissant from '../assets/hot-croissant-ham-real.png';
 import salmonCroissant from '../assets/hot-croissant-salmon-real.png';
+import '../styles/menu.css';
 
 const hotCroissants = [
-  { name: 'С тунцом', price: '490 ₽', image: tunaCroissant, alt: 'Горячий круассан с тунцом, огурцом и зеленью' },
-  { name: 'С окороком и сыром', price: '430 ₽', image: hamCroissant, alt: 'Горячий круассан с окороком, сыром и зеленью' },
-  { name: 'С лососем', price: '690 ₽', image: salmonCroissant, alt: 'Горячий круассан со слабосолёным лососем' },
+  { name: 'С тунцом', image: tunaCroissant, alt: 'Горячий круассан с тунцом, огурцом и зеленью на белой тарелке' },
+  { name: 'С окороком и сыром', image: hamCroissant, alt: 'Горячий круассан с окороком, сыром и зеленью на белой тарелке' },
+  { name: 'С лососем', image: salmonCroissant, alt: 'Горячий круассан с лососем на белой тарелке' },
 ];
 ---
 
-<section class="menu-manifest section" id="menu" aria-labelledby="menu-title">
-  <div class="menu-head" data-reveal>
-    <p class="section-code micro">04 / МЕНЮ</p>
-    <h2 id="menu-title">Всё, что делает<br /><span>день вкуснее.</span></h2>
-    <p>Круассаны и десерты здесь соседствуют с завтраками, пастой, салатами и кофе — для быстрого визита или длинного утра.</p>
+<section class="ceh-menu" id="menu" aria-labelledby="menu-title">
+  <div class="ceh-food__inner">
+    <div class="ceh-menu__heading" data-reveal>
+      <h2 id="menu-title">Круассан<br />на обед.</h2>
+      <div>
+        <p>Тот самый круассан —<br />теперь с сытной начинкой.</p>
+        <a class="ceh-food__link" href={links.menu} target="_blank" rel="noreferrer">Открыть всё меню</a>
+      </div>
+    </div>
+
+    <div class="ceh-menu__croissants" aria-label="Горячие круассаны">
+      {hotCroissants.map((croissant, index) => (
+        <figure class:list={['ceh-menu__dish', { 'ceh-menu__dish--large': index === 0 }]} data-reveal>
+          <div class="ceh-menu__dish-image">
+            <Image src={croissant.image} alt={croissant.alt} widths={index === 0 ? [600, 960, 1440] : [400, 640, 900]} sizes={index === 0 ? '(min-width: 960px) 55vw, 92vw' : '(min-width: 960px) 31vw, 44vw'} quality={82} loading="lazy" />
+          </div>
+          <figcaption>{croissant.name}</figcaption>
+        </figure>
+      ))}
+    </div>
+    <p class="ceh-menu__photo-note">Фотографии из меню пекарни</p>
+
+    <div class="ceh-menu__categories" aria-label="Что ещё есть в меню">
+      {categories.map((category) => (
+        <article data-reveal>
+          <h3>{category.title}</h3>
+          <p>{category.tags.join(', ')}.</p>
+        </article>
+      ))}
+    </div>
+    <div class="ceh-menu__footer" data-reveal>
+      <p>Полный ассортимент и цены — в меню выбранной кофейни.</p>
+      <a class="ceh-food__link" href={links.menu} target="_blank" rel="noreferrer">Выбрать кофейню и посмотреть меню</a>
+    </div>
   </div>
-  <div class="hot-croissants" aria-label="Горячие круассаны">
-    {hotCroissants.map((item, index) => (
-      <article data-reveal style={`--delay: ${index * 70}ms`}>
-        <Image src={item.image} alt={item.alt} widths={[520, 840]} sizes="(min-width: 900px) 30vw, 78vw" quality={82} />
-        <div><span class="micro">0{index + 1}</span><h3>{item.name}</h3><strong>{item.price}</strong></div>
-      </article>
-    ))}
-  </div>
-  <div class="menu-grid">
-    {categories.map((category, index) => (
-      <article class="menu-category" data-reveal style={`--delay: ${index * 55}ms`}>
-        <div class="menu-category-title"><span class="micro">{category.number}</span><h3>{category.title}</h3></div>
-        <p>{category.note}</p>
-        <ul>{category.tags.map((tag) => <li><span>→</span>{tag}</li>)}</ul>
-      </article>
-    ))}
-  </div>
-  <div class="menu-total" data-reveal>
-    <p><strong>96</strong><span>позиций в публичном меню</span></p>
-    <p><strong>7</strong><span>видов выпечки</span></p>
-    <p><strong>10</strong><span>завтраков</span></p>
-    <p><strong>12</strong><span>десертов</span></p>
-    <a class="button button--ink" href={links.menu} target="_blank" rel="noreferrer">Смотреть всё меню <span>↗</span></a>
-  </div>
-  <p class="source-note micro">НАЗВАНИЯ И ЦЕНЫ — ИЗ ПРИСЛАННОГО МЕНЮ / АКТУАЛЬНОСТЬ ЛУЧШЕ ПРОВЕРИТЬ ПЕРЕД ЗАКАЗОМ</p>
 </section>

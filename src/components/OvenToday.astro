@@ -3,72 +3,83 @@ import { Image } from 'astro:assets';
 import lineup from '../assets/pastry-lineup-v2.png';
 import { products } from '../data/products';
 import { links } from '../data/links';
+import '../styles/vitrine.css';
 ---
 
-<section class="batch section" id="batch" aria-labelledby="batch-title">
-  <div class="batch-intro" data-reveal>
-    <div>
-      <p class="section-code micro">01 / ВИТРИНА</p>
-      <h2 id="batch-title">То, что лучше<br /><span>не откладывать на вечер.</span></h2>
-    </div>
-    <p>Классика, миндаль, шоколад, фисташка и ягоды — выбирайте то, что зовёт с витрины громче остальных.</p>
-  </div>
+<section class="ceh-vitrine" id="batch" aria-labelledby="batch-title" data-vitrine>
+  <div class="ceh-vitrine__inner">
+    <header class="ceh-vitrine__heading">
+      <h2 id="batch-title">На витрине</h2>
+      <a href={links.menu} target="_blank" rel="noreferrer">Посмотреть всё меню</a>
+    </header>
 
-  <div class="product-rail-head" data-reveal>
-    <p class="product-counter" aria-live="polite"><strong data-product-current>01</strong><span>/ {String(products.length).padStart(2, '0')}</span></p>
-    <div class="product-arrows">
-      <button type="button" data-products-prev aria-label="Предыдущая позиция">←</button>
-      <button type="button" data-products-next aria-label="Следующая позиция">→</button>
+    <div class="ceh-vitrine__body">
+      <label class="ceh-vitrine__picker" data-pastry-picker hidden>
+        <span class="ceh-vitrine__sr-only">Выберите выпечку</span>
+        <select data-pastry-select aria-controls="vitrine-gallery">
+          {products.map((product, index) => <option value={index}>{product.name}</option>)}
+        </select>
+      </label>
+      <div class="ceh-vitrine__gallery" id="vitrine-gallery" aria-live="polite" aria-atomic="true">
+        {products.map((product, index) => (
+          <figure class="ceh-vitrine__panel" data-pastry-panel={index} aria-labelledby={`pastry-${product.id}`}>
+            <div class="ceh-vitrine__image">
+              <Image
+                src={lineup}
+                alt={`Визуал концепта: ${product.name.toLocaleLowerCase('ru-RU')}`}
+                widths={[768, 1200, 1536]}
+                sizes="(min-width: 720px) 1536px, 300vw"
+                quality={84}
+                loading="lazy"
+                decoding="async"
+                style={`--pastry-crop: ${product.crop}`}
+              />
+            </div>
+            <figcaption class="ceh-vitrine__description">
+              <h3 id={`pastry-${product.id}`}>{product.name}</h3>
+              <p>{product.description}</p>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+
+      <fieldset class="ceh-vitrine__choices" data-pastry-choices hidden>
+        <legend class="ceh-vitrine__sr-only">Выберите выпечку</legend>
+        {products.map((product, index) => (
+          <label class="ceh-vitrine__choice">
+            <input type="radio" name="pastry" value={index} checked={index === 0} aria-controls="vitrine-gallery" />
+            <span>{product.name}</span>
+          </label>
+        ))}
+      </fieldset>
     </div>
-  </div>
-  <div class="product-run" data-product-run>
-    {products.map((product, index) => (
-      <article class="product-card" data-reveal style={`--delay: ${Math.min(index * 45, 180)}ms`}>
-        <a href={product.source} target="_blank" rel="noreferrer" aria-label={`${product.name}: проверить в актуальном меню`}>
-          <div class="product-image">
-            <Image src={lineup} alt={`Демонстрационная визуализация: ${product.name}`} widths={[720, 1200]} sizes="(min-width: 1000px) 72rem, 180vw" quality={76} style={`--crop: ${product.crop}`} />
-            <span class="product-index micro">{String(index + 1).padStart(2, '0')}</span>
-          </div>
-          <div class="product-meta">
-            <p class="micro">{product.type}</p>
-            <h3>{product.name}</h3>
-            <p>{product.description}</p>
-            <div><strong>{product.price}</strong><span>В меню ↗</span></div>
-          </div>
-        </a>
-      </article>
-    ))}
-  </div>
-  <div class="product-progress" aria-hidden="true"><span data-product-progress></span></div>
-  <div class="batch-footer micro">
-    <span>ЛИСТАЙТЕ, ТЯНИТЕ ИЛИ ИСПОЛЬЗУЙТЕ СТРЕЛКИ</span>
-    <span>ЦЕНЫ НЕ ЯВЛЯЮТСЯ ПУБЛИЧНОЙ ОФЕРТОЙ</span>
-    <a href={links.menu} target="_blank" rel="noreferrer">ВСЕ МЕНЮ ↗</a>
+
+    <p class="ceh-vitrine__note">Иллюстрации созданы для концепта. Наличие и цены — в меню выбранной кофейни.</p>
   </div>
 </section>
 
 <script>
-  const productRun = document.querySelector<HTMLElement>('[data-product-run]');
-  const productCards = productRun ? [...productRun.querySelectorAll<HTMLElement>('.product-card')] : [];
-  const productCurrent = document.querySelector<HTMLElement>('[data-product-current]');
-  const productProgress = document.querySelector<HTMLElement>('[data-product-progress]');
-  let productFrame = 0;
-  const syncProductRail = () => {
-    if (!productRun || !productCards.length) return;
-    const closest = productCards.reduce((best, card, index) => Math.abs(card.offsetLeft - productRun.scrollLeft) < Math.abs(productCards[best].offsetLeft - productRun.scrollLeft) ? index : best, 0);
-    if (productCurrent) productCurrent.textContent = String(closest + 1).padStart(2, '0');
-    if (productProgress) productProgress.style.scale = `${(closest + 1) / productCards.length} 1`;
-  };
-  const moveProductRail = (direction: number) => {
-    if (!productRun || !productCards.length) return;
-    const gap = Number.parseFloat(getComputedStyle(productRun).columnGap || '0');
-    productRun.scrollBy({ left: direction * (productCards[0].offsetWidth + gap), behavior: 'smooth' });
-  };
-  document.querySelector('[data-products-prev]')?.addEventListener('click', () => moveProductRail(-1));
-  document.querySelector('[data-products-next]')?.addEventListener('click', () => moveProductRail(1));
-  productRun?.addEventListener('scroll', () => {
-    cancelAnimationFrame(productFrame);
-    productFrame = requestAnimationFrame(syncProductRail);
-  }, { passive: true });
-  syncProductRail();
+  const vitrine = document.querySelector<HTMLElement>('[data-vitrine]');
+  const choices = vitrine?.querySelector<HTMLFieldSetElement>('[data-pastry-choices]');
+  const picker = vitrine?.querySelector<HTMLElement>('[data-pastry-picker]');
+  const select = vitrine?.querySelector<HTMLSelectElement>('[data-pastry-select]');
+  const panels = vitrine ? [...vitrine.querySelectorAll<HTMLElement>('[data-pastry-panel]')] : [];
+  const inputs = choices ? [...choices.querySelectorAll<HTMLInputElement>('input[type="radio"]')] : [];
+
+  if (vitrine && choices && panels.length && panels.length === inputs.length) {
+    const selectPastry = (index: number) => {
+      if (!Number.isInteger(index) || index < 0 || index >= panels.length) return;
+      panels.forEach((panel, panelIndex) => { panel.hidden = panelIndex !== index; });
+      inputs.forEach((input, inputIndex) => { input.checked = inputIndex === index; });
+      if (select) select.value = String(index);
+    };
+    inputs.forEach((input) => input.addEventListener('change', () => {
+      if (input.checked) selectPastry(Number(input.value));
+    }));
+    select?.addEventListener('change', () => selectPastry(Number(select.value)));
+    selectPastry(0);
+    vitrine.classList.add('is-interactive');
+    choices.hidden = false;
+    if (picker && select) picker.hidden = false;
+  }
 </script>

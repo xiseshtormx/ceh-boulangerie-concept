@@ -1,20 +1,23 @@
 ---
 import { Image } from 'astro:assets';
-import interiorImage from '../assets/interior-shift-v2.png';
+import coffeeImage from '../assets/coffee-moment-v1.png';
+import '../styles/moments.css';
 ---
 
-<section class="atmosphere" id="atmosphere" aria-labelledby="atmosphere-title">
-  <div class="atmosphere-copy section" data-reveal>
-    <p class="section-code micro">05 / ВНУТРИ</p>
-    <h2 id="atmosphere-title">Можно быстро.<br /><span>Можно остаться.</span></h2>
-  </div>
-  <figure class="atmosphere-frame">
-    <Image src={interiorImage} alt="Современная городская пекарня со сталью, бетоном, красной витриной и тёплым светом печей" widths={[900, 1600, 2200]} sizes="100vw" quality={88} />
-    <figcaption class="micro"><span>ПЕРМЬ / СИНИЙ ЧАС</span><span>ПЕЧЬ / ВИТРИНА / ГОРОД</span></figcaption>
-  </figure>
-  <div class="atmosphere-facts section">
-    <article data-reveal><span class="micro">01 / ПО ДОРОГЕ</span><h3>Забежать за кофе.</h3><p>Взять круассан и любимый напиток с собой — быстро, понятно и без лишних церемоний.</p></article>
-    <article data-reveal style="--delay: 80ms"><span class="micro">02 / НЕ СПЕША</span><h3>Остаться на завтрак.</h3><p>Сесть у окна, выбрать сытный завтрак и дать утру идти в своём темпе.</p></article>
-    <article data-reveal style="--delay: 160ms"><span class="micro">03 / ВМЕСТЕ</span><h3>Встретиться вечером.</h3><p>Десерт, паста или чай — повод увидеться не заканчивается после утренней выпечки.</p></article>
+<section class="ceh-moments" id="atmosphere" aria-labelledby="moments-title">
+  <div class="ceh-moments__inner">
+    <header class="ceh-moments__heading" data-reveal>
+      <h2 id="moments-title">С собой.<br />За столиком.</h2>
+      <p>Забежать за кофе по дороге. Позавтракать вместе. Или никуда не торопиться — хотя бы одну чашку.</p>
+    </header>
+    <figure class="ceh-moments__figure" data-reveal>
+      <div class="ceh-moments__photo">
+        <Image src={coffeeImage} alt="Визуал концепта: капучино и круассан на светлом столе в солнечном свете" widths={[480, 800, 1200, 1536]} sizes="(min-width: 1600px) 1230px, (min-width: 720px) 76vw, 100vw" quality={82} loading="lazy" decoding="async" />
+      </div>
+      <figcaption>Кофейный натюрморт — визуал концепта</figcaption>
+    </figure>
+    <div class="ceh-moments__foot" data-reveal>
+      <a href="#locations">Выбрать кофейню</a>
+    </div>
   </div>
 </section>

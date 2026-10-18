@@ -1,26 +1,21 @@
 ---
 import { faq } from '../data/faq';
+import '../styles/visit.css';
 ---
 
-<section class="faq section" id="faq" aria-labelledby="faq-title">
-  <div class="faq-intro" data-reveal>
-    <p class="section-code micro">08 / ПЕРЕД ВЫХОДОМ</p>
-    <h2 id="faq-title">Перед тем,<br /><span>как зайти.</span></h2>
-    <p>Собрали короткие ответы о меню, времени работы и заказе. Для самых свежих данных оставили ссылки на официальные источники.</p>
-  </div>
-  <div class="faq-list">
-    {faq.map((item, index) => (
-      <details data-reveal style={`--delay: ${Math.min(index * 35, 150)}ms`}>
-        <summary><span class="micro">0{index + 1}</span><strong>{item.question}</strong><i>+</i></summary>
-        <div><p>{item.answer}</p><a href={item.href} target="_blank" rel="noreferrer">{item.linkLabel} ↗</a></div>
-      </details>
-    ))}
+<section class="ceh-faq ceh-visit" id="faq" aria-labelledby="faq-title">
+  <div class="ceh-faq__inner ceh-visit__inner">
+    <h2 id="faq-title" data-reveal>Перед визитом.</h2>
+    <div class="ceh-faq__list">
+      {faq.map((item) => (
+        <details class="ceh-faq__item">
+          <summary><span>{item.question}</span><i aria-hidden="true"></i></summary>
+          <div class="ceh-faq__answer">
+            <p>{item.answer}</p>
+            <a class="ceh-visit__text-link" href={item.href} target="_blank" rel="noreferrer">{item.linkLabel}</a>
+          </div>
+        </details>
+      ))}
+    </div>
   </div>
 </section>
-
-<script>
-  document.querySelectorAll<HTMLDetailsElement>('.faq details').forEach((detail) => detail.addEventListener('toggle', () => {
-    if (!detail.open) return;
-    document.querySelectorAll<HTMLDetailsElement>('.faq details[open]').forEach((other) => { if (other !== detail) other.open = false; });
-  }));
-</script>

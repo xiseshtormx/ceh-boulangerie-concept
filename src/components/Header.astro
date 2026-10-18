@@ -1,49 +1,136 @@
 ---
 import { links } from '../data/links';
+import '../styles/header.css';
+
+const navigation = [
+  { label: 'Выпечка', href: '#batch' },
+  { label: 'Завтраки', href: '#breakfast' },
+  { label: 'О пекарне', href: '#process' },
+  { label: 'Кофейни', href: '#locations' },
+];
+const logo = `${import.meta.env.BASE_URL}brand/ceh-logo.png`;
 ---
 
-<header class="site-header" data-header>
-  <a class="wordmark" href="#top">
-    <span>ЦЕХ</span><em>BLNGR.</em>
+<header class="ceh-header" data-ceh-header>
+  <a class="ceh-header__brand" href="#top" aria-label="Цех — на главную">
+    <img src={logo} alt="Цех" width="1200" height="650" />
   </a>
-  <nav class="desktop-nav" aria-label="Основная навигация">
-    <a href="#batch"><span>01</span> Партия</a>
-    <a href="#process"><span>02</span> Процесс</a>
-    <a href="#menu"><span>03</span> Меню</a>
-    <a href="#locations"><span>04</span> Адреса</a>
+
+  <nav class="ceh-header__nav" aria-label="Основная навигация">
+    {navigation.map(({ label, href }) => <a href={href}>{label}</a>)}
   </nav>
-  <a class="header-order" href={links.menu} target="_blank" rel="noreferrer">Открыть меню <span>↗</span></a>
-  <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" data-menu-toggle>
-    <span></span><span></span>
-  </button>
+
+  <div class="ceh-header__aside">
+    <a class="ceh-header__menu-link" href={links.menu} target="_blank" rel="noreferrer">
+      Меню
+      <span class="ceh-header__sr-only"> — откроется в новой вкладке</span>
+    </a>
+    <button
+      class="ceh-header__toggle"
+      type="button"
+      aria-label="Открыть навигацию"
+      aria-haspopup="dialog"
+      aria-controls="ceh-navigation"
+      aria-expanded="false"
+      data-ceh-menu-open
+      hidden
+    >
+      <span aria-hidden="true"></span><span aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <noscript>
+    <details class="ceh-header__fallback">
+      <summary>Навигация</summary>
+      <nav aria-label="Мобильная навигация">
+        {navigation.map(({ label, href }) => <a href={href}>{label}</a>)}
+        <a href={links.menu} target="_blank" rel="noreferrer">Меню</a>
+      </nav>
+    </details>
+  </noscript>
 </header>
 
-<div class="mobile-menu" aria-hidden="true" data-mobile-menu>
-  <p class="micro">ЦЕХ / НАВИГАЦИЯ / ПЕРМЬ</p>
-  <nav aria-label="Мобильная навигация">
-    <a href="#batch"><span>01</span> Партия</a>
-    <a href="#process"><span>02</span> Процесс</a>
-    <a href="#menu"><span>03</span> Меню</a>
-    <a href="#locations"><span>04</span> Адреса</a>
+<dialog class="ceh-nav-dialog" id="ceh-navigation" aria-labelledby="ceh-navigation-title" data-ceh-menu>
+  <div class="ceh-nav-dialog__top">
+    <p id="ceh-navigation-title">Цех · Пермь</p>
+    <button type="button" class="ceh-nav-dialog__close" aria-label="Закрыть навигацию" data-ceh-menu-close autofocus>
+      <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">
+        <path d="m5 5 10 10M5 15 15 5" fill="none" stroke="currentColor" stroke-width="1.3" />
+      </svg>
+    </button>
+  </div>
+  <nav class="ceh-nav-dialog__nav" aria-label="Мобильная навигация">
+    {navigation.map(({ label, href }) => <a href={href}>{label}</a>)}
   </nav>
-  <a class="button button--paper" href={links.menu} target="_blank" rel="noreferrer">Открыть актуальное меню <span>↗</span></a>
-</div>
-
-<a class="mobile-order" href={links.menu} target="_blank" rel="noreferrer"><span>Меню и заказ</span><b>↗</b></a>
+  <div class="ceh-nav-dialog__bottom">
+    <a href={links.menu} target="_blank" rel="noreferrer">
+      Меню
+      <span class="ceh-header__sr-only"> — откроется в новой вкладке</span>
+    </a>
+  </div>
+</dialog>
 
 <script>
-  const header = document.querySelector<HTMLElement>('[data-header]');
-  const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
-  const menu = document.querySelector<HTMLElement>('[data-mobile-menu]');
-  const setMenu = (open: boolean) => {
-    document.body.classList.toggle('menu-open', open);
-    toggle?.setAttribute('aria-expanded', String(open));
-    toggle?.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
-    menu?.setAttribute('aria-hidden', String(!open));
-  };
-  toggle?.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
-  menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMenu(false)));
-  const syncHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 24);
+  const header = document.querySelector<HTMLElement>('[data-ceh-header]');
+  const trigger = document.querySelector<HTMLButtonElement>('[data-ceh-menu-open]');
+  const dialog = document.querySelector<HTMLDialogElement>('[data-ceh-menu]');
+  const closeButton = dialog?.querySelector<HTMLButtonElement>('[data-ceh-menu-close]');
+  const desktop = window.matchMedia('(min-width: 64rem)');
+
+  if (header && trigger && dialog && typeof dialog.showModal === 'function') {
+    trigger.hidden = false;
+    let originalOverflow = '';
+    let originalPaddingRight = '';
+    let locked = false;
+
+    const unlockPage = () => {
+      if (!locked) return;
+      document.body.style.overflow = originalOverflow;
+      document.body.style.paddingRight = originalPaddingRight;
+      locked = false;
+      trigger.setAttribute('aria-expanded', 'false');
+    };
+
+    const openMenu = () => {
+      if (dialog.open || desktop.matches) return;
+      originalOverflow = document.body.style.overflow;
+      originalPaddingRight = document.body.style.paddingRight;
+      const scrollbar = window.innerWidth - document.documentElement.clientWidth;
+      const bodyPadding = Number.parseFloat(window.getComputedStyle(document.body).paddingRight) || 0;
+      document.body.style.overflow = 'hidden';
+      if (scrollbar > 0) document.body.style.paddingRight = `${bodyPadding + scrollbar}px`;
+      locked = true;
+      dialog.showModal();
+      trigger.setAttribute('aria-expanded', 'true');
+    };
+
+    const closeMenu = () => {
+      if (dialog.open) dialog.close();
+      unlockPage();
+    };
+
+    trigger.addEventListener('click', openMenu);
+    closeButton?.addEventListener('click', closeMenu);
+    dialog.addEventListener('close', unlockPage);
+    dialog.querySelectorAll<HTMLAnchorElement>('a').forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+    dialog.addEventListener('click', (event) => {
+      if (event.target !== dialog) return;
+      const rect = dialog.getBoundingClientRect();
+      if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) {
+        closeMenu();
+      }
+    });
+    desktop.addEventListener('change', ({ matches }) => {
+      if (!matches || !dialog.open) return;
+      closeMenu();
+      header.querySelector<HTMLAnchorElement>('.ceh-header__brand')?.focus({ preventScroll: true });
+    });
+    window.addEventListener('pagehide', closeMenu);
+  }
+
+  const syncHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 12);
   syncHeader();
   window.addEventListener('scroll', syncHeader, { passive: true });
 </script>

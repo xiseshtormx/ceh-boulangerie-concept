@@ -1,23 +1,12 @@
 ---
 import { links } from '../data/links';
+import '../styles/visit.css';
 ---
 
-<section class="app-promo section" id="app" aria-labelledby="app-title">
-  <div class="app-copy" data-reveal>
-    <p class="section-code micro">07 / ПРИЛОЖЕНИЕ</p>
-    <h2 id="app-title">Цех всегда<br /><span>под рукой.</span></h2>
-    <p>Меню, выбор кофейни и быстрый заказ — в официальном приложении.</p>
-    <a class="button button--paper" href={links.android} target="_blank" rel="noreferrer">Приложение в Google Play <span>↗</span></a>
-    <small class="micro">ДОСТУПНОСТЬ ФУНКЦИЙ ЗАВИСИТ ОТ ОФИЦИАЛЬНОГО ПРИЛОЖЕНИЯ</small>
-  </div>
-  <div class="order-receipt" data-reveal style="--delay: 100ms">
-    <div class="receipt-head micro"><span>CEH / QUICK ORDER</span><span>№ 0042</span></div>
-    <ol>
-      <li><span>01</span><div><strong>Выберите адрес</strong><p>Ближайшая кофейня и её актуальные часы.</p></div><b>✓</b></li>
-      <li><span>02</span><div><strong>Соберите заказ</strong><p>Меню и наличие — в приложении.</p></div><b>✓</b></li>
-      <li><span>03</span><div><strong>Заберите</strong><p>Меньше ожидания, больше хруста.</p></div><b>→</b></li>
-    </ol>
-    <div class="receipt-total"><span class="micro">СТАТУС</span><strong>ГОТОВО К ЗАКАЗУ</strong><span class="status-dot"></span></div>
-    <div class="receipt-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<section class="ceh-app ceh-visit" id="app" aria-labelledby="app-title">
+  <div class="ceh-app__inner ceh-visit__inner" data-reveal>
+    <h2 id="app-title">Цех в телефоне.</h2>
+    <p>Официальное приложение для тех, кто заглядывает к нам часто.</p>
+    <a class="ceh-visit__button" href={links.android} target="_blank" rel="noreferrer">Открыть Google Play</a>
   </div>
 </section>

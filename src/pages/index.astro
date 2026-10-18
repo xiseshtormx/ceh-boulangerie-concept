@@ -52,5 +52,6 @@ import Footer from '../components/Footer.astro';
       { threshold: 0.12, rootMargin: '0px 0px -6% 0px' },
     );
     reveals.forEach((element) => observer.observe(element));
+    document.documentElement.classList.add('reveal-ready');
   }
 </script>
