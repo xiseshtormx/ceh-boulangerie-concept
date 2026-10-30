@@ -1,0 +1,3 @@
+GSAP 3.13.0. Copyright 2008-2025 GreenSock. All rights reserved.
+https://gsap.com/standard-license/
+Original license headers are retained in all distributed source files.

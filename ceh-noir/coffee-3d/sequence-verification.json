@@ -1,0 +1,22 @@
+{
+  "frames": 150,
+  "fps": 30,
+  "durationSeconds": 5,
+  "renderer": "Blender Cycles / OptiX, 32 samples + denoise",
+  "coffeeRevision": 4,
+  "porcelainRevision": 2,
+  "desktop": {
+    "width": 1280,
+    "height": 1280,
+    "bytes": 6618430
+  },
+  "mobile": {
+    "width": 640,
+    "height": 640,
+    "bytes": 3652876
+  },
+  "alpha": true,
+  "previewBytes": 905009,
+  "masterDirectory": "coffee-3d/renders/master",
+  "complete": true
+}

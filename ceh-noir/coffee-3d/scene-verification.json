@@ -1,0 +1,58 @@
+[
+  {
+    "frame": 1,
+    "cupVolumeM3": 0.00010627773132494128,
+    "liquidVerticesInsideCeramic": 0,
+    "Coffee_CremaVerticesInsideCeramic": 0,
+    "Coffee_StreamVerticesInsideCeramic": 0,
+    "minimumClearanceMM": null
+  },
+  {
+    "frame": 24,
+    "cupVolumeM3": 0.00010627773338572547,
+    "liquidVerticesInsideCeramic": 0,
+    "Coffee_CremaVerticesInsideCeramic": 0,
+    "Coffee_StreamVerticesInsideCeramic": 0,
+    "minimumClearanceMM": null
+  },
+  {
+    "frame": 45,
+    "cupVolumeM3": 0.00010627772930223874,
+    "liquidVerticesInsideCeramic": 0,
+    "Coffee_CremaVerticesInsideCeramic": 0,
+    "Coffee_StreamVerticesInsideCeramic": 0,
+    "minimumClearanceMM": 0.12831403000745922
+  },
+  {
+    "frame": 75,
+    "cupVolumeM3": 0.0001062777359191422,
+    "liquidVerticesInsideCeramic": 0,
+    "Coffee_CremaVerticesInsideCeramic": 0,
+    "Coffee_StreamVerticesInsideCeramic": 0,
+    "minimumClearanceMM": 0.46997095341794193
+  },
+  {
+    "frame": 105,
+    "cupVolumeM3": 0.00010627772535325484,
+    "liquidVerticesInsideCeramic": 0,
+    "Coffee_CremaVerticesInsideCeramic": 0,
+    "Coffee_StreamVerticesInsideCeramic": 0,
+    "minimumClearanceMM": 0.5343396333046257
+  },
+  {
+    "frame": 130,
+    "cupVolumeM3": 0.00010627773132494128,
+    "liquidVerticesInsideCeramic": 0,
+    "Coffee_CremaVerticesInsideCeramic": 0,
+    "Coffee_StreamVerticesInsideCeramic": 0,
+    "minimumClearanceMM": 0.5097243119962513
+  },
+  {
+    "frame": 150,
+    "cupVolumeM3": 0.00010627773132494128,
+    "liquidVerticesInsideCeramic": 0,
+    "Coffee_CremaVerticesInsideCeramic": 0,
+    "Coffee_StreamVerticesInsideCeramic": 0,
+    "minimumClearanceMM": 0.5097243119962513
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "file": "feedback-marked-stream.png",
+    "sourceFile": "codex-clipboard-f1e6cc92-f59a-40f9-86a5-8c6d595e068c.png",
+    "sha256": "980dcade388670ec8e3439c8d3c5f5d9aa383f47ccfccafc9aab9873ce1d21b0",
+    "usage": "User supplied visual reference only; not embedded as a texture; retained unchanged"
+  },
+  {
+    "file": "pour-reference-1.png",
+    "sourceFile": "codex-clipboard-6804e91b-7bec-47f6-b96d-4bb40e9a2dbe.png",
+    "sha256": "e7cdb306566b26277aba229ce9fdaa127ef20040ef37a0a2af971062d09c2cdc",
+    "usage": "User supplied visual reference only; not embedded as a texture; retained unchanged"
+  },
+  {
+    "file": "pour-reference-2.png",
+    "sourceFile": "codex-clipboard-8e5926ae-d0f7-48e5-be33-465111e4bd96.png",
+    "sha256": "0c2cb62609f4e336be8a532e5719c8067c0e0e754fcdc376457f8b0cc9d5f803",
+    "usage": "User supplied visual reference only; not embedded as a texture; retained unchanged"
+  },
+  {
+    "file": "pour-reference-3.png",
+    "sourceFile": "codex-clipboard-906ddd4c-8df8-4037-a426-dbc08fe19655.png",
+    "sha256": "132303a90e9ca29401e50f72c4c3608b3f7421ee2b220f2746a8cd5aa9b36173",
+    "usage": "User supplied visual reference only; not embedded as a texture; retained unchanged"
+  },
+  {
+    "file": "pour-reference-4.png",
+    "sourceFile": "codex-clipboard-9d30c60d-c927-4fc4-847d-7d17a96b6c70.png",
+    "sha256": "fed512f6204b4861957d41de48629aaf2c00753a28e5cf6708198503aaa2b3c9",
+    "usage": "User supplied visual reference only; not embedded as a texture; retained unchanged"
+  }
+]

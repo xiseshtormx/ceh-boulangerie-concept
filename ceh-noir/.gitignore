@@ -1,0 +1,5 @@
+dist/
+node_modules/
+qa/*.png
+qa/*.jpg
+*.tar.gz

@@ -1,0 +1,18 @@
+{
+  "name": "ceh-noir",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "node --test qa/*.test.mjs",
+    "coffee:vendor": "node scripts/prepare-coffee-3d.mjs",
+    "coffee:validate": "node scripts/validate-coffee-3d.mjs"
+  },
+  "devDependencies": {
+    "gltf-validator": "^2.0.0-dev.3.10",
+    "gsap": "^3.13.0",
+    "three": "^0.180.0"
+  }
+}

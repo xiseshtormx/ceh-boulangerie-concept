@@ -1,0 +1,28 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><base href="../"><title>About — preference QA</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="about.css"></head><body><label style="position:relative;z-index:10;display:block;padding:16px"><input type="checkbox" id="reduced" checked> Уменьшить движение (тест)</label>  <section class="about-section" id="about" aria-labelledby="about-title">
+    <div class="about-stage">
+      <span class="about-letter about-letter-ts" data-about-motion aria-hidden="true">Ц</span>
+      <span class="about-letter about-letter-e" data-about-motion aria-hidden="true">е</span>
+      <span class="about-letter about-letter-kh" data-about-motion aria-hidden="true">х</span>
+      <figure class="about-interior" data-about-motion>
+        <img id="about-interior" src="assets/about/about-interior.jpg" alt="Интерьер «Цеха»: высокая входная дверь, жёлтые шторы и витрина с выпечкой" width="960" height="1280" loading="lazy" decoding="async" data-about-motion>
+      </figure>
+      <figure class="about-product" data-about-motion>
+        <img id="about-product" src="assets/about/about-product.jpg" alt="Круассаны, печенье и две чашки кофе в жёлтой посуде на деревянном столе" width="960" height="1280" loading="lazy" decoding="async" data-about-motion>
+      </figure>
+      <div class="about-copy">
+        <h2 id="about-title"><span class="about-line"><span data-about-motion>Не просто</span></span><span class="about-line"><span data-about-motion>булочная.</span></span></h2>
+        <p class="about-italics"><span class="about-line"><span data-about-motion>Место, в которое</span></span><span class="about-line"><span data-about-motion>хочется вернуться.</span></span></p>
+        <p class="about-note"><span class="about-line"><span data-about-motion>Выпечка, завтраки</span></span><span class="about-line"><span data-about-motion>и кофе в Перми.</span></span></p>
+      </div>
+    </div>
+  </section><script type="module">
+const nativeMatch = window.matchMedia.bind(window);
+const checkbox = document.querySelector('#reduced');
+const preference = new EventTarget();
+Object.defineProperty(preference, 'matches', {get: () => checkbox.checked});
+Object.defineProperty(preference, 'media', {value: '(prefers-reduced-motion: reduce)'});
+window.matchMedia = query => query === preference.media ? preference : nativeMatch(query);
+checkbox.addEventListener('change', () => preference.dispatchEvent(new Event('change')));
+const {initAboutStory} = await import('./about.js');
+initAboutStory(document.querySelector('#about'));
+</script></body></html>

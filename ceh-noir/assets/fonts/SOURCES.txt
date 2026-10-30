@@ -1,0 +1,14 @@
+Hero typography fonts, stored locally. No font service is contacted at runtime.
+
+Noto Serif Display Italic 500: original italic, a Google Fonts text subset containing "сейчас.".
+https://fonts.google.com/specimen/Noto+Serif+Display
+https://github.com/google/fonts/tree/main/ofl/notoserifdisplay
+License: NOTO-SERIF-DISPLAY-OFL.txt
+
+Roboto Flex: original variable font, loaded only for candidate C.
+The real slnt axis ranges from -10 to 0; candidate C uses -8 on its second line.
+https://fonts.google.com/specimen/Roboto+Flex
+https://github.com/google/fonts/tree/main/ofl/robotoflex
+License: ROBOTO-FLEX-OFL.txt
+
+Candidates A and B retain the existing local Golos for the first line.

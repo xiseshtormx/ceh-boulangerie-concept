@@ -1,0 +1,7 @@
+*.blend1
+*.log
+__pycache__/
+renders/lighting-test-1920/
+renders/master/
+renders/archive-before-coffee-v3/
+renders/archive-before-coffee-v4/

@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="ru">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Цех · сравнение типографики hero</title>
+<style>
+@font-face{font-family:Golos;src:url('../assets/golos-cyrillic.woff2')}*{box-sizing:border-box}body{margin:0;background:#111;color:#fff;font:14px Golos,Arial,sans-serif}header{padding:24px;display:flex;flex-wrap:wrap;gap:18px;align-items:center}h1{font-size:18px;margin:0 auto 0 0;font-weight:500}a{color:inherit}button,select{font:inherit;color:#fff;background:#222;border:1px solid #666;padding:10px 14px;border-radius:8px;cursor:pointer}button:active{transform:scale(.97)}button[aria-pressed=true]{background:#fff;color:#000}p{padding:0 24px;margin:0 0 20px;color:#bbb;line-height:1.5}iframe{display:block;width:100%;height:900px;border:0;background:#000}label{display:flex;align-items:center;gap:8px}@media(max-width:760px){header{gap:10px;padding:18px}h1{width:100%}iframe{height:850px}}
+</style></head>
+<body>
+<header><h1>Цех · три направления</h1><button data-type="a" aria-pressed="false">A · Гротеск</button><button data-type="b" aria-pressed="true">B · Курсив</button><button data-type="c" aria-pressed="false">C · Наклон</button><button id="replay">Повторить сборку</button><label>Скорость <select id="speed"><option value="1">1×</option><option value="0.25">0,25×</option></select></label><button id="hold">Кадр 0,65 с</button><a id="live" href="../?hero-type=b">Открыть на главной</a></header>
+<p>Один и тот же hero, одинаковые размеры и фотография. B — основной: Golos 780 + настоящий Noto Serif Display Italic 500. C — Roboto Flex с собственной осью наклона slnt −8.</p>
+<iframe title="Настоящий hero: типографический вариант B" src="hero-type-b.html"></iframe>
+<script>
+const frame=document.querySelector('iframe'), speed=document.querySelector('#speed');let type='b', timer, hold=false;
+function play(){clearInterval(timer);frame.src=`hero-type-${type}.html?run=${Date.now()}`;frame.title=`Настоящий hero: типографический вариант ${type.toUpperCase()}`;document.querySelector('#live').href=`../?hero-type=${type}`;let attempts=0;timer=setInterval(()=>{const doc=frame.contentDocument,hero=doc?.querySelector('.hero');if(hero?.dataset.typeState==='assembling'){for(const animation of doc.getAnimations().filter(a=>a.effect?.target?.closest('.hero-copy'))){animation.playbackRate=Number(speed.value);if(hold){animation.pause();animation.currentTime=650;}}clearInterval(timer);}else if(++attempts>120)clearInterval(timer);},25);}
+document.querySelectorAll('[data-type]').forEach(button=>button.onclick=()=>{type=button.dataset.type;document.querySelectorAll('[data-type]').forEach(b=>b.setAttribute('aria-pressed',b===button));hold=false;play();});
+document.querySelector('#replay').onclick=()=>{hold=false;play();};speed.onchange=()=>{hold=false;play();};document.querySelector('#hold').onclick=()=>{hold=true;play();};
+</script></body></html>

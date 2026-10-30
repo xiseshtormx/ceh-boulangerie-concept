@@ -1,0 +1,14 @@
+{
+  "revision": 4,
+  "source": "coffee-3d/references/full.png",
+  "sha256": "9dd69a94cd04b3985a4682b3b9fa473a18d8358b2277b4df57cae35f59151832",
+  "method": "Photographic crema islands and colour with specular suppression; seeded real-scale cellular pores, correlated dome normals and roughness; seamless jet optical maps",
+  "albedoSize": 2048,
+  "normalSize": 2048,
+  "microcells": 16540,
+  "streamMapSize": [
+    256,
+    1024
+  ],
+  "generatedPhoto": false
+}

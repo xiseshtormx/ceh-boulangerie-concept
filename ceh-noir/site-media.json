@@ -1,0 +1,25 @@
+{
+  "coffee": null,
+  "places": {
+    "petropavlovskaya": {
+      "src": "assets/places/petropavlovskaya.png",
+      "alt": "Пекарня «Цех» на Петропавловской, 52 — вход",
+      "source": "user-provided"
+    },
+    "kompros": {
+      "src": "assets/places/kompros.png",
+      "alt": "Пекарня «Цех» на Комсомольском проспекте, 53а — вход вечером",
+      "source": "user-provided"
+    },
+    "lunacharsky": {
+      "src": "assets/places/lunacharsky.png",
+      "alt": "Пекарня «Цех» на улице Луначарского, 99 — фасад",
+      "source": "user-provided"
+    },
+    "revolution": {
+      "src": "assets/places/revolution.png",
+      "alt": "Пекарня «Цех» на улице Революции, 24 — вход",
+      "source": "user-provided"
+    }
+  }
+}

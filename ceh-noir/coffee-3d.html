@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex"><title>Цех — чашка и эспрессо</title>
+  <style>
+    @font-face{font-family:Golos;src:url('assets/golos-cyrillic.woff2') format('woff2');font-display:swap}
+    *{box-sizing:border-box}html{color-scheme:dark;background:#000}body{margin:0;background:#000;color:#fff;font:15px/1.5 Golos,Arial,sans-serif}a{color:inherit;text-underline-offset:5px}button,input{font:inherit}button,a,input{touch-action:manipulation}button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #a9c4ee;outline-offset:5px}
+    .bar{position:fixed;z-index:5;inset:0 0 auto;display:flex;justify-content:space-between;align-items:center;padding:22px 32px;pointer-events:none}.bar>*{pointer-events:auto}.brand{font-weight:600;letter-spacing:.12em;text-decoration:none}.bar span{color:#979797;font-size:13px}.bar a:last-child{font-size:13px}
+    .story{height:320svh}.pin{height:100svh;position:relative;overflow:hidden;background:#000}.stage{position:absolute;inset:0}.stage canvas,.poster{display:block;width:100%;height:100%;position:absolute;inset:0}.poster{object-fit:contain;opacity:0}.copy{position:absolute;bottom:76px;left:20px;right:20px;text-align:center;opacity:0;pointer-events:none}.copy h1{font-family:Georgia,serif;font-weight:400;font-size:clamp(38px,5vw,68px);line-height:1.1;margin:0 0 12px}.copy p{font-size:17px;color:#b6b6b6;margin:0}.copy a{display:inline-block;margin-top:14px;pointer-events:auto;font-size:13px}
+    .controls{position:fixed;z-index:5;bottom:18px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:8px;padding:9px 12px;background:#111e;border:1px solid #ffffff25;border-radius:30px;max-width:calc(100% - 24px);backdrop-filter:blur(12px)}button{cursor:pointer;border:0;border-radius:20px;background:transparent;color:#a8a8a8;padding:8px 12px;white-space:nowrap;font-size:12px;transition:background 160ms,color 160ms,transform 160ms}button[aria-pressed=true]{background:#fff;color:#111}button:active{transform:scale(.97)}input[type=range]{width:130px;accent-color:#dadada}output{min-width:36px;color:#aaa;font-variant-numeric:tabular-nums;font-size:12px}.hint{position:absolute;left:0;right:0;bottom:110px;text-align:center;color:#8c8c8c;font-size:12px}.after{position:relative;padding:100px 24px 130px;text-align:center;background:#080808}.after p{color:#999;margin:0 0 25px}.downloads{display:flex;flex-wrap:wrap;gap:22px;justify-content:center;font-size:14px}.status{position:absolute;inset:47% 15% auto;text-align:center;color:#999;font-size:13px;pointer-events:none}.error{color:#e6b899}.static .story{height:auto}.static .poster{opacity:1}.static canvas{display:none}.static .copy{opacity:1}.static .hint,.static .controls{display:none}
+    @media(max-width:700px){.bar{padding:18px 20px}.bar span{display:none}.story{height:250svh}.controls{gap:2px;padding:7px}button{padding:8px;font-size:11px}input[type=range]{width:58px}.copy{bottom:110px}.copy h1{font-size:42px}.copy p{font-size:15px}.hint{bottom:150px}.stage{inset:-5svh 0 8svh}}
+    @media(prefers-reduced-motion:reduce){.story{height:auto}.poster{opacity:1}.stage canvas{display:none}.copy{opacity:1}.controls,.hint{display:none}}
+  </style>
+</head>
+<body>
+  <header class="bar"><a class="brand" href="./">ЦЕХ</a><span>ЧАШКА И ЭСПРЕССО</span><a href="./#coffee">Вернуться на сайт</a></header>
+  <main>
+    <section class="story" aria-label="Наливание эспрессо">
+      <div class="pin">
+        <div class="stage" role="img" aria-label="Белая глянцевая чашка наклоняется к зрителю и наполняется эспрессо."><img class="poster" src="assets/coffee/3d/poster.webp" alt="" width="1024" height="1024"><canvas aria-hidden="true"></canvas></div>
+        <p class="status" role="status">Подготавливаем чашку…</p>
+        <p class="hint">Прокрутите, чтобы налить кофе</p>
+        <div class="copy"><h1>И кофе.</h1><p>Взять с собой.<br>Или остаться ещё немного.</p><a href="menu/?category=drinks">Напитки в меню</a></div>
+      </div>
+    </section>
+    <section class="after" aria-label="Файлы модели"><p>Эта чашка — настоящая 3D-модель.</p><div class="downloads"><a href="assets/coffee/3d/cup.glb" download>Пустая чашка · GLB</a><a href="assets/coffee/3d/ceh-coffee.glb" download>Чашка с кофе · GLB</a><a href="assets/coffee/3d/coffee-stream.glb" download>Струя · GLB</a><a href="assets/coffee/3d/preview.mp4">Видео · 5 секунд</a></div></section>
+  </main>
+  <nav class="controls" aria-label="Управление наливанием"><button data-progress=".05">Пустая</button><button data-progress=".22">Наклон</button><button data-progress=".50">Наливание</button><button data-progress="1">Полная</button><input type="range" min="0" max="1" step=".001" value="0" aria-label="Наполнение чашки"><output>0%</output></nav>
+  <noscript><style>.story{height:auto}.poster,.copy{opacity:1}.status,.hint,.controls{display:none}</style></noscript>
+  <script type="module" src="./coffee-preview-3d.js"></script>
+</body>
+</html>

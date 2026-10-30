@@ -1,0 +1,69 @@
+@font-face {
+  font-family: 'Ceh Serif';
+  src: url('assets/fonts/noto-serif-display-italic-500.ttf') format('truetype');
+  font-style: italic;
+  font-weight: 500;
+  font-display: block;
+}
+/* Only candidate C requests this variable font, including its designed slant axis. */
+@font-face {
+  font-family: 'Ceh Flex';
+  src: url('assets/fonts/roboto-flex.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 100 1000;
+  font-display: block;
+}
+
+.hero h1 {
+  font-weight: 780;
+  font-synthesis: none;
+  height: 1.9em;
+  letter-spacing: -.048em;
+}
+.hero-type-line { display: block; height: .95em; width: max-content; max-width: 100%; }
+.hero .hero-word {
+  position: relative;
+  display: inline-flex;
+  width: max-content;
+  max-width: none;
+  line-height: .95;
+  animation: none;
+  white-space: nowrap;
+}
+.hero-char-mask {
+  display: inline-block;
+  overflow: clip;
+  padding: .11em .18em .22em;
+  margin: -.11em -.18em -.22em;
+  vertical-align: top;
+}
+.hero-glyph-ink { display: inline-block; }
+.hero .hero-now-serif { display: none; }
+html:not([data-hero-type='a']):not([data-hero-type='c']) .hero-now-roman { display: none; }
+html:not([data-hero-type='a']):not([data-hero-type='c']) .hero-now-serif {
+  display: inline-flex;
+  font-family: 'Ceh Serif', Georgia, serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 1.12em;
+  line-height: .848215;
+  letter-spacing: -.047em;
+  top: -.015em;
+}
+html[data-hero-type='c'] .hero h1 {
+  font-family: 'Ceh Flex', Golos, Arial, sans-serif;
+  font-variation-settings: 'wght' 780, 'wdth' 100, 'opsz' 80, 'slnt' 0;
+  letter-spacing: -.042em;
+}
+html[data-hero-type='c'] .hero-word-now {
+  font-variation-settings: 'wght' 760, 'wdth' 100, 'opsz' 80, 'slnt' -8;
+}
+.hero .hero-copy p { animation: none; }
+.hero-type-pending .hero-glyph-ink,
+.hero-type-pending .hero-copy p { opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-type-pending .hero-glyph-ink,
+  .hero-type-pending .hero-copy p { opacity: 1; }
+  .hero .hero-word, .hero .hero-glyph-ink { transform: none !important; }
+}

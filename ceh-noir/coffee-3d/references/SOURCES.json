@@ -1,0 +1,37 @@
+[
+  {
+    "file": "empty-high.png",
+    "sourceFile": "codex-clipboard-5cd9410e-663d-4453-9ef1-15689c1533c0.png",
+    "sha256": "eb8b75ff435eb4c198097a9c8d343c4ef7c81228548c4a75e8e19f3726847438"
+  },
+  {
+    "file": "empty-three-quarter.png",
+    "sourceFile": "codex-clipboard-34a4cb42-852f-4b6e-aea4-e1ea17930f34.png",
+    "sha256": "0b6f75f42c068011b6e227baf69c569e9f08e7147df0be5a2cee9c481fd161a6"
+  },
+  {
+    "file": "empty-front.png",
+    "sourceFile": "01_empty_cup.png",
+    "sha256": "9e0dfbcc47c8e4072d0a9b2f023791311e744b21096f3d72a2cd55bfd42326d5"
+  },
+  {
+    "file": "full.png",
+    "sourceFile": "03.png",
+    "sha256": "9dd69a94cd04b3985a4682b3b9fa473a18d8358b2277b4df57cae35f59151832"
+  },
+  {
+    "file": "stream.png",
+    "sourceFile": "codex-clipboard-23552f6c-e03b-4f1d-a6df-2e3c7403b4f0.png",
+    "sha256": "fd05d25de37d3c61719587315b22982913b5713681ec8340f1eba709491304bf"
+  },
+  {
+    "file": "pour.png",
+    "sourceFile": "codex-clipboard-ab4c1a31-7231-4096-8d91-215357a4b0df.png",
+    "sha256": "329a5d5ecf10b8faa94ce0a37d5ea0fa9e608b8b0039a8d28d7ef9779ff6f91f"
+  },
+  {
+    "file": "pour-alternate.png",
+    "sourceFile": "codex-clipboard-d9b141bd-e3ca-40a2-ac43-1b4c1b85a91c.png",
+    "sha256": "329a5d5ecf10b8faa94ce0a37d5ea0fa9e608b8b0039a8d28d7ef9779ff6f91f"
+  }
+]

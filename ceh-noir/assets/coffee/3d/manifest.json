@@ -1,0 +1,103 @@
+{
+  "blender": "5.2.3 LTS",
+  "units": "metres",
+  "gltfUp": "+Y",
+  "cup": {
+    "height": 0.06675,
+    "diameter": 0.0952,
+    "pivot": 0.01,
+    "geometry": {
+      "vertices": 29606,
+      "triangles": 59212,
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0,
+      "volume_m3": 0.00010627773132494128
+    }
+  },
+  "animation": {
+    "kind": "procedural baked shape keys in blend; browser procedural meshes",
+    "fps": 30,
+    "frames": 150,
+    "fluidSimulation": false,
+    "glbAnimation": false
+  },
+  "liquid": {
+    "segments": 128,
+    "radialRings": 40,
+    "innerProfile": [
+      [
+        0.011,
+        0.0
+      ],
+      [
+        0.0113,
+        0.012
+      ],
+      [
+        0.0125,
+        0.021
+      ],
+      [
+        0.015,
+        0.028
+      ],
+      [
+        0.022,
+        0.034
+      ],
+      [
+        0.032,
+        0.039
+      ],
+      [
+        0.046,
+        0.0422
+      ],
+      [
+        0.061,
+        0.0437
+      ],
+      [
+        0.066,
+        0.0443
+      ]
+    ],
+    "bottom": 0.0125,
+    "top": 0.059
+  },
+  "porcelain": {
+    "revision": 2,
+    "roughness": 0.055,
+    "clearcoat": 1,
+    "clearcoatRoughness": 0.025,
+    "ior": 1.52
+  },
+  "coffee": {
+    "revision": 4,
+    "photographicCrema": true,
+    "cellularMicrofoam": true,
+    "microcells": 16540,
+    "advectedFoam": true,
+    "lateFoam": true,
+    "gravityTaperedJet": true,
+    "capillaryJetWaves": true,
+    "darkTranslucentJet": true,
+    "streamTransmission": 0.96,
+    "streamThickness": 0.0026,
+    "streamAttenuationDistance": 0.0016842105263157896,
+    "streamBrightnessGain": 1.05,
+    "asymmetricImpactCrown": true,
+    "ballisticTailDrops": true,
+    "volumeDriven": true,
+    "bakedFrames": 150,
+    "impactCrater": true
+  },
+  "files": [
+    "cup.glb",
+    "coffee-liquid.glb",
+    "coffee-stream.glb",
+    "ceh-coffee.glb",
+    "ceh-coffee-pouring.glb"
+  ],
+  "reference": "User-supplied white ceramic cup images, 2026-10-29. Model is a reconstruction, not a scan."
+}

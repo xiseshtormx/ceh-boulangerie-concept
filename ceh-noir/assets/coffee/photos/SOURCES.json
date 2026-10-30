@@ -1,0 +1,37 @@
+{
+  "front": {
+    "src": "assets/coffee/photos/front.webp",
+    "sourceFile": "01_empty_cup.png",
+    "sha256": "9e0dfbcc47c8e4072d0a9b2f023791311e744b21096f3d72a2cd55bfd42326d5",
+    "width": 4096,
+    "height": 4096
+  },
+  "final": {
+    "src": "assets/coffee/photos/final.webp",
+    "sourceFile": "03.png",
+    "sha256": "9dd69a94cd04b3985a4682b3b9fa473a18d8358b2277b4df57cae35f59151832",
+    "width": 1254,
+    "height": 1254
+  },
+  "tilt": {
+    "src": "assets/coffee/photos/tilt.webp",
+    "sourceFile": "codex-clipboard-5b62f313-4ded-404f-b9ba-bb472838a573.png",
+    "sha256": "e1aba83860ebdd9d3f5950fe6fac8453d755df4e7a14ceb481ead19f3c7068a2",
+    "width": 1254,
+    "height": 1254
+  },
+  "pour": {
+    "src": "assets/coffee/photos/pour.webp",
+    "sourceFile": "codex-clipboard-84f36846-3df7-4d6d-8ef6-628b24fe2809.png",
+    "sha256": "329a5d5ecf10b8faa94ce0a37d5ea0fa9e608b8b0039a8d28d7ef9779ff6f91f",
+    "width": 1254,
+    "height": 1254
+  },
+  "stream": {
+    "src": "assets/coffee/photos/stream.webp",
+    "sourceFile": "codex-clipboard-1ad9f71e-91e1-4bf5-943d-a14ad9048e99.png",
+    "sha256": "d1cdac6e96e8f86cfb1a9fb00500d444772c7082679f3002741b3ea68c1ba1b9",
+    "width": 1024,
+    "height": 1536
+  }
+}

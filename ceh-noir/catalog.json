@@ -1,0 +1,774 @@
+{
+  "verifiedAt": "28.10.2026",
+  "source": "https://vx553.menuquickresto.ru/",
+  "orderUrl": "https://cehmarket.qrbooster.ru/",
+  "categories": [
+    {
+      "id": "pastry",
+      "label": "Выпечка"
+    },
+    {
+      "id": "ingredients",
+      "label": "Конструктор завтраков"
+    },
+    {
+      "id": "main",
+      "label": "Основное меню"
+    },
+    {
+      "id": "desserts",
+      "label": "Десерты"
+    },
+    {
+      "id": "cookies",
+      "label": "Печенье"
+    },
+    {
+      "id": "drinks",
+      "label": "Напитки"
+    },
+    {
+      "id": "merch",
+      "label": "Мерч"
+    },
+    {
+      "id": "seasonal",
+      "label": "Сезонные блюда"
+    },
+    {
+      "id": "breakfast",
+      "label": "Завтраки"
+    },
+    {
+      "id": "ready",
+      "label": "Готовая еда"
+    },
+    {
+      "id": "savory",
+      "label": "Сытные круассаны"
+    }
+  ],
+  "items": [
+    {
+      "id": "classic-croissant",
+      "name": "Классический круассан",
+      "category": "pastry",
+      "price": 227,
+      "description": "Состав: сливочное масло, мука пшеничная, сахар, дрожжи, молоко, яйца",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "pistachio-croissant",
+      "name": "Фисташковый круассан",
+      "category": "pastry",
+      "price": 370,
+      "description": "Состав: круассан классический, заварной фисташковый крем, глазурь, дробленые фисташки",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "royal-croissant",
+      "name": "Круассан королевский",
+      "category": "pastry",
+      "price": 420,
+      "description": "Состав: круассан, классический заварной крем (на сливочном масле и сливках), свежая клубника, сахарная пудра",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "almond-croissant",
+      "name": "Круассан миндальный",
+      "category": "pastry",
+      "price": 390,
+      "description": "Состав: круассан классический, миндальный крем, миндальные лепестки, сахарная пудра",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "raspberry-croissant",
+      "name": "Круассан малиновый",
+      "category": "pastry",
+      "price": 360,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "pain-au-chocolat",
+      "name": "Слойка пан шоколя",
+      "category": "pastry",
+      "price": 330,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "bread",
+      "name": "Хлеб зерновой кусок",
+      "category": "ingredients",
+      "price": 50,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "banana",
+      "name": "Банан 40г",
+      "category": "ingredients",
+      "price": 70,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/",
+      "weight": "40 г"
+    },
+    {
+      "id": "egg",
+      "name": "Яйцо 1шт",
+      "category": "ingredients",
+      "price": 60,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "caramel",
+      "name": "Доп соленая карамель 40г",
+      "category": "ingredients",
+      "price": 40,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/",
+      "weight": "40 г"
+    },
+    {
+      "id": "shrimp",
+      "name": "Креветки 45г",
+      "category": "ingredients",
+      "price": 250,
+      "description": "креветки тигровые",
+      "source": "https://vx553.menuquickresto.ru/",
+      "weight": "45 г"
+    },
+    {
+      "id": "peanut-butter",
+      "name": "Арахисовая паста 40г",
+      "category": "ingredients",
+      "price": 100,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/",
+      "weight": "40 г"
+    },
+    {
+      "id": "parmesan",
+      "name": "Тертый пармезан 10г",
+      "category": "ingredients",
+      "price": 100,
+      "description": "Пармезан",
+      "source": "https://vx553.menuquickresto.ru/",
+      "weight": "10 г"
+    },
+    {
+      "id": "bacon",
+      "name": "Бекон 60г",
+      "category": "ingredients",
+      "price": 130,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/",
+      "weight": "60 г"
+    },
+    {
+      "id": "lettuce",
+      "name": "Листья салата с соусом цитронет 15г",
+      "category": "ingredients",
+      "price": 80,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/",
+      "weight": "15 г"
+    },
+    {
+      "id": "cream-cheese",
+      "name": "Творожный крем 40г",
+      "category": "ingredients",
+      "price": 80,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/",
+      "weight": "40 г"
+    },
+    {
+      "id": "butter",
+      "name": "Сливочное масло 20г",
+      "category": "ingredients",
+      "price": 80,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/",
+      "weight": "20 г"
+    },
+    {
+      "id": "tuna",
+      "name": "Паста из тунца 50 г",
+      "category": "ingredients",
+      "price": 160,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/",
+      "weight": "50 г"
+    },
+    {
+      "id": "tomato",
+      "name": "Томаты розовые 35г",
+      "category": "ingredients",
+      "price": 80,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/",
+      "weight": "35 г"
+    },
+    {
+      "id": "cucumber",
+      "name": "Огурец свежий 50 г",
+      "category": "ingredients",
+      "price": 60,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/",
+      "weight": "50 г"
+    },
+    {
+      "id": "jam",
+      "name": "Джем из лесных ягод  30г",
+      "category": "ingredients",
+      "price": 70,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/",
+      "weight": "30 г"
+    },
+    {
+      "id": "condensed-milk",
+      "name": "Сгущенка 40 г",
+      "category": "ingredients",
+      "price": 40,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/",
+      "weight": "40 г"
+    },
+    {
+      "id": "scramble",
+      "name": "Скрэмбл из 2-х яиц",
+      "category": "ingredients",
+      "price": 190,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "salmon",
+      "name": "Лосось слабосоленый 35 г",
+      "category": "ingredients",
+      "price": 320,
+      "description": "Лосось",
+      "source": "https://vx553.menuquickresto.ru/",
+      "weight": "35 г"
+    },
+    {
+      "id": "strawberry",
+      "name": "Клубника 30г",
+      "category": "ingredients",
+      "price": 100,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/",
+      "weight": "30 г"
+    },
+    {
+      "id": "chicken",
+      "name": "Курица 80г",
+      "category": "ingredients",
+      "price": 120,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/",
+      "weight": "80 г"
+    },
+    {
+      "id": "ham",
+      "name": "Окорок 40г",
+      "category": "ingredients",
+      "price": 170,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/",
+      "weight": "40 г"
+    },
+    {
+      "id": "brie",
+      "name": "Сыр бри",
+      "category": "ingredients",
+      "price": 100,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "pesto",
+      "name": "Песто 15г",
+      "category": "ingredients",
+      "price": 60,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/",
+      "weight": "15 г"
+    },
+    {
+      "id": "main-1",
+      "name": "Салат с креветками",
+      "category": "main",
+      "price": 590,
+      "description": "Состав: листья романо, креветки, киноа, розовые томаты, филе апельсина, лимонный соус цитронет",
+      "source": "https://vx553.menuquickresto.ru/",
+      "photo": "assets/dishes/salad-shrimp.png",
+      "photoSource": "user-provided"
+    },
+    {
+      "id": "main-2",
+      "name": "Паста в сливочно-трюфельном соусе с куриным филе",
+      "category": "main",
+      "price": 560,
+      "description": "Состав: куриное филе, сливки, паста баветте, трюфельный соус, пармезан, перец душистый",
+      "source": "https://vx553.menuquickresto.ru/",
+      "photo": "assets/dishes/pasta-chicken.png",
+      "photoSource": "user-provided"
+    },
+    {
+      "id": "main-3",
+      "name": "Спагетти с креветками в сливочном соусе",
+      "category": "main",
+      "price": 630,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "main-4",
+      "name": "Салат нисуаз",
+      "category": "main",
+      "price": 590,
+      "description": "Состав: листья романо, тунец (консервированный), яйцо, розовые томаты, беби-картофель, фасоль стручковая, заправка медово-горчичная",
+      "source": "https://vx553.menuquickresto.ru/",
+      "photo": "assets/dishes/nicoise.png",
+      "photoSource": "user-provided"
+    },
+    {
+      "id": "main-5",
+      "name": "Паста карбонара",
+      "category": "main",
+      "price": 490,
+      "description": "Состав: бекон, сливки, паста баветте, пармезан, желток, перец душистый",
+      "source": "https://vx553.menuquickresto.ru/",
+      "photo": "assets/dishes/carbonara.png",
+      "photoSource": "user-provided"
+    },
+    {
+      "id": "desserts-1",
+      "name": "Карамель с гималайской солью",
+      "category": "desserts",
+      "price": 390,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "desserts-2",
+      "name": "Десерт какао боб",
+      "category": "desserts",
+      "price": 410,
+      "description": "горький шоколад, сливки 33%, глюкоза, шоколадный бисквит",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "desserts-3",
+      "name": "Панна-котта малина",
+      "category": "desserts",
+      "price": 290,
+      "description": "Состав: сливки, малиновое варенье, ванильная паста, сахар, желатин",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "desserts-4",
+      "name": "Кукис с шоколадом",
+      "category": "desserts",
+      "price": 190,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "desserts-5",
+      "name": "Финансье фундук",
+      "category": "desserts",
+      "price": 240,
+      "description": "Кекс из трёх видов муки (фундучная, миндальная, безглютеновая), фундучный ганаш, фундук, покрытие молочным шоколадом",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "desserts-6",
+      "name": "Cебастьян чизкейк",
+      "category": "desserts",
+      "price": 350,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "desserts-7",
+      "name": "Тарталетка ягодная",
+      "category": "desserts",
+      "price": 410,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "desserts-8",
+      "name": "Десерт Роше",
+      "category": "desserts",
+      "price": 410,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "desserts-9",
+      "name": "Десерт Фисташка",
+      "category": "desserts",
+      "price": 390,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "desserts-10",
+      "name": "Тарталетка ваниль/смородина",
+      "category": "desserts",
+      "price": 390,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "desserts-11",
+      "name": "Малибу",
+      "category": "desserts",
+      "price": 390,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "desserts-12",
+      "name": "Фундучная конфета",
+      "category": "desserts",
+      "price": 190,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "cookies-1",
+      "name": "Печенье с пармезаном",
+      "category": "cookies",
+      "price": 349,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "cookies-2",
+      "name": "Печенье фисташковое",
+      "category": "cookies",
+      "price": 490,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "cookies-3",
+      "name": "Галеты",
+      "category": "cookies",
+      "price": 349,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "cookies-4",
+      "name": "Печенье мадлены лимонные",
+      "category": "cookies",
+      "price": 319,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "cookies-5",
+      "name": "Печенье с карамелью и шоколадом",
+      "category": "cookies",
+      "price": 349,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "drinks-1",
+      "name": "Апельсиновый фреш большой",
+      "category": "drinks",
+      "price": 450,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "drinks-2",
+      "name": "Смузи манго-шейк",
+      "category": "drinks",
+      "price": 440,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "drinks-3",
+      "name": "Смузи малина-мята",
+      "category": "drinks",
+      "price": 460,
+      "description": "Малина, банан, мята, вода",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "drinks-4",
+      "name": "Дрип-пакет",
+      "category": "drinks",
+      "price": 160,
+      "description": "кофе свежесмолотый",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "drinks-5",
+      "name": "Зерно 1 kg эспрессо",
+      "category": "drinks",
+      "price": 2900,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "drinks-6",
+      "name": "Набор дрипов 8 шт",
+      "category": "drinks",
+      "price": 1200,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "drinks-7",
+      "name": "Зерно фильтр 200г",
+      "category": "drinks",
+      "price": 890,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/",
+      "weight": "200 г"
+    },
+    {
+      "id": "drinks-8",
+      "name": "Зерно эспрессо 200г",
+      "category": "drinks",
+      "price": 890,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/",
+      "weight": "200 г"
+    },
+    {
+      "id": "merch-1",
+      "name": "Футболка nice people club",
+      "category": "merch",
+      "price": 2500,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "merch-2",
+      "name": "Шопер nice people club",
+      "category": "merch",
+      "price": 2500,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "merch-3",
+      "name": "Бутылка для воды",
+      "category": "merch",
+      "price": 1990,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "seasonal-1",
+      "name": "Суп тыквенный с креветками",
+      "category": "seasonal",
+      "price": 590,
+      "description": "Тыква, лук, картофель, кокосовое молоко, вода, соль, тыквенные семечки, микрозелень",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "rice-porridge",
+      "name": "Рисовая каша",
+      "category": "breakfast",
+      "price": 190,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/",
+      "photo": "assets/dishes/rice-porridge.png",
+      "photoSource": "https://vk.com/cehperm"
+    },
+    {
+      "id": "oatmeal",
+      "name": "Овсяная каша",
+      "category": "breakfast",
+      "price": 190,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/",
+      "photo": "assets/dishes/oatmeal.png",
+      "photoSource": "https://vk.com/cehperm"
+    },
+    {
+      "id": "oatmeal-cheese-poppy",
+      "name": "Овсяная каша с сыром бри и маком",
+      "category": "breakfast",
+      "price": 320,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/",
+      "photo": "assets/dishes/oatmeal-cheese.png",
+      "photoSource": "https://vk.com/cehperm"
+    },
+    {
+      "id": "oatmeal-chocolate-nuts",
+      "name": "Овсяная каша с шоколадом и орехами",
+      "category": "breakfast",
+      "price": null,
+      "description": "Шоколад и орехи. Полный состав уточняйте у пекарни.",
+      "source": "user-provided",
+      "sourceNote": "Название и фотография предоставлены пользователем. Цена не подтверждена.",
+      "photo": "assets/dishes/oatmeal-chocolate.png",
+      "photoSource": "https://vk.com/cehperm"
+    },
+    {
+      "id": "rice-berry-banana",
+      "name": "Рисовая ягодная каша с бананом",
+      "category": "breakfast",
+      "price": 320,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/",
+      "photo": "assets/dishes/rice-berry.png",
+      "photoSource": "https://vk.com/cehperm"
+    },
+    {
+      "id": "syrniki-caramel",
+      "name": "Сырники с карамельным кремом и соусом из лесных ягод",
+      "category": "breakfast",
+      "price": 390,
+      "description": "Карамельный крем и соус из лесных ягод. Полный состав уточняйте у пекарни.",
+      "source": "https://vx553.menuquickresto.ru/",
+      "sourceNote": "Название и описание уточнены по материалам пользователя; цена сохранена из исходного меню.",
+      "photo": "assets/dishes/syrniki-forest-berries.png",
+      "photoSource": "user-provided"
+    },
+    {
+      "id": "breakfast-ham",
+      "name": "Завтрак с окороком",
+      "category": "breakfast",
+      "price": 590,
+      "description": "Состав: скрэмбл, окорок свиной, зерновые тосты, листья романо, творожный сыр, соус песто, розовые томаты, лимонный соус цитронет",
+      "source": "https://vx553.menuquickresto.ru/",
+      "photo": "assets/dishes/breakfast-ham.png",
+      "photoSource": "user-provided"
+    },
+    {
+      "id": "breakfast-tuna",
+      "name": "Завтрак с тунцом",
+      "category": "breakfast",
+      "price": 510,
+      "description": "Состав: скрэмбл, паста из тунца, зерновые тосты, листья романо, творожный сыр, песто, лимонный соус цитронет",
+      "source": "https://vx553.menuquickresto.ru/",
+      "photo": "assets/dishes/breakfast-tuna.png",
+      "photoSource": "user-provided",
+      "photoSourceNote": "Файл zavtrak_s_dopolnitelnym_sousom.png сопоставлен с завтраком с тунцом по подаче и составу существующего каталога; название файла не называет начинку прямо."
+    },
+    {
+      "id": "breakfast-salmon",
+      "name": "Завтрак с лососем",
+      "category": "breakfast",
+      "price": 730,
+      "description": "Состав: скрэмбл, лосось свежий, зерновые тосты, листья романо, творожный сыр, песто, розовые томаты, лимонный соус цитронет",
+      "source": "https://vx553.menuquickresto.ru/",
+      "photo": "assets/dishes/breakfast-salmon.png",
+      "photoSource": "user-provided"
+    },
+    {
+      "id": "syrniki-condensed",
+      "name": "Сырники со сгущенкой",
+      "category": "breakfast",
+      "price": 320,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/",
+      "photo": "assets/dishes/syrniki-condensed.png",
+      "photoSource": "user-provided"
+    },
+    {
+      "id": "syrniki-blueberry-cream-cheese",
+      "name": "Сырники со свежей голубикой и крем-чизом",
+      "category": "breakfast",
+      "price": null,
+      "description": "Свежая голубика и крем-чиз. Полный состав уточняйте у пекарни.",
+      "source": "user-provided",
+      "sourceNote": "Название и фотография предоставлены пользователем. Цена не подтверждена.",
+      "photo": "assets/dishes/syrniki-blueberry.png",
+      "photoSource": "user-provided"
+    },
+    {
+      "id": "ready-1",
+      "name": "Сырники с вишней и творожным кремом",
+      "category": "ready",
+      "price": 390,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "ready-2",
+      "name": "Боул Цезарь",
+      "category": "ready",
+      "price": 390,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "ready-3",
+      "name": "Сэндвич с тунцом",
+      "category": "ready",
+      "price": 480,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "ready-4",
+      "name": "Сэндвич с курицей",
+      "category": "ready",
+      "price": 480,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "ready-5",
+      "name": "Сэндвич с окороком",
+      "category": "ready",
+      "price": 580,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "ready-6",
+      "name": "Боул с креветками",
+      "category": "ready",
+      "price": 490,
+      "description": "Состав уточняйте в меню пекарни.",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "hot-croissant-ham",
+      "name": "Круассан с окороком и сыром",
+      "category": "savory",
+      "price": 430,
+      "description": "Состав: круассан классический, окорок свиной, медово-горчичный соус, плавленный сыр",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "hot-croissant-tuna",
+      "name": "Круассан с пастой из тунца, огурцом и зеленью",
+      "category": "savory",
+      "price": 490,
+      "description": "Состав: круассан классический, паста из тунца (тунец консервированный, яйца, творожный сыр), зелень романо, свежие огурцы, соль, перец",
+      "source": "https://vx553.menuquickresto.ru/"
+    },
+    {
+      "id": "hot-croissant-salmon",
+      "name": "Круассан с лососем",
+      "category": "savory",
+      "price": 690,
+      "description": "Состав: круассан классический, творожный сыр, зелень романо, лосось свежий, соль, перец",
+      "source": "https://vx553.menuquickresto.ru/",
+      "photo": "assets/dishes/croissant-salmon.webp",
+      "photoSource": "https://vk.com/cehperm"
+    }
+  ]
+}

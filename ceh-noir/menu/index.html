@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#000000">
+  <title>Цех</title>
+  <meta name="description" content="Выпечка, завтраки, десерты и напитки «Цеха». Поиск, составы блюд и избранное.">
+  <link rel="icon" href="../assets/favicon-black.svg" type="image/svg+xml">
+  <link rel="preload" href="../assets/golos-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../header.css">
+  <script type="module" src="../app.js"></script>
+</head>
+<body data-page="menu">
+<a class="skip-link" href="#main">К содержимому</a>
+<header class="site-header menu-header">
+
+  <div class="edge-nav-flight"><button class="edge-nav-toggle" type="button" popovertarget="site-navigation" aria-controls="site-navigation" aria-label="Открыть навигацию">
+    <svg class="edge-nav-icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.15" aria-hidden="true"><path class="nav-diamonds" d="M3 12 12 3l9 9-9 9zM11 20l9-9 9 9-9 9z"/><path class="nav-cross" d="m8 8 16 16M24 8 8 24"/></svg>
+    <span class="edge-nav-label">Меню</span>
+  </button></div>
+  <nav class="edge-navigation" id="site-navigation" popover="auto" aria-label="Основная навигация"><a href="./" aria-current="page" autofocus>Меню</a><a href="../#places">Адреса</a><a class="edge-nav-home" href="../">На главную</a></nav>
+</header>
+<main class="menu-main page-width" id="main">
+  <section class="menu-intro" aria-labelledby="menu-title"><h1 id="menu-title">Меню</h1><p>Выберите то, чего хочется сегодня.</p></section>
+  <div class="menu-tools"><div class="search-box"><input id="menu-search" type="search" placeholder="Найти блюдо" aria-label="Поиск по меню" autocomplete="off" maxlength="100"><button id="clear-search" aria-label="Очистить поиск" hidden>×</button></div><button id="filter-saved" class="saved-filter" aria-pressed="false">Избранное<span class="saved-count">0</span></button></div>
+  <div class="menu-body"><nav class="category-nav" id="category-nav" aria-label="Категории меню"></nav><div class="menu-results"><div class="menu-results-meta" role="status" aria-live="polite" aria-atomic="true"><span id="results-label" class="sr-only">Всё меню</span><span id="results-count">Загружаем меню…</span></div><div id="menu-results"></div><noscript><p>Поиск работает с JavaScript. <a href="https://vx553.menuquickresto.ru/">Открыть меню пекарни</a>.</p></noscript><p class="menu-disclaimer">Цены из меню от 28.10.2026. Наличие и актуальную стоимость уточняйте в пекарне. Оформление заказа — в <a href="https://cehmarket.qrbooster.ru/" target="_blank" rel="noopener noreferrer">сервисе «Цеха»</a>.</p></div></div>
+</main>
+<footer class="site-footer page-width">
+  <div class="footer-main"><a class="brand" href="../" aria-label="Цех — главная"><img src="../assets/brand-mark.png" alt="" width="25" height="35"><span>цех</span></a><div class="footer-links"><a href="https://vk.com/cehperm" target="_blank" rel="noopener noreferrer">ВКонтакте</a><a href="mailto:cehperm@mail.ru">cehperm@mail.ru</a><button data-open-credits>О проекте</button></div></div>
+  <p class="legal">Пермь · Неофициальная digital-концепция</p>
+</footer>
+<dialog class="product-dialog" id="product-dialog" aria-labelledby="product-title"><button class="dialog-close" data-close-dialog aria-label="Закрыть карточку">×</button><div id="product-content"></div></dialog>
+<dialog class="credits-dialog" id="credits-dialog" aria-labelledby="credits-title"><button class="dialog-close" data-close-dialog aria-label="Закрыть информацию">×</button><h2 id="credits-title">О проекте</h2><p>Независимая концепция сайта пекарни «Цех». Это не официальный сайт компании.</p><p>Фотографии блюд и знак предоставлены пользователем. Первоначальные кадры — из <a href="https://vk.com/cehperm" target="_blank" rel="noopener noreferrer">группы «Цеха» во ВКонтакте</a>. Готовые обработанные изображения круассанов, каш и сырников предоставлены пользователем отдельно. Права на оригиналы принадлежат правообладателям.</p><p>Данные — снимок <a href="https://vx553.menuquickresto.ru/" target="_blank" rel="noopener noreferrer">публичного меню</a> от 28.10.2026. Адреса — из <a href="https://2gis.ru/perm/branches/70000001051340507" target="_blank" rel="noopener noreferrer">2ГИС</a>. Актуальные цены, наличие и часы работы уточняйте у пекарни.</p><p>Заказ и оплата — в <a href="https://cehmarket.qrbooster.ru/" target="_blank" rel="noopener noreferrer">сервисе «Цеха»</a>.</p></dialog>
+<div class="toast" role="status" aria-live="polite"></div>
+</body></html>

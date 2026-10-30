@@ -1,0 +1,43 @@
+/* Spatial About. Static and readable until its local timeline is ready. */
+.about-section { position: relative; isolation: isolate; color: #fff; background: #000; }
+.about-stage { position: relative; height: 100svh; min-height: 580px; max-width: 1920px; margin-inline: auto; overflow: clip; }
+.about-letter { position: absolute; z-index: 1; font-size: clamp(54px, 5.8vw, 104px); font-weight: 400; line-height: 1; pointer-events: none; }
+.about-letter-ts { left: 4%; top: 15%; }
+.about-letter-e { left: 6%; bottom: 9%; }
+.about-letter-kh { right: 6%; top: 11%; }
+.about-interior { position: absolute; z-index: 2; left: 12%; top: 11%; width: min(31%, 51svh); aspect-ratio: 3 / 4; overflow: hidden; }
+.about-product { position: absolute; z-index: 3; left: 37.6%; top: 30%; width: min(24.5%, 40svh); aspect-ratio: 3 / 4; overflow: hidden; }
+.about-interior img, .about-product img { width: 100%; height: 100%; object-fit: cover; }
+.about-interior img { object-position: 50% 45%; }
+.about-copy { position: absolute; z-index: 4; left: 67%; top: 38%; width: 28%; max-width: 460px; }
+.about-copy h2 { font-size: clamp(32px, 3.2vw, 58px); font-weight: 500; line-height: 1.11; letter-spacing: -.045em; }
+.about-line { display: block; overflow: hidden; padding-bottom: .19em; margin-bottom: -.19em; }
+.about-line > span { display: block; }
+.about-copy h2 .about-line + .about-line { margin-left: .65em; }
+.about-italics { margin-top: 30px; margin-left: 8%; font-family: Georgia, 'Times New Roman', serif; font-size: clamp(23px, 2.2vw, 39px); font-style: italic; font-weight: 400; letter-spacing: -.045em; line-height: 1.3; }
+.about-note { margin-top: 29px; font-size: clamp(13px, 1.05vw, 18px); line-height: 1.75; }
+.about-section[data-about-mode="cinematic"] { height: 270svh; }
+.about-section[data-about-mode="cinematic"] .about-stage { position: sticky; top: 0; }
+.about-section[data-about-active="true"] [data-about-motion] { will-change: transform, opacity; }
+
+/* A separate, naturally scrolling composition on touch-sized / short screens. */
+@media (max-width: 899px), (max-height: 579px) {
+  .about-section, .about-section[data-about-mode="cinematic"] { height: auto; }
+  .about-stage, .about-section[data-about-mode="cinematic"] .about-stage { position: relative; height: auto; min-height: 0; max-width: 760px; padding-block: 72px 82px; }
+  .about-letter { font-size: clamp(36px, 8vw, 60px); }
+  .about-letter-ts { left: 4%; top: 100px; }
+  .about-letter-kh { right: 7%; top: 50px; }
+  .about-letter-e { left: 4.5%; top: clamp(380px, 105vw, 650px); bottom: auto; }
+  .about-interior { position: relative; left: auto; top: auto; margin-left: 12%; width: min(64%, 390px); }
+  .about-product { left: 50%; top: clamp(190px, 49vw, 305px); width: min(43%, 292px); }
+  .about-copy { position: relative; left: auto; top: auto; margin: 88px 7% 0 16%; width: auto; max-width: none; }
+  .about-copy h2 { font-size: clamp(32px, 6.5vw, 45px); }
+  .about-italics { margin-top: 22px; margin-left: 13%; font-size: clamp(23px, 4.8vw, 32px); }
+  .about-note { margin-top: 25px; font-size: 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-section[data-about-mode] { height: auto; }
+  .about-section[data-about-mode] .about-stage { position: relative; }
+  .about-section [data-about-motion] { will-change: auto; }
+}
