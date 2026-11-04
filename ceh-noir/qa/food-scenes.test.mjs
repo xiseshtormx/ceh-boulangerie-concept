@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { foodDrift, initFoodScene } from '../food-scenes.js';
+import { initFoodScene } from '../food-scenes.js';
 
 const flush = async () => { for (let i = 0; i < 8; i++) await Promise.resolve(); };
 const classes = initial => {
@@ -99,18 +99,6 @@ function scene(t, { reduced = false, motion = true, saveData = true } = {}) {
   };
 }
 
-test('Dish drift is bounded, reversible and reduced on narrow viewports', () => {
-  for (const mobile of [false, true]) {
-    const limit = mobile ? 5 : 12;
-    for (const top of [-4000, -700, -100, 0, 300, 900, 4000]) {
-      const value = foodDrift(top, 700, 900, mobile);
-      assert.ok(Number.isFinite(value)); assert.ok(Math.abs(value) <= limit);
-      assert.equal(value, -foodDrift(200 - top, 700, 900, mobile));
-    }
-    assert.equal(Math.abs(foodDrift(100, 700, 900, mobile)), 0);
-  }
-});
-
 test('Only the latest decoded flavor commits its photo, alternative text and detail action', async t => {
   const s = scene(t, { motion: false });
   s.choose(1); s.choose(2);
@@ -162,49 +150,6 @@ test('Rapid choices settle an active crossfade before staging a newer replacemen
   assert.equal(s.images.filter(image => image.getAttribute('aria-hidden') !== 'true').length, 1); s.dispose();
 });
 
-test('Keyboard and reduced motion cancel effects and keep flavor controls usable without an entrance', async t => {
-  const s = scene(t);
-  s.enter(); await flush();
-  assert.equal(s.section.dataset.foodState, 'entering'); assert.equal(s.animations.length, 5);
-  s.document.dispatchEvent(new Event('keydown')); await flush();
-  assert.ok(s.animations.every(animation => animation.cancelled)); assert.equal(s.frames.size, 0);
-  const count = s.animations.length;
-  s.choose(1); s.requests[0].resolve(); await flush();
-  assert.equal(s.section.dataset.foodVariant, 'dish-1'); assert.equal(s.animations.length, count);
-  s.document.dispatchEvent(new Event('pointerdown')); s.media.matches = true; s.media.dispatchEvent(new Event('change'));
-  s.choose(2); s.requests[1].resolve(); await flush();
-  assert.equal(s.section.dataset.foodVariant, 'dish-2'); assert.equal(s.animations.length, count);
-  assert.equal(s.drift.style.transform, 'translate3d(0,0,0)'); s.dispose();
-});
-
-test('Entrance plays once; parallax stops when settled, offscreen, hidden or disposed', async t => {
-  const s = scene(t);
-  s.enter(); await flush(); s.finish(); await flush(); s.runFrames();
-  assert.equal(s.section.dataset.foodState, 'settled'); assert.equal(s.frames.size, 0);
-  const count = s.animations.length;
-  s.leave(); s.enter(); await flush(); s.runFrames(); assert.equal(s.animations.length, count);
-  s.box.top = -200; s.window.dispatchEvent(new Event('scroll')); assert.equal(s.frames.size, 1);
-  s.runFrames(); assert.equal(s.frames.size, 0); assert.equal(s.section.dataset.foodFrames, 'idle');
-  s.box.top = 300; s.window.dispatchEvent(new Event('scroll')); s.leave(); assert.equal(s.frames.size, 0);
-  s.enter(); s.document.hidden = true; s.document.dispatchEvent(new Event('visibilitychange'));
-  assert.equal(s.frames.size, 0);
-  s.document.hidden = false; s.document.dispatchEvent(new Event('visibilitychange')); s.runFrames();
-  s.dispose(); assert.equal(s.frames.size, 0);
-  s.window.dispatchEvent(new Event('scroll')); s.choose(1); assert.equal(s.frames.size, 0); assert.equal(s.requests.length, 0);
-});
-
-test('A fringe intersection does not consume the entrance before enough of the section is visible', async t => {
-  const s = scene(t);
-  s.enter(.01); await flush();
-  assert.equal(s.section.dataset.foodState, 'idle'); assert.equal(s.animations.length, 0);
-  s.enter(.2); await flush();
-  assert.equal(s.section.dataset.foodState, 'entering'); assert.equal(s.animations.length, 5);
-  s.finish(); await flush(); s.runFrames();
-  assert.equal(s.section.dataset.foodState, 'settled');
-  s.leave(); s.enter(.2); await flush(); s.runFrames();
-  assert.equal(s.animations.length, 5, 'Re-entry cannot replay the consumed entrance'); s.dispose();
-});
-
 test('A late decoded or rejected request cannot mutate a disposed scene', async t => {
   const s = scene(t, { motion: false });
   s.choose(1); s.choose(2); s.dispose();
@@ -212,4 +157,14 @@ test('A late decoded or rejected request cannot mutate a disposed scene', async 
   s.requests[0].reject(new Error('Late rejected image')); s.requests[1].resolve(); await flush();
   assert.equal(s.section.dataset.foodVariant, variant); assert.equal(s.details.dataset.product, detail);
   assert.equal(s.errors(), 0); assert.equal(s.animations.length, 0);
+});
+
+test('Flavor crossfades settle for keyboard and reduced motion without disabling selection', async t => {
+ const s=scene(t); s.choose(1); s.requests[0].resolve(); await flush();
+ assert.equal(s.animations.length,2); s.document.dispatchEvent(new Event('keydown')); await flush();
+ assert.ok(s.animations.every(a=>a.cancelled)); s.choose(2); s.requests[1].resolve(); await flush();
+ assert.equal(s.section.dataset.foodVariant,'dish-2'); assert.equal(s.animations.length,2);
+ s.document.dispatchEvent(new Event('pointerdown')); s.media.matches=true; s.media.dispatchEvent(new Event('change'));
+ s.choose(0); s.requests[2].resolve(); await flush(); assert.equal(s.section.dataset.foodVariant,'dish-0');
+ assert.equal(s.animations.length,2);s.dispose();
 });

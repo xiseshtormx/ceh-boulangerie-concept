@@ -1,0 +1,240 @@
+[
+  {
+    "black": "rgb(0, 0, 0)",
+    "filters": "none",
+    "headingColor": "rgb(255, 255, 255)",
+    "hero": [
+      0,
+      0,
+      305,
+      710
+    ],
+    "image": [
+      -76.25,
+      312.578125,
+      457.5,
+      305
+    ],
+    "pageOverflow": false,
+    "photoReady": true,
+    "product": [
+      17.537499999999994,
+      359.853125,
+      288.3775,
+      541.938125
+    ],
+    "reflectionBottom": 617.578125,
+    "viewport": [
+      320,
+      700
+    ],
+    "word": [
+      23,
+      276.09375
+    ]
+  },
+  {
+    "black": "rgb(0, 0, 0)",
+    "filters": "none",
+    "headingColor": "rgb(255, 255, 255)",
+    "hero": [
+      0,
+      0,
+      375,
+      780
+    ],
+    "image": [
+      -93.75,
+      319.484375,
+      562.5,
+      375
+    ],
+    "pageOverflow": false,
+    "photoReady": true,
+    "product": [
+      21.5625,
+      377.609375,
+      354.5625,
+      601.484375
+    ],
+    "reflectionBottom": 694.484375,
+    "viewport": [
+      390,
+      844
+    ],
+    "word": [
+      27,
+      322.25
+    ]
+  },
+  {
+    "black": "rgb(0, 0, 0)",
+    "filters": "none",
+    "headingColor": "rgb(255, 255, 255)",
+    "hero": [
+      0,
+      0,
+      753,
+      900
+    ],
+    "image": [
+      274.84375,
+      280.57501220703125,
+      564.75,
+      376.5
+    ],
+    "pageOverflow": false,
+    "photoReady": true,
+    "product": [
+      390.6175,
+      338.93251220703127,
+      724.9495,
+      563.7030122070312
+    ],
+    "reflectionBottom": 657.0750122070312,
+    "viewport": [
+      768,
+      1024
+    ],
+    "word": [
+      48,
+      343.25
+    ]
+  },
+  {
+    "black": "rgb(0, 0, 0)",
+    "filters": "none",
+    "headingColor": "rgb(255, 255, 255)",
+    "hero": [
+      0,
+      0,
+      1009,
+      700
+    ],
+    "image": [
+      368.28125,
+      122.97500610351562,
+      756.75,
+      504.4999694824219
+    ],
+    "pageOverflow": false,
+    "photoReady": true,
+    "product": [
+      523.415,
+      201.17250137329103,
+      971.411,
+      502.3589831542969
+    ],
+    "reflectionBottom": 627.4749755859375,
+    "viewport": [
+      1024,
+      768
+    ],
+    "word": [
+      48,
+      367.1875
+    ]
+  },
+  {
+    "black": "rgb(0, 0, 0)",
+    "filters": "none",
+    "headingColor": "rgb(255, 255, 255)",
+    "hero": [
+      0,
+      0,
+      1425,
+      900
+    ],
+    "image": [
+      520.125,
+      129.375,
+      1068.75,
+      712.5
+    ],
+    "pageOverflow": false,
+    "photoReady": true,
+    "product": [
+      739.21875,
+      239.8125,
+      1371.91875,
+      665.175
+    ],
+    "reflectionBottom": 841.875,
+    "viewport": [
+      1440,
+      900
+    ],
+    "word": [
+      92.625,
+      543.328125
+    ]
+  },
+  {
+    "black": "rgb(0, 0, 0)",
+    "filters": "none",
+    "headingColor": "rgb(255, 255, 255)",
+    "hero": [
+      105,
+      0,
+      1680,
+      846
+    ],
+    "image": [
+      858.59375,
+      99,
+      1080,
+      720
+    ],
+    "pageOverflow": false,
+    "photoReady": true,
+    "product": [
+      1079.99375,
+      210.6,
+      1719.35375,
+      640.44
+    ],
+    "reflectionBottom": 819,
+    "viewport": [
+      1905,
+      846
+    ],
+    "word": [
+      213,
+      740.171875
+    ]
+  },
+  {
+    "black": "rgb(0, 0, 0)",
+    "filters": "none",
+    "headingColor": "rgb(255, 255, 255)",
+    "hero": [
+      432.5,
+      0,
+      1680,
+      1000
+    ],
+    "image": [
+      1192.5,
+      176,
+      1080,
+      720
+    ],
+    "pageOverflow": false,
+    "photoReady": true,
+    "product": [
+      1413.9,
+      287.6,
+      2053.26,
+      717.44
+    ],
+    "reflectionBottom": 896,
+    "viewport": [
+      2560,
+      1440
+    ],
+    "word": [
+      540.5,
+      1067.671875
+    ]
+  }
+]

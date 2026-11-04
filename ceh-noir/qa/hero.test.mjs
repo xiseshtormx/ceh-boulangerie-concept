@@ -32,14 +32,14 @@ function mount({ reduced = false, random = 0 } = {}) {
 
 const tick = async () => { await Promise.resolve(); await Promise.resolve(); };
 
-test('Each hero variant keeps its box hidden until full decoding, then enters once', async () => {
+test('The supplied hero photograph is stable across visits, decodes fully, then enters once', async () => {
   const selected = new Set();
   for (const random of [0, 0.5, 0.999]) {
     const scene = mount({ random });
     assert.equal(scene.image.dataset.heroState, 'loading');
     assert.equal(scene.image.hidden, false, 'Keep the reserved layout box while loading');
     assert.equal(scene.animations.length, 0, 'Do not animate a partially decoded PNG');
-    assert.equal(scene.requests.length, 1, 'Request only the chosen photo');
+    assert.equal(scene.requests.length, 1, 'Request only the supplied photo');
     const png = readFileSync(new URL('../' + scene.requests[0], import.meta.url));
     assert.equal(scene.image.width, png.readUInt32BE(16));
     assert.equal(scene.image.height, png.readUInt32BE(20));
@@ -52,7 +52,7 @@ test('Each hero variant keeps its box hidden until full decoding, then enters on
     scene.window.dispatchEvent(Object.assign(new Event('pageshow'), { persisted: true }));
     assert.equal(scene.animations.length, 1, 'History restoration must not replay the entrance');
   }
-  assert.equal(selected.size, 3);
+  assert.deepEqual([...selected], ['assets/hero/croissant-studio.png']);
 });
 
 test('Keyboard input during loading skips motion without exposing an unfinished image', async () => {

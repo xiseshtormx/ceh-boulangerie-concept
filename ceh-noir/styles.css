@@ -74,7 +74,7 @@ h1, h2, h3 { font-family: Golos, Arial, sans-serif; font-weight: 650; }
 .quiet-link { display: inline-flex; align-items: center; min-height: 36px; font-size: 13px; color: var(--paper); text-decoration: underline; text-underline-offset: 7px; text-decoration-color: #ffffff66; text-decoration-thickness: 1px; transition: text-decoration-color 180ms ease, color 180ms ease; }
 
 /* Hero is a single scene. There is no slider, caption, timer, or ornament. */
-.hero { min-height: 780px; height: min(100svh, 1000px); display: grid; grid-template-columns: .9fr 1.22fr; align-items: center; gap: 2%; padding-block: 135px 92px; isolation: isolate; }
+.hero { --hero-height: clamp(780px, 100svh, 1000px); position: relative; min-height: 780px; height: var(--hero-height); display: grid; grid-template-columns: .9fr 1.22fr; align-items: center; gap: 2%; padding-block: 135px 92px; isolation: isolate; overflow: clip; background: #000000; }
 .hero-copy { position: relative; z-index: 1; padding-bottom: 12px; }
 .hero h1 { font-size: clamp(56px, 6vw, 100px); font-weight: 900; line-height: .95; letter-spacing: -.05em; }
 
@@ -87,8 +87,10 @@ h1, h2, h3 { font-family: Golos, Arial, sans-serif; font-weight: 650; }
 }
 
 .hero-copy p { margin-top: 28px; color: var(--muted); font-size: 14px; line-height: 1.7; animation: ceh-hero-text-in 640ms var(--ease) 180ms both; }
-.hero-visual { display: flex; align-items: center; justify-content: center; min-width: 0; }
-.hero-croissant { width: 100%; max-height: 660px; height: auto; object-fit: contain; }
+/* The photograph includes generous black margins and its own complete reflection.
+   Position the photographed object, rather than treating the file bounds as the product. */
+.hero-visual { position: absolute; left: calc(50% + min(24vw, 460px)); top: 50%; width: min(75vw, 1080px, calc((var(--hero-height) - 90px) * 1.5)); transform: translate(-50%, -45%); display: flex; align-items: center; justify-content: center; min-width: 0; }
+.hero-croissant { flex: none; width: 100%; max-width: none; height: auto; aspect-ratio: 3 / 2; object-fit: contain; mask-image: linear-gradient(to bottom, #000 94%, transparent 100%); }
 .hero-croissant[data-hero-state="loading"], .hero-croissant[data-hero-state="error"] { visibility: hidden; }
 
 /* Food photography sits directly in the same black space. */
@@ -241,7 +243,7 @@ dialog.is-closing::backdrop { opacity: 0; }
 }
 @media (max-width: 1050px) {
   :root { --pad: 48px; }
-  .hero { grid-template-columns: .95fr 1.05fr; min-height: 700px; height: 90svh; gap: 10px; }
+  .hero { --hero-height: clamp(700px, 90svh, 900px); grid-template-columns: .95fr 1.05fr; min-height: 700px; height: var(--hero-height); gap: 10px; }
   .hero h1 { font-size: clamp(56px, 6vw, 68px); }
   .hero-copy p { max-width: 250px; }
   .food-chapter { min-height: 590px; column-gap: 6%; }
@@ -257,13 +259,13 @@ dialog.is-closing::backdrop { opacity: 0; }
   .brand span { font-size: 32px; }
   .brand img { width: 20px; height: 29px; }
   .site-header nav { font-size: 12px; gap: 25px; }
-  .hero { height: auto; min-height: 780px; padding-block: 155px 65px; display: flex; flex-direction: column; align-items: stretch; gap: 45px; }
+  .hero { height: auto; min-height: 780px; padding-block: 155px 40px; display: flex; flex-direction: column; align-items: stretch; gap: 12px; }
   .hero h1 { font-size: clamp(56px, 9vw, 68px); line-height: .95; }
   .hero-copy { padding: 0; }
   .hero-copy p { font-size: 13px; margin-top: 24px; max-width: 300px; }
   .button { min-height: 48px; font-size: 12px; padding-inline: 24px; }
-  .hero-visual { width: 100%; max-width: 500px; margin: 0 auto; }
-  .hero-croissant { max-height: 360px; width: 94%; }
+  .hero-visual { position: relative; left: auto; top: auto; transform: none; width: calc(100% + var(--pad) * 2); margin-inline: calc(var(--pad) * -1); }
+  .hero-croissant { width: 150%; max-width: 900px; }
   .food-chapter { min-height: 0; display: flex; flex-direction: column; align-items: stretch; gap: 38px; padding-block: 65px; }
   .food-copy { max-width: 100%; }
   .food-copy h2 { font-size: 38px; }
@@ -336,7 +338,6 @@ dialog.is-closing::backdrop { opacity: 0; }
   .hero { min-height: 710px; padding-top: 137px; gap: 40px; }
   .hero h1 { font-size: clamp(48px, 15.5vw, 56px); letter-spacing: -.055em; }
   .hero-copy p { font-size: 12px; }
-  .hero-croissant { max-height: 300px; }
   .food-copy h2 { font-size: 35px; }
   .food-options { gap: 0 18px; }
   .food-options button { font-size: 11px; }

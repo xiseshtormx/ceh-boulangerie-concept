@@ -46,8 +46,8 @@ function chapter(chapter) {
   const entry = chapter.entries[0];
   const photo = foodPhoto(entry);
   return `<section class="food-chapter chapter-${chapter.layout} page-width" id="${chapter.id}" aria-labelledby="${chapter.id}-title" data-chapter="${chapter.id}">
-  <div class="food-copy"><h2 id="${chapter.id}-title"><span class="food-title-window"><span class="food-title-ink">${chapter.title}</span></span></h2><p>${chapter.description.replaceAll('\n', '<br>')}</p>
-  ${chapter.entries.length > 1 ? `<div class="food-options" role="group" aria-label="Выбрать блюдо: ${chapter.title}">${chapter.entries.map((item, index) => `<button data-variant="${index}" aria-pressed="${index === 0}">${item.label}</button>`).join('')}</div>` : ''}
+  <div class="food-copy"><h2 id="${chapter.id}-title"><span class="food-title-window"><span class="food-title-ink">${chapter.title}</span></span></h2><p>${chapter.description.split('\n').map(line => `<span class="food-description-line"><span class="food-description-ink">${line}</span></span>`).join(' ')}</p>
+  ${chapter.entries.length > 1 ? `<div class="food-options" role="group" aria-label="Выбрать блюдо: ${chapter.title}">${chapter.entries.map((item, index) => `<button data-variant="${index}" data-label="${safe(item.label)}" aria-pressed="${index === 0}"><span class="food-option-mask"><span class="food-option-ink">${item.label}</span></span></button>`).join('')}</div>` : ''}
   <button class="quiet-link food-details" data-product="${entry.id}">О блюде</button></div>
   <div class="food-scene"><div class="food-drift"><div class="food-arrival"><div class="food-plate"><img class="food-image is-current" src="${photo.src}" srcset="${photo.srcset}" sizes="${photo.sizes}" alt="${entry.alt}" width="${entry.width}" height="${entry.height}" loading="lazy" decoding="async"><img class="food-image" alt="" aria-hidden="true" decoding="async" hidden></div></div></div></div>
 </section>`;
@@ -76,7 +76,7 @@ ${header()}
 <main id="main">
   <section class="hero page-width" aria-labelledby="hero-title">
     <div class="hero-copy"><h1 id="hero-title" aria-label="ЗАКАЗАТЬ СЕЙЧАС"><span class="hero-type-line" aria-hidden="true"><span class="hero-word hero-word-order">${glyphs('ЗАКАЗАТЬ')}</span></span><span class="hero-type-line" aria-hidden="true"><span class="hero-word hero-word-now hero-now-roman">${glyphs('СЕЙЧАС')}</span><span class="hero-word hero-word-now hero-now-serif">${glyphs('сейчас.')}</span></span></h1><p>Выпечка, завтраки и кофе в Перми.</p></div>
-    <div class="hero-visual"><img class="hero-croissant" alt="" width="3840" height="3158" fetchpriority="high" decoding="async" hidden><script src="hero.js"></script><noscript><img class="hero-croissant" src="assets/hero/croissant-salmon.png" alt="Круассан с лососем" width="3840" height="3163" fetchpriority="high" decoding="async"></noscript></div>
+    <div class="hero-visual"><img class="hero-croissant" alt="" width="1536" height="1024" fetchpriority="high" decoding="async" hidden><script src="hero.js"></script><noscript><img class="hero-croissant" src="assets/hero/croissant-studio.png" alt="Круассан «Цеха» с отражением на чёрной поверхности" width="1536" height="1024" fetchpriority="high" decoding="async"></noscript></div>
   </section>
   <section class="about-section" id="about" aria-labelledby="about-title">
     <div class="about-stage">
@@ -96,7 +96,7 @@ ${header()}
       </div>
     </div>
   </section>
-  <div id="food">${foodChapters.map(chapter).join('\n')}</div>
+  <div id="food"><div class="food-stage">${foodChapters.map(chapter).join('\n')}</div></div>
   <section class="coffee-section coffee-cinematic" id="coffee" data-coffee-renderer="3d" aria-labelledby="coffee-title">
     <div class="coffee-story">
       <div class="coffee-pin"><div class="coffee-stage" role="img" aria-label="Белая керамическая чашка наклоняется и наполняется эспрессо."><picture><source media="(max-width: 760px)" srcset="assets/coffee/3d/poster-mobile.webp"><img class="coffee-poster" src="assets/coffee/3d/poster.webp" alt="" width="1280" height="1280" loading="lazy" decoding="async"></picture><canvas class="coffee-canvas" aria-hidden="true"></canvas></div></div>

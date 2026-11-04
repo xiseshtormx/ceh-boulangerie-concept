@@ -1,4 +1,4 @@
-// Choose once during parsing; reveal only after the complete image has decoded.
+// One supplied photograph, including its reflection; reveal after full decoding.
 // The reserved image box stays in place while loading. No slideshow or replay.
 (() => {
   const image = document.querySelector('.hero-croissant');
@@ -22,18 +22,12 @@
   reduceMotion.addEventListener('change', () => { if (reduceMotion.matches) stopMotion(); });
   window.addEventListener('pageshow', event => { if (event.persisted) stopMotion(); });
 
-  const variants = [
-    { src: 'assets/hero/croissant-cucumber.png', alt: 'Круассан с огурцом и зеленью', width: 3840, height: 3158 },
-    { src: 'assets/hero/croissant-ham-cheese.png', alt: 'Круассан с ветчиной и сыром', width: 3840, height: 3158 },
-    { src: 'assets/hero/croissant-salmon.png', alt: 'Круассан с лососем', width: 3840, height: 3163 }
-  ];
-  const selected = variants[Math.floor(Math.random() * variants.length)];
-  image.alt = selected.alt;
-  image.width = selected.width;
-  image.height = selected.height;
+  image.alt = 'Круассан «Цеха» с отражением на чёрной поверхности';
+  image.width = 1536;
+  image.height = 1024;
   image.dataset.heroState = 'loading';
   image.hidden = false;
-  image.src = selected.src;
+  image.src = 'assets/hero/croissant-studio.png';
 
   async function reveal() {
     try {
@@ -44,9 +38,9 @@
     }
     if (allowIntro && !reduceMotion.matches && !document.hidden) {
       intro = image.animate([
-        { opacity: 0, transform: 'translate3d(0, 12px, 0)' },
+        { opacity: 0, transform: 'translate3d(0, 20px, 0) scale(.98)' },
         { opacity: 1, transform: 'none' }
-      ], { duration: 850, easing: 'cubic-bezier(.23,1,.32,1)', fill: 'backwards' });
+      ], { duration: 1100, delay: 140, easing: 'cubic-bezier(.23,1,.32,1)', fill: 'backwards' });
       const animation = intro;
       animation.addEventListener('finish', () => {
         animation.cancel();
