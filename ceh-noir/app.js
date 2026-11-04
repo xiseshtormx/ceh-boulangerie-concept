@@ -4,6 +4,7 @@ import { createLocationPreview } from './location-preview.js';
 import { initCoffeeStory } from './coffee-story.js';
 import { initAboutStory } from './about.js';
 import { initSiteHeader } from './header.js';
+import { initFoodScenes } from './food-scenes.js';
 
 const projectRoot = new URL('.', import.meta.url);
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
@@ -102,43 +103,9 @@ const observer = new IntersectionObserver(entries => {
   for (const entry of entries) if (entry.isIntersecting) { entry.target.classList.add('revealed'); observer.unobserve(entry.target); }
 }, { threshold: 0.12 });
 $$('[data-reveal]').forEach(el => observer.observe(el));
-// Variations belong to the food chapters, never to the opening scene.
-$$('[data-chapter]').forEach(section => {
-  const chapter = foodChapters.find(item => item.id === section.dataset.chapter);
-  if (!chapter || chapter.entries.length < 2) return;
-  const image = $('.food-image', section);
-  const buttons = $$('[data-variant]', section);
-  let current = 0, selected = 0, request = 0, timer;
-  buttons.forEach((button, index) => button.addEventListener('click', async () => {
-    if (index === selected) return;
-    selected = index;
-    const version = ++request;
-    clearTimeout(timer);
-    const entry = chapter.entries[index];
-    buttons.forEach((other, i) => other.setAttribute('aria-pressed', String(i === index)));
-    const source = new URL(`assets/dishes/${entry.image}`, projectRoot).href;
-    try {
-      const next = new Image(); next.src = source;
-      await next.decode();
-      if (version !== request) return;
-      const commit = () => {
-        if (version !== request) return;
-        image.src = source; image.alt = entry.alt;
-        image.width = entry.width; image.height = entry.height;
-        $('.food-details', section).dataset.product = entry.id;
-        current = index;
-        requestAnimationFrame(() => { if (version === request) image.classList.remove('changing'); });
-      };
-      if (motionAllowed()) { image.classList.add('changing'); timer = setTimeout(commit, 120); }
-      else { commit(); image.classList.remove('changing'); }
-    } catch {
-      if (version === request) {
-        selected = current;
-        buttons.forEach((other, i) => other.setAttribute('aria-pressed', String(i === current)));
-        image.classList.remove('changing'); toast('Не удалось загрузить фотографию.');
-      }
-    }
-  }));
+initFoodScenes($('#food'), {
+  chapters: foodChapters, baseURL: projectRoot, motionAllowed,
+  onError: () => toast('Не удалось загрузить фотографию.')
 });
 
 // Interruptible address movement: layout updates once, only transforms animate.

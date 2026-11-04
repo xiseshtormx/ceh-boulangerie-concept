@@ -1,5 +1,6 @@
 import { writeFile, readFile } from 'node:fs/promises';
 import { foodChapters, locations } from '../presentation.js';
+import { foodPhoto } from '../food-media.js';
 
 const root = new URL('../', import.meta.url);
 const media = JSON.parse(await readFile(new URL('site-media.json', root), 'utf8'));
@@ -43,11 +44,12 @@ const dialogs = () => `<dialog class="product-dialog" id="product-dialog" aria-l
 
 function chapter(chapter) {
   const entry = chapter.entries[0];
+  const photo = foodPhoto(entry);
   return `<section class="food-chapter chapter-${chapter.layout} page-width" id="${chapter.id}" aria-labelledby="${chapter.id}-title" data-chapter="${chapter.id}">
-  <div class="food-copy" data-reveal><h2 id="${chapter.id}-title">${chapter.title}</h2><p>${chapter.description.replaceAll('\n', '<br>')}</p>
+  <div class="food-copy"><h2 id="${chapter.id}-title"><span class="food-title-window"><span class="food-title-ink">${chapter.title}</span></span></h2><p>${chapter.description.replaceAll('\n', '<br>')}</p>
   ${chapter.entries.length > 1 ? `<div class="food-options" role="group" aria-label="Выбрать блюдо: ${chapter.title}">${chapter.entries.map((item, index) => `<button data-variant="${index}" aria-pressed="${index === 0}">${item.label}</button>`).join('')}</div>` : ''}
   <button class="quiet-link food-details" data-product="${entry.id}">О блюде</button></div>
-  <div class="food-scene" data-reveal><img class="food-image" src="assets/dishes/${entry.image}" alt="${entry.alt}" width="${entry.width}" height="${entry.height}" loading="lazy" decoding="async"></div>
+  <div class="food-scene"><div class="food-drift"><div class="food-arrival"><div class="food-plate"><img class="food-image is-current" src="${photo.src}" srcset="${photo.srcset}" sizes="${photo.sizes}" alt="${entry.alt}" width="${entry.width}" height="${entry.height}" loading="lazy" decoding="async"><img class="food-image" alt="" aria-hidden="true" decoding="async" hidden></div></div></div></div>
 </section>`;
 }
 const glyphs = text => Array.from(text, character => `<span class="hero-char-mask"><span class="hero-glyph-ink">${safe(character)}</span></span>`).join('');
@@ -68,7 +70,7 @@ const typeHead = `<script>
   </script>
   <link rel="stylesheet" href="hero-type.css">
   <script type="module" src="hero-type.js"></script>`;
-const home = `${head('Цех', 'Круассаны, завтраки и кофе в Перми. Настоящие блюда «Цеха», меню и адреса пекарен.', '', '<link rel="stylesheet" href="coffee.css">\n  <link rel="stylesheet" href="about.css">\n  ' + typeHead)}
+const home = `${head('Цех', 'Круассаны, завтраки и кофе в Перми. Настоящие блюда «Цеха», меню и адреса пекарен.', '', '<link rel="stylesheet" href="coffee.css">\n  <link rel="stylesheet" href="about.css">\n  <link rel="stylesheet" href="food-scenes.css">\n  <link rel="stylesheet" href="closing-cta.css">\n  <script type="module" src="closing-cta.js"></script>\n  ' + typeHead)}
 <body data-page="home">
 ${header()}
 <main id="main">
@@ -109,7 +111,7 @@ ${header()}
       return `<details class="location" data-location="${place.id}"><summary><span class="location-address">${place.address}</span></summary><div class="location-content"><p>${place.description}</p><a class="quiet-link" href="${place.route}" target="_blank" rel="noopener noreferrer">Открыть в 2ГИС</a>${photo ? `<div class="location-photo">${photo}</div>` : ''}</div></details>`;
     }).join('\n')}</div></div>
   </section>
-  <section class="closing page-width" aria-label="Полное меню"><h2 data-reveal><a href="menu/">Посмотреть<br>всё меню.</a></h2></section>
+  <section class="closing page-width" id="full-menu" aria-label="Полное меню"><h2><a class="closing-link" href="menu/" aria-label="Посмотреть всё меню."><span class="closing-mask" aria-hidden="true"><span class="closing-hover closing-hover-first"><span class="closing-reveal">Посмотреть</span></span></span><span class="closing-mask" aria-hidden="true"><span class="closing-hover closing-hover-second"><span class="closing-reveal">всё меню.</span></span></span></a></h2></section>
 </main>
 ${footer()}
 ${dialogs()}

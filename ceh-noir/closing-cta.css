@@ -1,0 +1,58 @@
+@font-face {
+  font-family: 'Ceh CTA Serif';
+  src: url('assets/fonts/noto-serif-display-cta-italic-500.ttf') format('truetype');
+  font-style: italic;
+  font-weight: 500;
+  font-display: block;
+}
+
+/* Existing section, size and space. Only its two typographic lines have motion. */
+.closing { background: #000000; color: #FFFFFF; }
+.closing h2 { font-weight: 600; line-height: 1.3; letter-spacing: -.038em; }
+.closing .closing-link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 100%;
+  padding-inline: 20px;
+  color: #FFFFFF;
+  font-synthesis: none;
+  transition: transform 140ms cubic-bezier(.23,1,.32,1);
+}
+.closing-mask {
+  display: block;
+  height: 1.3em;
+  padding-inline: 18px;
+  margin-inline: -18px;
+  overflow: clip;
+  white-space: nowrap;
+}
+.closing-hover {
+  display: block;
+  transition: transform 460ms cubic-bezier(.22,1,.36,1);
+}
+.closing-reveal { display: block; }
+.closing-hover-second {
+  position: relative;
+  left: -.025em;
+  font-family: 'Ceh CTA Serif', Georgia, serif;
+  font-size: 1.08em;
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.203704;
+  letter-spacing: -.043em;
+}
+.closing .closing-link:focus-visible { outline: 1px solid #FFFFFF; outline-offset: 14px; }
+.closing .closing-link:active { transform: scale(.985); }
+
+@media (hover: hover) and (pointer: fine) {
+  .closing-link:hover .closing-hover-first { transform: translate3d(-10px,0,0); }
+  .closing-link:hover .closing-hover-second { transform: translate3d(10px,0,0); }
+}
+.keyboard-input .closing .closing-hover,
+.closing-link:focus-visible .closing-hover { transform: none; transition: none; }
+.keyboard-input .closing .closing-link { transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .closing .closing-hover, .closing .closing-reveal, .closing .closing-link { transform: none !important; transition: none; }
+  .closing .closing-reveal { clip-path: none !important; }
+}

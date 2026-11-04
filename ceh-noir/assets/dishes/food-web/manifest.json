@@ -1,0 +1,232 @@
+{
+  "recipe": {
+    "format": "webp",
+    "quality": 90,
+    "alphaQuality": 100,
+    "maxDimensions": [
+      800,
+      1600
+    ],
+    "crop": false,
+    "upscale": false
+  },
+  "images": {
+    "rice-berry": {
+      "source": "rice-berry.png",
+      "width": 1402,
+      "height": 1122,
+      "bytes": 2405951,
+      "sha256": "ee56180a19327d051e4d905eac7dbfbee1ea25afce83f602dbb4fe59005c2550",
+      "variants": {
+        "800": {
+          "src": "assets/dishes/food-web/rice-berry-800.webp",
+          "width": 800,
+          "height": 640,
+          "bytes": 122182
+        },
+        "1600": {
+          "src": "assets/dishes/food-web/rice-berry-1600.webp",
+          "width": 1402,
+          "height": 1122,
+          "bytes": 282638
+        }
+      }
+    },
+    "rice-porridge": {
+      "source": "rice-porridge.png",
+      "width": 1402,
+      "height": 1122,
+      "bytes": 2194821,
+      "sha256": "0c1178a8ce454e6411cbfdb699b08f9a28ddc619f78105d83e4cb3b332d142e2",
+      "variants": {
+        "800": {
+          "src": "assets/dishes/food-web/rice-porridge-800.webp",
+          "width": 800,
+          "height": 640,
+          "bytes": 92218
+        },
+        "1600": {
+          "src": "assets/dishes/food-web/rice-porridge-1600.webp",
+          "width": 1402,
+          "height": 1122,
+          "bytes": 214340
+        }
+      }
+    },
+    "oatmeal": {
+      "source": "oatmeal.png",
+      "width": 1402,
+      "height": 1122,
+      "bytes": 1993798,
+      "sha256": "be7f664b75cc06226ebefaab4316d227b47f689d5aa96439b354a2b3be93574f",
+      "variants": {
+        "800": {
+          "src": "assets/dishes/food-web/oatmeal-800.webp",
+          "width": 800,
+          "height": 640,
+          "bytes": 84418
+        },
+        "1600": {
+          "src": "assets/dishes/food-web/oatmeal-1600.webp",
+          "width": 1402,
+          "height": 1122,
+          "bytes": 189846
+        }
+      }
+    },
+    "oatmeal-cheese": {
+      "source": "oatmeal-cheese.png",
+      "width": 1402,
+      "height": 1122,
+      "bytes": 2188218,
+      "sha256": "084f3acf786c84fec7e50cafe27e1b0d376394ebeeee93dec8ce07aef07ade50",
+      "variants": {
+        "800": {
+          "src": "assets/dishes/food-web/oatmeal-cheese-800.webp",
+          "width": 800,
+          "height": 640,
+          "bytes": 101996
+        },
+        "1600": {
+          "src": "assets/dishes/food-web/oatmeal-cheese-1600.webp",
+          "width": 1402,
+          "height": 1122,
+          "bytes": 222714
+        }
+      }
+    },
+    "oatmeal-chocolate": {
+      "source": "oatmeal-chocolate.png",
+      "width": 1402,
+      "height": 1122,
+      "bytes": 2312104,
+      "sha256": "a4f5615a6b93040dc7a86dbc96015118813d020fba41fbefa15aa989d0d39018",
+      "variants": {
+        "800": {
+          "src": "assets/dishes/food-web/oatmeal-chocolate-800.webp",
+          "width": 800,
+          "height": 640,
+          "bytes": 109800
+        },
+        "1600": {
+          "src": "assets/dishes/food-web/oatmeal-chocolate-1600.webp",
+          "width": 1402,
+          "height": 1122,
+          "bytes": 254652
+        }
+      }
+    },
+    "syrniki-condensed": {
+      "source": "syrniki-condensed.png",
+      "width": 4096,
+      "height": 4096,
+      "bytes": 6943449,
+      "sha256": "54a6ae34e1333b8b4eadcbd30387d77e5051866d3fe95d756dadfde5e5307749",
+      "variants": {
+        "800": {
+          "src": "assets/dishes/food-web/syrniki-condensed-800.webp",
+          "width": 800,
+          "height": 800,
+          "bytes": 101178
+        },
+        "1600": {
+          "src": "assets/dishes/food-web/syrniki-condensed-1600.webp",
+          "width": 1600,
+          "height": 1600,
+          "bytes": 291816
+        }
+      }
+    },
+    "syrniki-forest-berries": {
+      "source": "syrniki-forest-berries.png",
+      "width": 4096,
+      "height": 4096,
+      "bytes": 8280374,
+      "sha256": "114e454313398d8c90e086364a97a86dbf4ee9ddc3577ce5fde7616b935320f3",
+      "variants": {
+        "800": {
+          "src": "assets/dishes/food-web/syrniki-forest-berries-800.webp",
+          "width": 800,
+          "height": 800,
+          "bytes": 126064
+        },
+        "1600": {
+          "src": "assets/dishes/food-web/syrniki-forest-berries-1600.webp",
+          "width": 1600,
+          "height": 1600,
+          "bytes": 377438
+        }
+      }
+    },
+    "syrniki-blueberry": {
+      "source": "syrniki-blueberry.png",
+      "width": 4096,
+      "height": 4096,
+      "bytes": 8318169,
+      "sha256": "84e9f33e05ec9c3b7fb9a0fd390bd0b8344fe0ea0b8f4cc3d7a1afcbdacc7b1d",
+      "variants": {
+        "800": {
+          "src": "assets/dishes/food-web/syrniki-blueberry-800.webp",
+          "width": 800,
+          "height": 800,
+          "bytes": 106160
+        },
+        "1600": {
+          "src": "assets/dishes/food-web/syrniki-blueberry-1600.webp",
+          "width": 1600,
+          "height": 1600,
+          "bytes": 306886
+        }
+      }
+    },
+    "pasta-chicken": {
+      "source": "pasta-chicken.png",
+      "width": 1402,
+      "height": 1122,
+      "bytes": 2105275,
+      "sha256": "7945fd39733358ba91c3572be9d981ad96aa1a1dc31c6a157042e4c280f9cd0f",
+      "variants": {
+        "800": {
+          "src": "assets/dishes/food-web/pasta-chicken-800.webp",
+          "width": 800,
+          "height": 640,
+          "bytes": 117568
+        },
+        "1600": {
+          "src": "assets/dishes/food-web/pasta-chicken-1600.webp",
+          "width": 1402,
+          "height": 1122,
+          "bytes": 263032
+        }
+      }
+    },
+    "carbonara": {
+      "source": "carbonara.png",
+      "width": 1402,
+      "height": 1122,
+      "bytes": 2056255,
+      "sha256": "8b16cd725bdc711f11e1a2661cd49517da5ccc9a2b01915c1075681d10f396a0",
+      "variants": {
+        "800": {
+          "src": "assets/dishes/food-web/carbonara-800.webp",
+          "width": 800,
+          "height": 640,
+          "bytes": 113510
+        },
+        "1600": {
+          "src": "assets/dishes/food-web/carbonara-1600.webp",
+          "width": 1402,
+          "height": 1122,
+          "bytes": 251996
+        }
+      }
+    }
+  },
+  "totals": {
+    "originalBytes": 38798414,
+    "variants": {
+      "800": 1075094,
+      "1600": 2655358
+    }
+  }
+}

@@ -1,0 +1,18 @@
+Final CTA typography: Noto Serif Display Italic 500.
+Original true italic font supplied by Google Fonts, subset to the exact text "всё меню.".
+Stored locally; the website makes no font-service request at runtime.
+
+Official family:
+https://fonts.google.com/specimen/Noto+Serif+Display
+https://github.com/google/fonts/tree/main/ofl/notoserifdisplay
+
+Subset stylesheet:
+https://fonts.googleapis.com/css2?family=Noto+Serif+Display:ital,wght@1,500&text=%D0%B2%D1%81%D1%91%20%D0%BC%D0%B5%D0%BD%D1%8E.
+
+Font source:
+https://fonts.gstatic.com/l/font?kit=buEPppa9f8_vkXaZLAgP0G5Wi6QmA1QwcLRCOrN8uo7t6FBJOJTQit-N33sQOk-VoQJJYjEHlcTtTXf4HjA747zSRVpBTKfpuQ&skey=2cf188ff8c644e06&v=v29
+
+License: NOTO-SERIF-DISPLAY-OFL.txt in this directory.
+Binary checks: 2948 bytes; OS/2 weight 500; italic flag enabled; post italic angle -12 degrees.
+Character map contains every requested character, including Cyrillic ё (U+0451), space and period.
+The existing Hero font noto-serif-display-italic-500.ttf remains unchanged.
